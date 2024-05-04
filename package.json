@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "cd server && pnpm dev"
+    "dev": "cd server && pnpm dev",
+    "db:update": "cd server && pnpm db:update"
   },
   "keywords": [],
   "author": "",

@@ -1,4 +1,13 @@
-import { pgTable, serial, timestamp, varchar } from "drizzle-orm/pg-core";
+import {
+  pgTableCreator,
+  serial,
+  timestamp,
+  varchar,
+} from "drizzle-orm/pg-core";
+
+const pgTable = pgTableCreator(
+  (defaultTableName) => `portfolio_${defaultTableName}`
+);
 
 export const user = pgTable("user", {
   id: serial("id").primaryKey(),

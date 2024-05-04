@@ -8,4 +8,5 @@ export default {
     connectionString: process.env.DB_URL!,
   },
   driver: "pg",
+  tablesFilter: ["portfolio_*"],
 } satisfies Config;
