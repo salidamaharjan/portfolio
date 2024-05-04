@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "cd server && pnpm dev",
+    "dev": "concurrently \"cd server && pnpm dev\" \"cd client && pnpm dev\"",
     "db:update": "cd server && pnpm db:update"
   },
   "keywords": [],
