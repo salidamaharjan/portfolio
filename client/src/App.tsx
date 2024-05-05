@@ -1,7 +1,9 @@
 import "./App.css";
+import Form from "./component/ui/Form";
 
 function App() {
-  return <div className="text-green-600 font-bold">Portfolio
+  return <div className="pt-6">
+  <Form/>
   </div>;
 }
 
