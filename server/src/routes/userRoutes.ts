@@ -6,15 +6,35 @@ import { eq } from "drizzle-orm";
 const userRoutes = express.Router();
 
 userRoutes.get("/users", async (req: Request, res: Response) => {
-  const resultOfUsers = await db.query.user.findMany();
-  res.status(200).json(resultOfUsers);
+  try {
+    const resultOfUsers = await db.query.user.findMany();
+    res.status(201).json(resultOfUsers);
+  } catch (err) {
+    res.status(500).send(err);
+  }
 });
 
 userRoutes.get("/users/:id", async (req: Request, res: Response) => {
-  const resultOfUserById = await db.query.user.findFirst({
-    where: eq(user.id, parseInt(req.params.id)),
-  });
-  res.status(200).json(resultOfUserById);
+  try {
+    const resultOfUserById = await db.query.user.findFirst({
+      where: eq(user.id, parseInt(req.params.id)),
+    });
+    res.status(201).json(resultOfUserById);
+  } catch (err) {
+    res.status(500).send(err);
+  }
+});
+
+userRoutes.post("/users", async (req: Request, res: Response) => {
+  try {
+    await db.insert(user).values({
+      username: req.body.username,
+      password: req.body.password,
+    });
+    res.status(201).json({ message: "New User Created" });
+  } catch (err) {
+    res.status(500).send(err);
+  }
 });
 
 export default userRoutes;
