@@ -1,14 +1,18 @@
 import Button from "./Button";
 import Input from "./Input";
 import Label from "./Label";
+import { useState } from "react";
+
 
 type FormProps = {
   children: string;
 };
 
 function Form({ children }: FormProps) {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
   function handleLoginCLick() {
-    alert("login");
+    alert(`username= ${username}, password= ${password}`);
   }
   return (
     <div className="flex flex-col text-2xl font-bold text-blue-600 gap-6 items-center">
