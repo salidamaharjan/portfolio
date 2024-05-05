@@ -1,10 +1,10 @@
 import "./App.css";
-import Form from "./component/ui/Form";
+import Login from "./pages/Login";
 
 function App() {
-  return <div className="pt-6">
-  <Form/>
-  </div>;
+  return <>
+ <Login/>
+  </>;
 }
 
 export default App;
