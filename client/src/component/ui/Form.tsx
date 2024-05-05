@@ -12,6 +12,8 @@ function Form({ children }: FormProps) {
   const [password, setPassword] = useState("");
   function handleLoginCLick() {
     alert(`username= ${username}, password= ${password}`);
+    setUsername("");
+    setPassword("");
   }
   return (
     <div className="flex flex-col text-2xl font-bold text-blue-600 gap-6 items-center">
@@ -25,7 +27,7 @@ function Form({ children }: FormProps) {
             <Input
               placeholder="username"
               value={username}
-              onChange={(e)=> setUsername(e.target.value)}
+              onChange={(e) => setUsername(e.target.value)}
               type="text"
             />
           </Label>
@@ -33,7 +35,13 @@ function Form({ children }: FormProps) {
         <div>
           <Label className="text-gray-800">
             {" "}
-            Password: <Input placeholder="password" value={password} onChange={(e)=> setPassword(e.target.value)} type="password" />
+            Password:{" "}
+            <Input
+              placeholder="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              type="password"
+            />
           </Label>
         </div>
         <Button onClick={handleLoginCLick}>{children}</Button>
