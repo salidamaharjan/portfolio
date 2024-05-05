@@ -3,7 +3,6 @@ import Input from "./Input";
 import Label from "./Label";
 import { useState } from "react";
 
-
 type FormProps = {
   children: string;
 };
@@ -22,13 +21,19 @@ function Form({ children }: FormProps) {
         <div>
           <Label className="text-gray-800">
             {" "}
-            Username: <Input placeholder="username" type="text" />
+            Username:{" "}
+            <Input
+              placeholder="username"
+              value={username}
+              onChange={(e)=> setUsername(e.target.value)}
+              type="text"
+            />
           </Label>
         </div>
         <div>
           <Label className="text-gray-800">
             {" "}
-            Password: <Input placeholder="password" type="password" />
+            Password: <Input placeholder="password" value={password} onChange={(e)=> setPassword(e.target.value)} type="password" />
           </Label>
         </div>
         <Button onClick={handleLoginCLick}>{children}</Button>
