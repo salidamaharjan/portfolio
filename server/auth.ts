@@ -1,6 +1,8 @@
 import jwt from "jsonwebtoken";
+import { Request, Response, NextFunction} from "express";
 import dotenv from "dotenv";
 dotenv.config();
-const token = jwt.sign({}, process.env.SECRET_KEY!, {
-  expiresIn: 60 * 60 * 1,
-});
+
+function authMiddleware (res: Response, req: Request, next: NextFunction){
+
+}
