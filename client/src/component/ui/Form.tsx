@@ -73,6 +73,30 @@ function Form({ children }: FormProps) {
         >
           {children}
         </Button>
+        {children === "Login" ?
+        <div className="text-gray-800">
+        Don't have an account{" "}
+        <span
+          onClick={() => {
+            navigate("/signup");
+          }}
+          className="underline text-blue-600 underline-offset-2 "
+        >
+          Signup
+        </span>
+      </div> :
+      <div className="text-gray-800">
+      Already have an account{" "}
+      <span
+        onClick={() => {
+          navigate("/");
+        }}
+        className="underline text-blue-600 underline-offset-2 "
+      >
+        Login
+      </span>
+    </div> }
+        
       </div>
     </div>
   );
