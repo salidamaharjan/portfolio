@@ -2,7 +2,7 @@ import Button from "./Button";
 import Input from "./Input";
 import Label from "./Label";
 import { useState } from "react";
-import { get, post } from "../../lib/http";
+import { post } from "../../lib/http";
 import { useNavigate } from "react-router-dom";
 
 type FormProps = {
@@ -17,7 +17,10 @@ function Form({ children }: FormProps) {
 
   async function handleLoginClick() {
     // alert(`username= ${username}, password= ${password}`);
-    const data = await get("http://localhost:3001/api/login");
+    const data = await post("http://localhost:3001/api/login", {
+      username,
+      password,
+    });
     console.log("login data", data);
     setUsername("");
     setPassword("");

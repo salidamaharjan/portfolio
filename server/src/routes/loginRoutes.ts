@@ -8,7 +8,7 @@ import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 
 const loginRoutes = express.Router();
-loginRoutes.get("/login", async (req: Request, res: Response) => {
+loginRoutes.post("/login", async (req: Request, res: Response) => {
   try {
     const findRequestedUser = await db.query.user.findFirst({
       where: eq(user.username, req.body.username),
@@ -37,3 +37,5 @@ loginRoutes.get("/login", async (req: Request, res: Response) => {
     res.status(500).json({ message: err });
   }
 });
+
+export default loginRoutes;
