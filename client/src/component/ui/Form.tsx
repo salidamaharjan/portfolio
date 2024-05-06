@@ -14,6 +14,7 @@ function Form({ children }: FormProps) {
   const [password, setPassword] = useState("");
 
   const navigate = useNavigate();
+
   async function handleLoginClick() {
     // alert(`username= ${username}, password= ${password}`);
     const data = await get("http://localhost:3001/api/login");
