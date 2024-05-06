@@ -2,7 +2,7 @@ import Button from "./Button";
 import Input from "./Input";
 import Label from "./Label";
 import { useState } from "react";
-import {get} from "../../lib/http"
+import { get, post } from "../../lib/http";
 
 type FormProps = {
   children: string;
@@ -11,12 +11,25 @@ type FormProps = {
 function Form({ children }: FormProps) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  function handleLoginCLick() {
-    
-    alert(`username= ${username}, password= ${password}`);
+
+  async function handleLoginClick() {
+    // alert(`username= ${username}, password= ${password}`);
+    const data = await get("http://localhost:3001/api/login");
+    console.log("login data", data);
     setUsername("");
     setPassword("");
   }
+  async function handleSignupClick() {
+    const data = await post("http://localhost:3001/api/signup", {
+      username,
+      password,
+    });
+    console.log("signup data", data);
+    localStorage.setItem("token", data.accessToken);
+    setUsername("");
+    setPassword("");
+  }
+
   return (
     <div className="flex flex-col text-2xl font-bold text-blue-600 gap-6 items-center">
       {" "}
@@ -46,7 +59,11 @@ function Form({ children }: FormProps) {
             />
           </Label>
         </div>
-        <Button onClick={handleLoginCLick}>{children}</Button>
+        <Button
+          onClick={children === "Login" ? handleLoginClick : handleSignupClick}
+        >
+          {children}
+        </Button>
       </div>
     </div>
   );
