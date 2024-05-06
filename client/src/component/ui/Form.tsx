@@ -21,7 +21,9 @@ function Form({ children }: FormProps) {
       username,
       password,
     });
-    console.log("login data", data);
+    // console.log("login data", data);
+    localStorage.setItem("token", data.accessToken);
+    navigate("/portfolio");
     setUsername("");
     setPassword("");
   }
@@ -30,7 +32,7 @@ function Form({ children }: FormProps) {
       username,
       password,
     });
-    console.log("signup data", data);
+    // console.log("signup data", data);
     localStorage.setItem("token", data.accessToken);
     navigate("/portfolio");
     setUsername("");
