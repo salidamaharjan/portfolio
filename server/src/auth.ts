@@ -3,7 +3,7 @@ import { Request, Response, NextFunction } from "express";
 import dotenv from "dotenv";
 dotenv.config();
 
-function authMiddleware(res: Response, req: Request, next: NextFunction) {
+function authMiddleware(req: Request, res: Response, next: NextFunction) {
   try {
     const authorizationHeader = req.header("Authorization");
     if (!authorizationHeader) {
