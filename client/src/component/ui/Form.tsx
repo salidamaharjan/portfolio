@@ -2,6 +2,7 @@ import Button from "./Button";
 import Input from "./Input";
 import Label from "./Label";
 import { useState } from "react";
+import {get} from "../../lib/http"
 
 type FormProps = {
   children: string;
@@ -11,6 +12,7 @@ function Form({ children }: FormProps) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   function handleLoginCLick() {
+    
     alert(`username= ${username}, password= ${password}`);
     setUsername("");
     setPassword("");

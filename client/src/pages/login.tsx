@@ -1,5 +1,4 @@
 import Form from "../component/ui/Form";
-import { post } from "../lib/http";
 
 function Login() {
   return (

@@ -1,6 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import App from "./App.tsx";
 import Login from "./pages/Login.tsx";
+import Portfolio from "./pages/Portfolio.tsx"
 
 const router = createBrowserRouter([
   {
@@ -10,6 +11,10 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Login />,
+      },
+      {
+        path: "/portfolio",
+        element: <Portfolio />,
       },
     ],
   },
