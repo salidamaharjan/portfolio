@@ -43,7 +43,7 @@ function Form({ children }: FormProps) {
     <div className="flex flex-col text-2xl font-bold text-blue-600 gap-6 items-center">
       {" "}
       {children}
-      <div className=" flex flex-col gap-6 border text-lg rounded-md p-8 sm:min-w-[250px] md:min-w-[350px] lg:min-w-[450px] items-center border-gray-500">
+      <div className=" flex flex-col gap-6 border text-lg rounded-md p-8 sm:min-w-[300px] md:min-w-[400px] lg:min-w-[500px] items-center border-gray-500">
         <div>
           <Label className="text-gray-800">
             {" "}
