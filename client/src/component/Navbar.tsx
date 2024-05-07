@@ -37,7 +37,14 @@ function Navbar({ className }: NavbarProps) {
       >
         Signup
       </div>
-      <div onClick={() => {}}>Logout</div>
+      <div 
+        onClick={() => {
+          localStorage.removeItem("token");
+          navigate("/");
+        }}
+      >
+        Logout
+      </div>
     </nav>
   );
 }
