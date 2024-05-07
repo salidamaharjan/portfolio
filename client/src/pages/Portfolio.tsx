@@ -1,7 +1,12 @@
 import { get } from "../lib/http";
 import { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faImagePortrait } from "@fortawesome/free-solid-svg-icons";
+import {
+  faImagePortrait,
+  faRectangleList,
+  faDiagramProject,
+  faEnvelopesBulk,
+} from "@fortawesome/free-solid-svg-icons";
 
 type EducationProps = {
   id: number;
@@ -51,9 +56,18 @@ function Portfolio() {
           <FontAwesomeIcon icon={faImagePortrait} />
           About
         </div>
-        <div>Resume</div>
-        <div>Works</div>
-        <div>Contact</div>
+        <div>
+          <FontAwesomeIcon icon={faRectangleList} />
+          Resume
+        </div>
+        <div>
+          <FontAwesomeIcon icon={faDiagramProject} />
+          Works
+        </div>
+        <div>
+          <FontAwesomeIcon icon={faEnvelopesBulk} />
+          Contact
+        </div>
       </aside>
       <div>
         <div className="font-bold text-sm lg:text-lg text-blue-600">
