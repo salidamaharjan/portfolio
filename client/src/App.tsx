@@ -4,9 +4,11 @@ import Navbar from "./component/ui/Navbar";
 
 function App() {
   return (
-    <div className="p-4">
-    <Navbar />
-    <Outlet/>
+    <div>
+      <Navbar />
+      <div className="p-4">
+        <Outlet />
+      </div>
     </div>
   );
 }

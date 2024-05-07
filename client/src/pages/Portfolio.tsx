@@ -44,8 +44,10 @@ function Portfolio() {
   }
   return (
     <div>
-      <div className="font-bold text-lg text-blue-600">Education</div>
-      <div className="text-sm ">
+      <div className="font-bold text-sm lg:text-lg text-blue-600">
+        Education
+      </div>
+      <div className="text-sm lg:text-lg ">
         {educations.map((education) => {
           return (
             <div key={education.id}>
@@ -54,13 +56,13 @@ function Portfolio() {
               <li>{education.description}</li>
               <li>{education.schoolName}</li>
               <li>{education.startDate}</li>
-              <li>{`${education.yearCompletion === null ? "current" : ""}`}</li>
+              <li>{`${education.yearCompletion === null ? "current" : education.yearCompletion}`}</li>
             </div>
           );
         })}
       </div>
-      <div className="font-bold text-lg text-blue-600">Projects</div>
-      <div className="text-sm ">
+      <div className="font-bold text-sm lg:text-lg text-blue-600">Projects</div>
+      <div className="text-sm lg:text-lg ">
         {projects.map((project) => {
           return (
             <div key={project.id}>
