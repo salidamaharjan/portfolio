@@ -1,4 +1,11 @@
 import { useNavigate, useLocation } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faUserTie,
+  faRightFromBracket,
+  faRightToBracket,
+  faUserPlus,
+} from "@fortawesome/free-solid-svg-icons";
 
 type NavbarProps = {
   className?: string;
@@ -8,7 +15,9 @@ function Navbar({ className }: NavbarProps) {
   const location = useLocation();
   const token = localStorage.getItem("token");
   return (
-    <nav className={`flex justify-end text-sm lg:text-lg border-b-2 px-4 py-2 font-bold ${className}`}>
+    <nav
+      className={`flex justify-end text-sm lg:text-lg border-b-2 px-4 py-2 font-bold ${className}`}
+    >
       {token ? (
         <div className="flex gap-4">
           <div
@@ -19,7 +28,7 @@ function Navbar({ className }: NavbarProps) {
               navigate("/portfolio");
             }}
           >
-            Portfolio
+            <FontAwesomeIcon icon={faUserTie} /> Portfolio
           </div>
           <div
             onClick={() => {
@@ -27,7 +36,7 @@ function Navbar({ className }: NavbarProps) {
               navigate("/");
             }}
           >
-            Logout
+            Logout <FontAwesomeIcon icon={faRightFromBracket} />
           </div>
         </div>
       ) : (
@@ -38,7 +47,7 @@ function Navbar({ className }: NavbarProps) {
               navigate("/");
             }}
           >
-            Login
+            <FontAwesomeIcon icon={faRightToBracket} /> Login
           </div>
           <div
             className={`${
@@ -48,7 +57,7 @@ function Navbar({ className }: NavbarProps) {
               navigate("/signup");
             }}
           >
-            Signup
+            <FontAwesomeIcon icon={faUserPlus} /> Signup
           </div>
         </div>
       )}
