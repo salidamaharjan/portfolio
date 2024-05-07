@@ -3,6 +3,7 @@ import App from "./App.tsx";
 import Login from "./pages/Login.tsx";
 import Portfolio from "./pages/Portfolio.tsx";
 import Signup from "./pages/Signup.tsx";
+import Resume from "./pages/Resume.tsx";
 
 const router = createBrowserRouter([
   {
@@ -20,7 +21,10 @@ const router = createBrowserRouter([
       {
         path: "/portfolio",
         element: <Portfolio />,
-      },
+      },{
+        path: "/resume",
+        element: <Resume />
+      }
     ],
   },
 ]);

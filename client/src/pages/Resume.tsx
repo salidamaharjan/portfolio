@@ -24,7 +24,7 @@ type ProjectProps = {
   technologiesUsed: string;
 };
 
-function Portfolio() {
+function Resume() {
   const [educations, setEducations] = useState<EducationProps[]>([]);
   const [projects, setProjects] = useState<ProjectProps[]>([]);
 
@@ -51,28 +51,6 @@ function Portfolio() {
   }
   return (
     <div className="flex gap-4">
-      <aside className="flex flex-col pt-1 gap-5">
-        <div className="flex flex-col">
-          <FontAwesomeIcon icon={faImagePortrait} />
-          <span className="text-xs text-center">About</span>
-        </div>
-        <div className=" flex flex-col">
-          <FontAwesomeIcon icon={faRectangleList} />
-          <span className="text-xs text-center"> Resume</span>
-        </div>
-        <div className=" flex flex-col">
-          <FontAwesomeIcon icon={faDiagramProject} />
-          <span className="text-xs text-center">Works</span>
-        </div>
-        <div className=" flex flex-col">
-          <FontAwesomeIcon icon={faEnvelopesBulk} />
-          <span className="text-xs text-center">Contact</span>
-        </div>
-      </aside>
-      <div>
-        <div className="font-bold text-sm lg:text-lg text-blue-600">
-          Education
-        </div>
         <div className="text-sm lg:text-lg ">
           {educations.map((education) => {
             return (
@@ -111,4 +89,4 @@ function Portfolio() {
   );
 }
 
-export default Portfolio;
+export default Resume;
