@@ -2,10 +2,7 @@ import { get } from "../lib/http";
 import { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faImagePortrait,
-  faRectangleList,
-  faDiagramProject,
-  faEnvelopesBulk,
+  faAward,
 } from "@fortawesome/free-solid-svg-icons";
 
 type EducationProps = {
@@ -32,6 +29,7 @@ function Resume() {
     fetchEducation();
     fetchProject();
   }, []);
+
   async function fetchEducation() {
     try {
       const educationData = await get("http://localhost:3001/api/educations");
@@ -49,41 +47,42 @@ function Resume() {
       console.log("err", err);
     }
   }
+
   return (
     <div className="flex gap-4">
-        <div className="text-sm lg:text-lg ">
-          {educations.map((education) => {
-            return (
-              <div key={education.id}>
-                {" "}
-                <div className="font-bold">{education.degree}</div>
-                <li>{education.description}</li>
-                <li>{education.schoolName}</li>
-                <li>{education.startDate}</li>
-                <li>{`${
-                  education.yearCompletion === null
-                    ? "current"
-                    : education.yearCompletion
-                }`}</li>
-              </div>
-            );
-          })}
-        </div>
-        <div className="font-bold text-sm lg:text-lg text-blue-600">
-          Projects
-        </div>
-        <div className="text-sm lg:text-lg ">
-          {projects.map((project) => {
-            return (
-              <div key={project.id}>
-                {" "}
-                <div className="font-bold">{project.projectName}</div>
-                <li>{project.description}</li>
-                <li>{project.technologiesUsed}</li>
-              </div>
-            );
-          })}
-        </div>
+      <div className="font-bold text-sm lg:text-lg text-blue-600">
+        <FontAwesomeIcon icon={faAward} /> Education
+      </div>
+      <div className="text-sm lg:text-lg ">
+        {educations.map((education) => {
+          return (
+            <div key={education.id}>
+              {" "}
+              <div className="font-bold">{education.degree}</div>
+              <li>{education.description}</li>
+              <li>{education.schoolName}</li>
+              <li>{education.startDate}</li>
+              <li>{`${
+                education.yearCompletion === null
+                  ? "current"
+                  : education.yearCompletion
+              }`}</li>
+            </div>
+          );
+        })}
+      </div>
+      <div className="font-bold text-sm lg:text-lg text-blue-600">Projects</div>
+      <div className="text-sm lg:text-lg ">
+        {projects.map((project) => {
+          return (
+            <div key={project.id}>
+              {" "}
+              <div className="font-bold">{project.projectName}</div>
+              <li>{project.description}</li>
+              <li>{project.technologiesUsed}</li>
+            </div>
+          );
+        })}
       </div>
     </div>
   );

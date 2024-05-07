@@ -1,5 +1,4 @@
-import { get } from "../lib/http";
-import { useState, useEffect } from "react";
+import { useNavigate, useLocation, Outlet } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faImagePortrait,
@@ -8,47 +7,10 @@ import {
   faEnvelopesBulk,
 } from "@fortawesome/free-solid-svg-icons";
 
-type EducationProps = {
-  id: number;
-  degree: string;
-  schoolName: string;
-  startDate: string;
-  yearCompletion: string;
-  description: string;
-};
-
-type ProjectProps = {
-  id: number;
-  projectName: string;
-  description: string;
-  technologiesUsed: string;
-};
-
 function Portfolio() {
-  const [educations, setEducations] = useState<EducationProps[]>([]);
-  const [projects, setProjects] = useState<ProjectProps[]>([]);
-
-  useEffect(() => {
-    fetchEducation();
-    fetchProject();
-  }, []);
-  async function fetchEducation() {
-    try {
-      const educationData = await get("http://localhost:3001/api/educations");
-      setEducations(educationData);
-      // console.log("educationData", educationData);
-    } catch (err) {
-      console.log("err", err);
-    }
-  }
-  async function fetchProject() {
-    try {
-      const projectData = await get("http://localhost:3001/api/projects");
-      setProjects(projectData);
-    } catch (err) {
-      console.log("err", err);
-    }
-  }
+  const navigate = useNavigate();
+  const location = useLocation();
+  // console.log(location.pathname, "location");
   return (
     <div className="flex gap-4">
       <aside className="flex flex-col pt-1 gap-5">
@@ -56,9 +18,18 @@ function Portfolio() {
           <FontAwesomeIcon icon={faImagePortrait} />
           <span className="text-xs text-center">About</span>
         </div>
-        <div className=" flex flex-col">
+        <div
+          className={`${
+            location.pathname === "/portfolio/resume"
+              ? "flex flex-col text-green-600"
+              : "flex flex-col"
+          }`}
+          onClick={() => {
+            navigate("/portfolio/resume");
+          }}
+        >
           <FontAwesomeIcon icon={faRectangleList} />
-          <span className="text-xs text-center"> Resume</span>
+          <span className="text-xs text-center">Resume</span>
         </div>
         <div className=" flex flex-col">
           <FontAwesomeIcon icon={faDiagramProject} />
@@ -69,44 +40,7 @@ function Portfolio() {
           <span className="text-xs text-center">Contact</span>
         </div>
       </aside>
-      <div>
-        <div className="font-bold text-sm lg:text-lg text-blue-600">
-          Education
-        </div>
-        <div className="text-sm lg:text-lg ">
-          {educations.map((education) => {
-            return (
-              <div key={education.id}>
-                {" "}
-                <div className="font-bold">{education.degree}</div>
-                <li>{education.description}</li>
-                <li>{education.schoolName}</li>
-                <li>{education.startDate}</li>
-                <li>{`${
-                  education.yearCompletion === null
-                    ? "current"
-                    : education.yearCompletion
-                }`}</li>
-              </div>
-            );
-          })}
-        </div>
-        <div className="font-bold text-sm lg:text-lg text-blue-600">
-          Projects
-        </div>
-        <div className="text-sm lg:text-lg ">
-          {projects.map((project) => {
-            return (
-              <div key={project.id}>
-                {" "}
-                <div className="font-bold">{project.projectName}</div>
-                <li>{project.description}</li>
-                <li>{project.technologiesUsed}</li>
-              </div>
-            );
-          })}
-        </div>
-      </div>
+      {location.pathname === "/portfolio" ? <div className="text-red-500 font-bold">Portfolio</div> : <Outlet />}
     </div>
   );
 }
