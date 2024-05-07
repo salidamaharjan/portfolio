@@ -14,7 +14,15 @@ function Portfolio() {
   return (
     <div className="flex gap-4">
       <aside className="flex flex-col pt-1 gap-5">
-        <div className="flex flex-col">
+        <div className={`${
+            location.pathname === "/portfolio/aboutme"
+              ? "flex flex-col text-green-600"
+              : "flex flex-col"
+          }`}
+          onClick={() => {
+            navigate("/portfolio/aboutme");
+          }}
+          >
           <FontAwesomeIcon icon={faImagePortrait} />
           <span className="text-xs text-center">About</span>
         </div>
