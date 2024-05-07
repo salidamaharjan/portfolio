@@ -8,7 +8,7 @@ function Navbar({ className }: NavbarProps) {
   const location = useLocation();
   const token = localStorage.getItem("token");
   return (
-    <nav className={`flex justify-end text-lg font-bold ${className}`}>
+    <nav className={`flex justify-end text-sm lg:text-lg font-bold ${className}`}>
       {token ? (
         <div className="flex gap-4">
           <div

@@ -1,5 +1,6 @@
 import { relations } from "drizzle-orm";
 import {
+  date,
   integer,
   pgTableCreator,
   serial,
@@ -32,8 +33,8 @@ export const education = pgTable("education", {
   id: serial("id").primaryKey(),
   degree: varchar("degree", { length: 256 }).notNull(),
   schoolName: varchar("school_name", { length: 256 }).notNull(),
-  startDate: timestamp("start_date"),
-  yearCompletion: timestamp("year_completion"),
+  startDate: date("start_date"),
+  yearCompletion: date("year_completion"),
   description: varchar("description"),
   userId: integer("user_id")
     .references(() => user.id, { onDelete: "cascade" })

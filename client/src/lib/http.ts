@@ -1,9 +1,11 @@
 export async function get(url: string) {
   try {
+    const token = localStorage.getItem("token");
     const response = await fetch(url, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
       },
     });
     const result = response.json();
@@ -15,10 +17,12 @@ export async function get(url: string) {
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export async function post(url: string, body: any) {
   try {
+    const token = localStorage.getItem("token");
     const response = await fetch(url, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
       },
       body: JSON.stringify(body),
     });
