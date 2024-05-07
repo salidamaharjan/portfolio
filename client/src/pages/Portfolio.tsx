@@ -39,7 +39,14 @@ function Portfolio() {
           <FontAwesomeIcon icon={faRectangleList} />
           <span className="text-xs text-center">Resume</span>
         </div>
-        <div className=" flex flex-col">
+        <div className={`${
+            location.pathname === "/portfolio/works"
+              ? "flex flex-col text-green-600"
+              : "flex flex-col"
+          }`}
+          onClick={() => {
+            navigate("/portfolio/works");
+          }}>
           <FontAwesomeIcon icon={faDiagramProject} />
           <span className="text-xs text-center">Works</span>
         </div>
