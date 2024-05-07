@@ -51,22 +51,22 @@ function Portfolio() {
   }
   return (
     <div className="flex">
-      <aside>
-        <div>
+      <aside className="flex flex-col gap-5">
+        <div className="flex flex-col">
           <FontAwesomeIcon icon={faImagePortrait} />
-          About
+          <span className="text-xs text-center">About</span>
         </div>
-        <div>
+        <div className=" flex flex-col">
           <FontAwesomeIcon icon={faRectangleList} />
-          Resume
+          <span className="text-xs text-center"> Resume</span>
         </div>
-        <div>
+        <div className=" flex flex-col">
           <FontAwesomeIcon icon={faDiagramProject} />
-          Works
+          <span className="text-xs text-center">Works</span>
         </div>
-        <div>
+        <div className=" flex flex-col">
           <FontAwesomeIcon icon={faEnvelopesBulk} />
-          Contact
+          <span className="text-xs text-center">Contact</span>
         </div>
       </aside>
       <div>
