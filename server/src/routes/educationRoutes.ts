@@ -6,9 +6,15 @@ import authMiddleware from "../auth";
 const educationRoutes = express.Router();
 
 educationRoutes.get(
-  "/educations", authMiddleware, async (req: Request, res: Response) => {
-    const allEducation = await db.query.education.findMany();
-    res.status(200).json(allEducation);
+  "/educations",
+  authMiddleware,
+  async (req: Request, res: Response) => {
+    try {
+      const allEducation = await db.query.education.findMany();
+      res.status(200).json(allEducation);
+    } catch (err) {
+      res.status(500).json({ message: err });
+    }
   }
 );
 

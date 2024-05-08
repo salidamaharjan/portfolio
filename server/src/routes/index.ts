@@ -4,7 +4,7 @@ import educationRoutes from "./educationRoutes";
 import projectRoutes from "./projectRoutes";
 import signupRoutes from "./signupRoutes";
 import loginRoutes from "./loginRoutes";
-
+import experienceRoutes from "./experienceRoutes";
 const router = express.Router();
 
 router.use(
@@ -13,7 +13,8 @@ router.use(
   educationRoutes,
   projectRoutes,
   signupRoutes,
-  loginRoutes
+  loginRoutes,
+  experienceRoutes
 );
 
 export default router;
