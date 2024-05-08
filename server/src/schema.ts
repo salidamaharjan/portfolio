@@ -40,7 +40,6 @@ export const education = pgTable("education", {
     .references(() => user.id, { onDelete: "cascade" })
     .notNull(),
 });
-
 export const educationRelations = relations(education, ({ one }) => ({
   user: one(user, {
     fields: [education.userId],
@@ -60,6 +59,24 @@ export const project = pgTable("project", {
 export const projectRelation = relations(project, ({ one }) => ({
   user: one(user, {
     fields: [project.userId],
+    references: [user.id],
+  }),
+}));
+
+export const experience = pgTable("experience", {
+  id: serial("id").primaryKey(),
+  title: varchar("title", { length: 256 }).notNull(),
+  company: varchar("company", { length: 256 }).notNull(),
+  jobDescription: varchar("job-description", { length: 256 }).notNull(),
+  startDate: date("start_date"),
+  endDate: date("end-date"),
+  userId: integer("user_id")
+    .references(() => user.id, { onDelete: "cascade" })
+    .notNull(),
+});
+export const experienceRelation = relations(experience, ({ one }) => ({
+  user: one(user, {
+    fields: [experience.userId],
     references: [user.id],
   }),
 }));
