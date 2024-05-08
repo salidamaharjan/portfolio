@@ -10,6 +10,7 @@ type EducationProps = {
   startDate: string;
   yearCompletion: string;
   description: string;
+  userId: number;
 };
 
 type ProjectProps = {
@@ -41,7 +42,7 @@ function Resume() {
     try {
       const educationData = await get("http://localhost:3001/api/educations");
       setEducations(educationData);
-      // console.log("educationData", educationData);
+      console.log("educationData", educationData);
     } catch (err) {
       console.log("err", err);
     }
@@ -124,8 +125,16 @@ function Resume() {
                 <div className="font-bold">{experience.title}</div>
                 <li>{experience.company}</li>
                 <li>{experience.jobDescription}</li>
-                <li>{experience.startDate}</li>
-                <li>{experience.endDate}</li>
+                <li>{`${
+                  experience.startDate === null
+                    ? "current"
+                    : experience.startDate
+                }`}</li>
+                <li>{`${
+                  experience.endDate === null
+                    ? "current"
+                    : experience.endDate
+                }`}</li>
               </div>
             );
           })}

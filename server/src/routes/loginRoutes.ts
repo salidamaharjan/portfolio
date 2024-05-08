@@ -25,7 +25,7 @@ loginRoutes.post("/login", async (req: Request, res: Response) => {
       res.status(401).json({ message: "Incorrect Username Or Password" });
       return;
     }
-    const token = jwt.sign({}, process.env.SECRET_KEY!, {
+    const token = jwt.sign({id: findRequestedUser.id}, process.env.SECRET_KEY!, {
       expiresIn: process.env.JWT_TOKEN_EXPIRATION,
     });
     res.status(201).send({
