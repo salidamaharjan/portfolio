@@ -10,7 +10,7 @@ experienceRoutes.get(
   authMiddleware,
   async (req: Request, res: Response) => {
     try {
-      const allExperience = await db.query.education.findMany();
+      const allExperience = await db.query.experience.findMany();
       res.status(200).json(allExperience);
     } catch (err) {
       res.status(500).json({ message: err });
