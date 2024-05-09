@@ -6,10 +6,10 @@ import { post } from "../../lib/http";
 import { useNavigate } from "react-router-dom";
 
 type FormProps = {
-  children: string;
+  title: string;
 };
 
-function Form({ children }: FormProps) {
+function Form({ title }: FormProps) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
@@ -42,7 +42,7 @@ function Form({ children }: FormProps) {
   return (
     <div className="flex flex-col text-2xl font-bold text-blue-600 gap-6 items-center">
       {" "}
-      {children}
+      {title}
       <div className=" flex flex-col gap-6 border text-lg rounded-md p-8 sm:min-w-[300px] md:min-w-[400px] lg:min-w-[500px] items-center border-gray-500">
         <div>
           <Label className="text-gray-800">
@@ -69,11 +69,11 @@ function Form({ children }: FormProps) {
           </Label>
         </div>
         <Button
-          onClick={children === "Login" ? handleLoginClick : handleSignupClick}
+          onClick={title === "Login" ? handleLoginClick : handleSignupClick}
         >
-          {children}
+          {title}
         </Button>
-        {children === "Login" ?
+        {title === "Login" ?
         <div className="text-gray-800">
         Don't have an account{" "}
         <span

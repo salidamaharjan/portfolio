@@ -20,7 +20,7 @@ function Navbar({ className }: NavbarProps) {
     >
       {token ? (
         <div className="flex gap-4">
-          <div
+          <a
             className={`${
               location.pathname === "/portfolio" ? "text-green-600" : ""
             }`}
@@ -29,27 +29,27 @@ function Navbar({ className }: NavbarProps) {
             }}
           >
             <FontAwesomeIcon icon={faUserTie} /> Portfolio
-          </div>
-          <div
+          </a>
+          <a
             onClick={() => {
               localStorage.removeItem("token");
               navigate("/");
             }}
           >
             Logout <FontAwesomeIcon icon={faRightFromBracket} />
-          </div>
+          </a>
         </div>
       ) : (
         <div className="flex gap-4">
-          <div
+          <a
             className={`${location.pathname === "/" ? "text-green-600" : ""}`}
             onClick={() => {
               navigate("/");
             }}
           >
             <FontAwesomeIcon icon={faRightToBracket} /> Login
-          </div>
-          <div
+          </a>
+          <a
             className={`${
               location.pathname === "/signup" ? "text-green-600" : ""
             }`}
@@ -58,7 +58,7 @@ function Navbar({ className }: NavbarProps) {
             }}
           >
             <FontAwesomeIcon icon={faUserPlus} /> Signup
-          </div>
+          </a>
         </div>
       )}
     </nav>
