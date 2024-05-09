@@ -2,6 +2,7 @@ import express, { Response, Request } from "express";
 import db from "../config/db";
 import { education } from "../schema";
 import authMiddleware from "../auth";
+import { eq } from "drizzle-orm";
 
 const educationRoutes = express.Router();
 
@@ -10,7 +11,12 @@ educationRoutes.get(
   authMiddleware,
   async (req: Request, res: Response) => {
     try {
-      const allEducation = await db.query.education.findMany();
+      const loggedInUser = (req as any).user;
+      console.log(loggedInUser.id);
+      const authorizedId = loggedInUser.id;
+      const allEducation = await db.query.education.findMany({
+        where: eq(education.userId, authorizedId),
+      });
       res.status(200).json(allEducation);
     } catch (err) {
       res.status(500).json({ message: err });
@@ -24,7 +30,8 @@ educationRoutes.post(
   async (req: Request, res: Response) => {
     try {
       const loggedInUser = (req as any).user;
-      const authorizedId = loggedInUser;
+      console.log(loggedInUser.id);
+      const authorizedId = loggedInUser.id;
       await db.insert(education).values({
         degree: req.body.degree,
         schoolName: req.body.schoolName,

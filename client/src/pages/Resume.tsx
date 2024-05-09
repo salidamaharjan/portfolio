@@ -10,7 +10,6 @@ type EducationProps = {
   startDate: string;
   yearCompletion: string;
   description: string;
-  userId: number;
 };
 
 type ProjectProps = {
@@ -131,9 +130,7 @@ function Resume() {
                     : experience.startDate
                 }`}</li>
                 <li>{`${
-                  experience.endDate === null
-                    ? "current"
-                    : experience.endDate
+                  experience.endDate === null ? "current" : experience.endDate
                 }`}</li>
               </div>
             );

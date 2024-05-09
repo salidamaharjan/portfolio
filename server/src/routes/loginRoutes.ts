@@ -32,7 +32,7 @@ loginRoutes.post("/login", async (req: Request, res: Response) => {
         expiresIn: process.env.JWT_TOKEN_EXPIRATION,
       }
     );
-    console.log("token", token);
+    // console.log("token", token);
     res.status(201).send({
       id: findRequestedUser.id,
       username: findRequestedUser.username,
