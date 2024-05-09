@@ -25,14 +25,19 @@ loginRoutes.post("/login", async (req: Request, res: Response) => {
       res.status(401).json({ message: "Incorrect Username Or Password" });
       return;
     }
-    const token = jwt.sign({id: findRequestedUser.id}, process.env.SECRET_KEY!, {
-      expiresIn: process.env.JWT_TOKEN_EXPIRATION,
-    });
+    const token = jwt.sign(
+      { id: findRequestedUser.id },
+      process.env.SECRET_KEY!,
+      {
+        expiresIn: process.env.JWT_TOKEN_EXPIRATION,
+      }
+    );
+    console.log("token", token);
     res.status(201).send({
-        id: findRequestedUser.id,
-        username: findRequestedUser.username,
-        accessToken: token
-    })
+      id: findRequestedUser.id,
+      username: findRequestedUser.username,
+      accessToken: token,
+    });
   } catch (err) {
     res.status(500).json({ message: err });
   }

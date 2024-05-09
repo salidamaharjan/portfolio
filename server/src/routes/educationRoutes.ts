@@ -23,13 +23,15 @@ educationRoutes.post(
   authMiddleware,
   async (req: Request, res: Response) => {
     try {
+      const loggedInUser = (req as any).user;
+      const authorizedId = loggedInUser;
       await db.insert(education).values({
         degree: req.body.degree,
         schoolName: req.body.schoolName,
         startDate: req.body.startDate,
         yearCompletion: req.body.yearCompletion,
         description: req.body.description,
-        userId: req.body.userId,
+        userId: authorizedId,
       });
       res.status(201).json({ message: "Education Detail Added" });
     } catch (err) {

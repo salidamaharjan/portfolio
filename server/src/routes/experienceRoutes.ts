@@ -23,13 +23,15 @@ experienceRoutes.post(
   authMiddleware,
   async (req: Request, res: Response) => {
     try {
+      const loggedInUser = (req as any).user;
+      const authorizedId = loggedInUser;
       await db.insert(experience).values({
         title: req.body.title,
         company: req.body.company,
         jobDescription: req.body.jobDescription,
         startDate: req.body.startDate,
         endDate: req.body.endDate,
-        userId: req.body.userId,
+        userId: authorizedId,
       });
       res.status(201).json({ message: "Experience Added" });
     } catch (err) {
