@@ -1,4 +1,4 @@
-import Form from "../component/ui/Form";
+import Form from "../component/LoginSignupForm";
 
 function Login() {
   return (

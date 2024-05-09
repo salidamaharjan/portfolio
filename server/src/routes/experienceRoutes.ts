@@ -14,7 +14,7 @@ experienceRoutes.get(
       const loggedInUser = (req as any).user;
       const authorizedId = loggedInUser.id;
       const allExperience = await db.query.experience.findMany({
-        where: eq(experience.id, authorizedId),
+        where: eq(experience.userId, authorizedId),
       });
       res.status(200).json(allExperience);
     } catch (err) {

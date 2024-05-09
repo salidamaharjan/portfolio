@@ -10,10 +10,12 @@ import {
 type NavbarProps = {
   className?: string;
 };
+
 function Navbar({ className }: NavbarProps) {
   const navigate = useNavigate();
   const location = useLocation();
   const token = localStorage.getItem("token");
+
   return (
     <nav
       className={`flex justify-end text-sm lg:text-lg border-b-2 px-4 py-2 font-bold ${className}`}

@@ -1,7 +1,11 @@
 import { get } from "../lib/http";
 import { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faAward } from "@fortawesome/free-solid-svg-icons";
+import {
+  faAward,
+  faBriefcase,
+  faDiagramProject,
+} from "@fortawesome/free-solid-svg-icons";
 
 type EducationProps = {
   id: number;
@@ -41,7 +45,7 @@ function Resume() {
     try {
       const educationData = await get("http://localhost:3001/api/educations");
       setEducations(educationData);
-      console.log("educationData", educationData);
+      // console.log("educationData", educationData);
     } catch (err) {
       console.log("err", err);
     }
@@ -93,7 +97,8 @@ function Resume() {
       </div>
       <div>
         <div className="font-bold text-sm lg:text-lg text-blue-600">
-          Projects
+          {" "}
+          <FontAwesomeIcon icon={faDiagramProject} /> Projects
         </div>
         <div className="text-sm lg:text-lg ">
           {projects.map((project) => {
@@ -114,7 +119,7 @@ function Resume() {
       </div>
       <div>
         <div className="font-bold text-sm lg:text-lg text-blue-600">
-          Experiences
+          <FontAwesomeIcon icon={faBriefcase} /> Experiences
         </div>
         <div className="text-sm lg:text-lg ">
           {experiences.map((experience) => {

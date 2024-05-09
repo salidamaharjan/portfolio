@@ -1,9 +1,11 @@
-import Form from "../component/ui/Form";
+import Form from "../component/LoginSignupForm";
 
-function Signup(){
-    return <div className="pt-6">
-    <Form title="Signup"/>
-    </div>;
+function Signup() {
+  return (
+    <div className="pt-6">
+      <Form title="Signup" />
+    </div>
+  );
 }
 
 export default Signup;

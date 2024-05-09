@@ -1,8 +1,8 @@
-import Button from "./Button";
-import Input from "./Input";
-import Label from "./Label";
+import Button from "./ui/Button";
+import Input from "./ui/Input";
+import Label from "./ui/Label";
 import { useState } from "react";
-import { post } from "../../lib/http";
+import { post } from "../lib/http";
 import { useNavigate } from "react-router-dom";
 
 type FormProps = {
@@ -43,7 +43,7 @@ function Form({ title }: FormProps) {
     <div className="flex flex-col text-2xl font-bold text-blue-600 gap-6 items-center">
       {" "}
       {title}
-      <div className=" flex flex-col gap-6 border text-lg rounded-md p-8 sm:min-w-[300px] md:min-w-[400px] lg:min-w-[500px] items-center border-gray-500">
+      <div className=" flex flex-col gap-6 border shadow-xl text-lg rounded-md p-8 sm:min-w-[300px] md:min-w-[400px] lg:min-w-[500px] items-center border-gray-500">
         <div>
           <Label className="text-gray-800">
             {" "}
@@ -73,30 +73,31 @@ function Form({ title }: FormProps) {
         >
           {title}
         </Button>
-        {title === "Login" ?
-        <div className="text-gray-800">
-        Don't have an account{" "}
-        <span
-          onClick={() => {
-            navigate("/signup");
-          }}
-          className="underline text-blue-600 underline-offset-2 "
-        >
-          Signup
-        </span>
-      </div> :
-      <div className="text-gray-800">
-      Already have an account{" "}
-      <span
-        onClick={() => {
-          navigate("/");
-        }}
-        className="underline text-blue-600 underline-offset-2 "
-      >
-        Login
-      </span>
-    </div> }
-        
+        {title === "Login" ? (
+          <div className="text-gray-800">
+            Don't have an account{" "}
+            <span
+              onClick={() => {
+                navigate("/signup");
+              }}
+              className="underline text-blue-600 underline-offset-2 "
+            >
+              Signup
+            </span>
+          </div>
+        ) : (
+          <div className="text-gray-800">
+            Already have an account{" "}
+            <span
+              onClick={() => {
+                navigate("/");
+              }}
+              className="underline text-blue-600 underline-offset-2 "
+            >
+              Login
+            </span>
+          </div>
+        )}
       </div>
     </div>
   );

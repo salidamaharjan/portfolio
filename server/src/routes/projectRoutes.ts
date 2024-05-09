@@ -14,7 +14,7 @@ projectRoutes.get(
       const loggedInUser = (req as any).user;
       const authorizedId = loggedInUser.id;
       const allProject = await db.query.project.findMany({
-        where: eq(project.id, authorizedId),
+        where: eq(project.userId, authorizedId),
       });
       res.status(201).json(allProject);
     } catch (err) {

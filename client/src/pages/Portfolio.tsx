@@ -6,6 +6,7 @@ import {
   faDiagramProject,
   faEnvelopesBulk,
 } from "@fortawesome/free-solid-svg-icons";
+import EducationForm from "../component/EducationForm";
 
 function Portfolio() {
   const navigate = useNavigate();
@@ -72,7 +73,10 @@ function Portfolio() {
       </aside>
       <div>
         {location.pathname === "/portfolio" ? (
-          <div className="text-red-500 font-bold">Portfolio</div>
+          <div className="text-red-500 font-bold">
+            Portfolio
+            <EducationForm />
+          </div>
         ) : (
           <Outlet />
         )}
