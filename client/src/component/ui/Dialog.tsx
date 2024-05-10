@@ -4,8 +4,9 @@ type DialogProps = {
   children: React.ReactNode;
   title: string;
   open: boolean;
+  onClose: () => void
 };
-export function Dialog({ children, open, title }: DialogProps) {
+export function Dialog({ children, open, title, onClose }: DialogProps) {
   return open ? (
     <div>
       <div className="__overlay flex items-center justify-center bg-gray-400/65 top-0 left-0 h-screen w-screen fixed">
@@ -13,7 +14,7 @@ export function Dialog({ children, open, title }: DialogProps) {
           <div className="flex justify-between text-blue-600 text-center text-xl pb-2 font-bold">
             <div>{title}</div>
             <div>
-              <Button>x</Button>
+              <Button onClick={onClose}>x</Button>
             </div>
           </div>
           {children}

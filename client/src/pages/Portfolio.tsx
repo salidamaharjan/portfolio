@@ -14,9 +14,9 @@ import { Dialog } from "../component/ui/Dialog";
 import { useState } from "react";
 
 function Portfolio() {
-  const[educationDialogOpen, setEducationDialogOpen] = useState(false);
-  const[experienceDialogOpen, setExperienceDialogOpen] = useState(false);
-  const[projectDialogOpen, setProjectDialogOpen] = useState(false);
+  const [educationDialogOpen, setEducationDialogOpen] = useState(false);
+  const [experienceDialogOpen, setExperienceDialogOpen] = useState(false);
+  const [projectDialogOpen, setProjectDialogOpen] = useState(false);
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -87,23 +87,41 @@ function Portfolio() {
             <div className="flex gap-2 ">
               <Button
                 children="Add Education"
-                onClick={() => setEducationDialogOpen(true) }
+                onClick={() => setEducationDialogOpen(true)}
               />
-              <Dialog title="Add Your Education" open={educationDialogOpen} ><EducationForm/></Dialog>
+              <Dialog
+                title="Add Your Education"
+                open={educationDialogOpen}
+                onClose={() => setEducationDialogOpen(false)}
+              >
+                <EducationForm />
+              </Dialog>
             </div>
             <div className="flex gap-2 ">
               <Button
                 children="Add Experience"
-                onClick={() => setExperienceDialogOpen(true) }
+                onClick={() => setExperienceDialogOpen(true)}
               />
-              <Dialog title="Add Your Experience" open={experienceDialogOpen} ><ExperienceForm/></Dialog>
+              <Dialog
+                title="Add Your Experience"
+                open={experienceDialogOpen}
+                onClose={() => setExperienceDialogOpen(false)}
+              >
+                <ExperienceForm />
+              </Dialog>
             </div>
             <div className=" flex gap-2 ">
               <Button
                 children="Add Project"
-                onClick={() => setProjectDialogOpen(true) }
+                onClick={() => setProjectDialogOpen(true)}
               />
-              <Dialog title="Add Your Project"open={projectDialogOpen} ><ProjectForm/></Dialog>
+              <Dialog
+                title="Add Your Project"
+                open={projectDialogOpen}
+                onClose={() => setProjectDialogOpen(false)}
+              >
+                <ProjectForm />
+              </Dialog>
             </div>
           </div>
         ) : (
