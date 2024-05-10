@@ -8,7 +8,7 @@ const experienceRoutes = express.Router();
 
 experienceRoutes.get(
   "/experiences",
-  authMiddleware,
+
   async (req: Request, res: Response) => {
     try {
       const loggedInUser = (req as any).user;
@@ -25,7 +25,7 @@ experienceRoutes.get(
 
 experienceRoutes.post(
   "/experiences",
-  authMiddleware,
+
   async (req: Request, res: Response) => {
     try {
       const loggedInUser = (req as any).user;

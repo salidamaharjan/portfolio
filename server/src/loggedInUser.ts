@@ -3,7 +3,11 @@ import { Request, Response, NextFunction } from "express";
 import dotenv from "dotenv";
 dotenv.config();
 
-function loggedInUserMiddleware(req: Request, res: Response, next: NextFunction) {
+function loggedInUserMiddleware(
+  req: Request,
+  res: Response,
+  next: NextFunction
+) {
   try {
     const authorizationHeader = req.header("Authorization");
     if (!authorizationHeader || !authorizationHeader.startsWith("Bearer ")) {

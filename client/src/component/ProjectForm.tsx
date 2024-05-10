@@ -10,7 +10,7 @@ function ProjectForm() {
   const [technologiesUsed, setTechnologiesUsed] = useState("");
 
   async function handleAddClick() {
-    const newProject = await post("http://localhost:3001/api/experiences", {
+    const newProject = await post("http://localhost:3001/api/projects", {
       projectName,
       description,
       technologiesUsed,
@@ -24,7 +24,7 @@ function ProjectForm() {
   return (
     <div className="flex flex-col border shadow-xl border-gray-900 gap-4 rounded-md p-8">
       <div className="text-blue-600 text-center text-xl pb-2 font-bold">
-        Add Your Experience
+        Add Your Project
       </div>
       <Label className="text-black">
         Project Name{" "}

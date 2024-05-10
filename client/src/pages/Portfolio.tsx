@@ -9,6 +9,7 @@ import {
 import EducationForm from "../component/EducationForm";
 import ExperienceForm from "../component/ExperienceForm";
 import ProjectForm from "../component/ProjectForm";
+import Misc from "./Misc";
 
 function Portfolio() {
   const navigate = useNavigate();
@@ -75,11 +76,14 @@ function Portfolio() {
       </aside>
       <div>
         {location.pathname === "/portfolio" ? (
-          <div className="text-red-500 flex gap-2 font-bold">
-            Portfolio
-            <EducationForm />
-            <ExperienceForm />
-            <ProjectForm />
+          <div>
+            <div className="text-red-500 font-bold">Portfolio</div>
+            <div className=" flex gap-2 ">
+              <Misc/>
+              <EducationForm />
+              <ExperienceForm />
+              <ProjectForm />
+            </div>
           </div>
         ) : (
           <Outlet />

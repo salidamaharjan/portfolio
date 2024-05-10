@@ -8,7 +8,7 @@ const projectRoutes = express.Router();
 
 projectRoutes.get(
   "/projects",
-  authMiddleware,
+  
   async (req: Request, res: Response) => {
     try {
       const loggedInUser = (req as any).user;
@@ -25,7 +25,8 @@ projectRoutes.get(
 
 projectRoutes.post(
   "/projects",
-  authMiddleware,
+ 
+  
   async (req: Request, res: Response) => {
     try {
       const loggedInUser = (req as any).user;
@@ -36,6 +37,7 @@ projectRoutes.post(
         technologiesUsed: req.body.technologiesUsed,
         userId: authorizedId,
       });
+      res.status(201).json({ message: "Project Added" });
     } catch (err) {
       res.status(500).send(err);
     }

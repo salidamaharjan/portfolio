@@ -8,7 +8,7 @@ const userRoutes = express.Router();
 
 userRoutes.get(
   "/users",
-  authMiddleware,
+
   async (req: Request, res: Response) => {
     try {
       const resultOfUsers = await db.query.user.findMany();
@@ -21,7 +21,7 @@ userRoutes.get(
 
 userRoutes.get(
   "/users/:id",
-  authMiddleware,
+
   async (req: Request, res: Response) => {
     try {
       const resultOfUserById = await db.query.user.findFirst({
