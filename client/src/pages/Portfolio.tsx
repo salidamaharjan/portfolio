@@ -15,6 +15,9 @@ import { useState } from "react";
 
 function Portfolio() {
   const[educationDialogOpen, setEducationDialogOpen] = useState(false);
+  const[experienceDialogOpen, setExperienceDialogOpen] = useState(false);
+  const[projectDialogOpen, setProjectDialogOpen] = useState(false);
+
   const navigate = useNavigate();
   const location = useLocation();
   // console.log(location.pathname, "location");
@@ -87,6 +90,20 @@ function Portfolio() {
                 onClick={() => setEducationDialogOpen(true) }
               />
               <Dialog open={educationDialogOpen} ><EducationForm/></Dialog>
+            </div>
+            <div className=" flex gap-2 ">
+              <Button
+                children="Add Experience"
+                onClick={() => setExperienceDialogOpen(true) }
+              />
+              <Dialog open={experienceDialogOpen} ><ExperienceForm/></Dialog>
+            </div>
+            <div className=" flex gap-2 ">
+              <Button
+                children="Add Project"
+                onClick={() => setProjectDialogOpen(true) }
+              />
+              <Dialog open={projectDialogOpen} ><ProjectForm/></Dialog>
             </div>
           </div>
         ) : (
