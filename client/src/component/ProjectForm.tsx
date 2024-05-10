@@ -22,10 +22,7 @@ function ProjectForm() {
   }
 
   return (
-    <div className="flex flex-col border shadow-xl border-gray-900 gap-4 rounded-md p-8">
-      <div className="text-blue-600 text-center text-xl pb-2 font-bold">
-        Add Your Project
-      </div>
+    <div className="flex flex-col gap-4">
       <Label className="text-black">
         Project Name{" "}
         <Input
@@ -36,7 +33,7 @@ function ProjectForm() {
         />
       </Label>
       <Label className="text-black">
-        Description {" "}
+        Description{" "}
         <Input
           placeholder="Add Description"
           type="text"

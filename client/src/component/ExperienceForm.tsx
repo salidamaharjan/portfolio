@@ -28,10 +28,7 @@ function ExperienceForm() {
   }
 
   return (
-    <div className="flex flex-col border shadow-xl border-gray-900 gap-4 rounded-md p-8">
-      <div className="text-blue-600 text-center text-xl pb-2 font-bold">
-        Add Your Experience
-      </div>
+    <div className="flex flex-col gap-4 ">
       <Label className="text-black">
         Title{" "}
         <Input
@@ -77,7 +74,6 @@ function ExperienceForm() {
           onChange={(e) => setEndDate(e.target.value)}
         />
       </Label>
-
       <div className="text-center">
         <Button onClick={handleAddClick}>Add</Button>
       </div>

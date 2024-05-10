@@ -84,26 +84,26 @@ function Portfolio() {
         {location.pathname === "/portfolio" ? (
           <div>
             <div className="text-red-500 font-bold">Portfolio</div>
-            <div className=" flex gap-2 ">
+            <div className="flex gap-2 ">
               <Button
                 children="Add Education"
                 onClick={() => setEducationDialogOpen(true) }
               />
-              <Dialog open={educationDialogOpen} ><EducationForm/></Dialog>
+              <Dialog title="Add Your Education" open={educationDialogOpen} ><EducationForm/></Dialog>
             </div>
-            <div className=" flex gap-2 ">
+            <div className="flex gap-2 ">
               <Button
                 children="Add Experience"
                 onClick={() => setExperienceDialogOpen(true) }
               />
-              <Dialog open={experienceDialogOpen} ><ExperienceForm/></Dialog>
+              <Dialog title="Add Your Experience" open={experienceDialogOpen} ><ExperienceForm/></Dialog>
             </div>
             <div className=" flex gap-2 ">
               <Button
                 children="Add Project"
                 onClick={() => setProjectDialogOpen(true) }
               />
-              <Dialog open={projectDialogOpen} ><ProjectForm/></Dialog>
+              <Dialog title="Add Your Project"open={projectDialogOpen} ><ProjectForm/></Dialog>
             </div>
           </div>
         ) : (

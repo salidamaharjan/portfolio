@@ -28,11 +28,7 @@ function EducationForm() {
   }
 
   return (
-    <div className="flex flex-col border shadow-xl border-gray-900 gap-4 rounded-md p-8">
-      <div className="flex justify-between text-blue-600 text-center text-xl pb-2 font-bold">
-        <div>Add Your Education</div>
-        <div ><Button>x</Button></div>
-      </div>
+    <div className="flex flex-col gap-4 ">
       <Label className="text-black">
         Degree {" "}
         <Input
