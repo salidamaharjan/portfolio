@@ -44,10 +44,6 @@ const router = createBrowserRouter([
           },
         ],
       },
-      {
-        path: "misc",
-        element: <Misc />,
-      },
     ],
   },
 ]);

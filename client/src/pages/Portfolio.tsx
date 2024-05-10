@@ -9,9 +9,12 @@ import {
 import EducationForm from "../component/EducationForm";
 import ExperienceForm from "../component/ExperienceForm";
 import ProjectForm from "../component/ProjectForm";
-import Misc from "./Misc";
+import Button from "../component/ui/Button";
+import { Dialog } from "../component/ui/Dialog";
+import { useState } from "react";
 
 function Portfolio() {
+  const[educationDialogOpen, setEducationDialogOpen] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
   // console.log(location.pathname, "location");
@@ -79,10 +82,11 @@ function Portfolio() {
           <div>
             <div className="text-red-500 font-bold">Portfolio</div>
             <div className=" flex gap-2 ">
-              <Misc/>
-              <EducationForm />
-              <ExperienceForm />
-              <ProjectForm />
+              <Button
+                children="Add Education"
+                onClick={() => setEducationDialogOpen(true) }
+              />
+              <Dialog open={educationDialogOpen} ><EducationForm/></Dialog>
             </div>
           </div>
         ) : (
