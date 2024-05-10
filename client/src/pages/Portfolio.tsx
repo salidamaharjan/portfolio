@@ -8,6 +8,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import EducationForm from "../component/EducationForm";
 import ExperienceForm from "../component/ExperienceForm";
+import ProjectForm from "../component/ProjectForm";
 
 function Portfolio() {
   const navigate = useNavigate();
@@ -78,6 +79,7 @@ function Portfolio() {
             Portfolio
             <EducationForm />
             <ExperienceForm />
+            <ProjectForm />
           </div>
         ) : (
           <Outlet />

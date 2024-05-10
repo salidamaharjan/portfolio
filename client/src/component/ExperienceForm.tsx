@@ -12,14 +12,14 @@ function ExperienceForm() {
   const [endDate, setEndDate] = useState("");
 
   async function handleAddClick() {
-    const newEducation = await post("http://localhost:3001/api/experiences", {
+    const newExperience = await post("http://localhost:3001/api/experiences", {
       title,
       company,
       jobDescription,
       startDate,
       endDate,
     });
-    console.log(newEducation);
+    console.log(newExperience);
     setTitle("");
     setCompany("");
     setStartDate("");
@@ -35,7 +35,7 @@ function ExperienceForm() {
       <Label className="text-black">
         Title{" "}
         <Input
-          placeholder="Add Degree"
+          placeholder="Add Title"
           type="text"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
@@ -44,7 +44,7 @@ function ExperienceForm() {
       <Label className="text-black">
         Company{" "}
         <Input
-          placeholder="Add School Name"
+          placeholder="Add Company"
           type="text"
           value={company}
           onChange={(e) => setCompany(e.target.value)}
@@ -53,7 +53,7 @@ function ExperienceForm() {
       <Label className="text-black">
         Job Description{" "}
         <Input
-          placeholder="Add Description"
+          placeholder="Add Job Description"
           type="text"
           value={jobDescription}
           onChange={(e) => setJobDescription(e.target.value)}
@@ -71,7 +71,7 @@ function ExperienceForm() {
       <Label className="text-black">
         End Date{" "}
         <Input
-          placeholder="Add Year Completion"
+          placeholder="Add End Date"
           type="text"
           value={endDate}
           onChange={(e) => setEndDate(e.target.value)}
