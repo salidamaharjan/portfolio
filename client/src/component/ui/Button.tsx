@@ -8,7 +8,7 @@ type ButtonProps = {
 function Button({ children, onClick, className }: ButtonProps) {
   return (
     <button
-      className={`border p-1 bg-blue-600 rounded-md w-[150px] text-white font-bold${className}`}
+      className={`border px-4 py-1 bg-blue-600 rounded-md  text-white font-bold${className}`}
       onClick={onClick}
     >
       {children}
