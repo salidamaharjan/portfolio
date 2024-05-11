@@ -4,11 +4,14 @@ import ProjectForm from "../component/ProjectForm";
 import { Dialog } from "../component/ui/Dialog";
 import { useState } from "react";
 import Button from "../component/ui/Button";
+import { useNavigate } from "react-router-dom";
+
 
 function EditPortfolio() {
   const [educationDialogOpen, setEducationDialogOpen] = useState(false);
   const [experienceDialogOpen, setExperienceDialogOpen] = useState(false);
   const [projectDialogOpen, setProjectDialogOpen] = useState(false);
+  const navigate = useNavigate();
   return (
     <>
       <div className="flex flex-col gap-2">
@@ -54,7 +57,7 @@ function EditPortfolio() {
             <ProjectForm />
           </Dialog>
         </div>
-        <Button className="bg-blue-600 text-white">Go Back</Button>
+        <Button className="bg-blue-600 text-white" onClick={()=> navigate("/portfolio")}>Go Back</Button>
       </div>
     </>
   );
