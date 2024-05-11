@@ -83,12 +83,6 @@ function Portfolio() {
               <div className="flex flex-col gap-2">
                 <Button
                   className="flex bg-blue-500 h-[35px] text-white"
-                  onClick={() => navigate("/portfolio/addToPortfolio")}
-                >
-                  Add to Portfolio
-                </Button>
-                <Button
-                  className="flex bg-blue-500 h-[35px] text-white"
                   onClick={() => navigate("/portfolio/editPortfolio")}
                 >
                   Edit Portfolio

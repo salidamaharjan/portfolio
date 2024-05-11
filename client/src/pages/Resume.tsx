@@ -6,6 +6,11 @@ import {
   faBriefcase,
   faDiagramProject,
 } from "@fortawesome/free-solid-svg-icons";
+import Button from "../component/ui/Button";
+import { Dialog } from "../component/ui/Dialog";
+import EducationForm from "../component/EducationForm";
+import ExperienceForm from "../component/ExperienceForm";
+import ProjectForm from "../component/ProjectForm";
 
 type EducationProps = {
   id: number;
@@ -32,6 +37,9 @@ type ExperienceProps = {
   endDate: string;
 };
 function Resume() {
+  const [educationDialogOpen, setEducationDialogOpen] = useState(false);
+  const [experienceDialogOpen, setExperienceDialogOpen] = useState(false);
+  const [projectDialogOpen, setProjectDialogOpen] = useState(false);
   const [educations, setEducations] = useState<EducationProps[]>([]);
   const [projects, setProjects] = useState<ProjectProps[]>([]);
   const [experiences, setExperiences] = useState<ExperienceProps[]>([]);
@@ -79,20 +87,36 @@ function Resume() {
         <div className="text-sm lg:text-lg ">
           {educations.map((education) => {
             return (
-              <div key={education.id}>
-                {" "}
-                <div className="font-bold text-sm">{education.degree}</div>
-                <li>{education.description}</li>
-                <li>{education.schoolName}</li>
-                <li>{education.startDate}</li>
-                <li>{`${
-                  education.yearCompletion === null
-                    ? "current"
-                    : education.yearCompletion
-                }`}</li>
+              <div>
+                <div key={education.id}>
+                  {" "}
+                  <div className="font-bold text-sm">{education.degree}</div>
+                  <li>{education.description}</li>
+                  <li>{education.schoolName}</li>
+                  <li>{education.startDate}</li>
+                  <li>{`${
+                    education.yearCompletion === null
+                      ? "current"
+                      : education.yearCompletion
+                  }`}</li>
+                </div>
               </div>
             );
           })}
+        </div>
+        <div className="flex gap-2 ">
+          <Button
+            className="bg-green-600 text-white"
+            children="Add Education"
+            onClick={() => setEducationDialogOpen(true)}
+          />
+          <Dialog
+            title="Add Your Education"
+            open={educationDialogOpen}
+            onClose={() => setEducationDialogOpen(false)}
+          >
+            <EducationForm />
+          </Dialog>
         </div>
       </div>
       <div>
@@ -115,6 +139,20 @@ function Resume() {
               </div>
             );
           })}
+        </div>
+        <div className=" flex gap-2 ">
+          <Button
+            className="bg-green-600 text-white"
+            children="Add Project"
+            onClick={() => setProjectDialogOpen(true)}
+          />
+          <Dialog
+            title="Add Your Project"
+            open={projectDialogOpen}
+            onClose={() => setProjectDialogOpen(false)}
+          >
+            <ProjectForm />
+          </Dialog>
         </div>
       </div>
       <div>
@@ -140,6 +178,20 @@ function Resume() {
               </div>
             );
           })}
+        </div>
+        <div className="flex gap-2">
+          <Button
+            className="bg-green-600 text-white"
+            children="Add Experience"
+            onClick={() => setExperienceDialogOpen(true)}
+          />
+          <Dialog
+            title="Add Your Experience"
+            open={experienceDialogOpen}
+            onClose={() => setExperienceDialogOpen(false)}
+          >
+            <ExperienceForm />
+          </Dialog>
         </div>
       </div>
     </div>
