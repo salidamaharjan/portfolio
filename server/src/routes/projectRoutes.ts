@@ -1,7 +1,6 @@
 import express, { Response, Request } from "express";
 import db from "../config/db";
 import { project } from "../schema";
-import authMiddleware from "../auth";
 import { eq } from "drizzle-orm";
 
 const projectRoutes = express.Router();

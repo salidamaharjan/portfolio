@@ -73,7 +73,7 @@ function Resume() {
   return (
     <div className="flex gap-4">
       <div>
-        <div className="font-bold text-sm lg:text-lg text-blue-600">
+        <div className="font-bold text-md lg:text-lg text-blue-600">
           <FontAwesomeIcon icon={faAward} /> Education
         </div>
         <div className="text-sm lg:text-lg ">
@@ -81,7 +81,7 @@ function Resume() {
             return (
               <div key={education.id}>
                 {" "}
-                <div className="font-bold">{education.degree}</div>
+                <div className="font-bold text-sm">{education.degree}</div>
                 <li>{education.description}</li>
                 <li>{education.schoolName}</li>
                 <li>{education.startDate}</li>
@@ -96,7 +96,7 @@ function Resume() {
         </div>
       </div>
       <div>
-        <div className="font-bold text-sm lg:text-lg text-blue-600">
+        <div className="font-bold text-md lg:text-lg text-blue-600">
           {" "}
           <FontAwesomeIcon icon={faDiagramProject} /> Projects
         </div>
@@ -105,7 +105,7 @@ function Resume() {
             return (
               <div key={project.id}>
                 {" "}
-                <div className="font-bold">{project.projectName}</div>
+                <div className="font-bold text-sm">{project.projectName}</div>
                 <li>{project.description}</li>
                 <li>{`${
                   project.technologiesUsed === null
@@ -118,7 +118,7 @@ function Resume() {
         </div>
       </div>
       <div>
-        <div className="font-bold text-sm lg:text-lg text-blue-600">
+        <div className="font-bold text-md lg:text-lg text-blue-600">
           <FontAwesomeIcon icon={faBriefcase} /> Experiences
         </div>
         <div className="text-sm lg:text-lg ">
@@ -126,7 +126,7 @@ function Resume() {
             return (
               <div key={experience.id}>
                 {" "}
-                <div className="font-bold">{experience.title}</div>
+                <div className="font-bold text-sm">{experience.title}</div>
                 <li>{experience.company}</li>
                 <li>{experience.jobDescription}</li>
                 <li>{`${
