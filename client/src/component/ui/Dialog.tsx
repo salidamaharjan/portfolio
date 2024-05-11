@@ -14,7 +14,7 @@ export function Dialog({ children, open, title, onClose }: DialogProps) {
           <div className="flex justify-between text-blue-600 text-center text-xl pb-2 font-bold">
             <div>{title}</div>
             <div>
-              <Button onClick={onClose}>x</Button>
+              <Button className="bg-red-500 text-white"onClick={onClose}>x</Button>
             </div>
           </div>
           {children}

@@ -51,7 +51,7 @@ function ProjectForm() {
         />
       </Label>
       <div className="text-center">
-        <Button onClick={handleAddClick}>Add</Button>
+        <Button className="bg-green-600 text-white" onClick={handleAddClick}>Add</Button>
       </div>
     </div>
   );

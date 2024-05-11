@@ -79,7 +79,7 @@ function Portfolio() {
               <div className="text-red-500 font-bold">Portfolio</div>
               <div className="flex justify-end pr-4">
                 <Button
-                  className="bg-green-500 text-white"
+                  className="bg-green-600 text-white"
                   onClick={() => navigate("/portfolio/editPortfolio")}
                 >
                   Edit Portfolio

@@ -17,7 +17,7 @@ function EditPortfolio() {
       <div className="flex flex-col gap-2">
         <div className="flex gap-2 ">
           <Button
-            className="bg-green-500 text-white"
+            className="bg-green-600 text-white"
             children="Add Education"
             onClick={() => setEducationDialogOpen(true)}
           />
@@ -31,7 +31,7 @@ function EditPortfolio() {
         </div>
         <div className="flex gap-2">
           <Button
-            className="bg-green-500 text-white"
+            className="bg-green-600 text-white"
             children="Add Experience"
             onClick={() => setExperienceDialogOpen(true)}
           />
@@ -45,7 +45,7 @@ function EditPortfolio() {
         </div>
         <div className=" flex gap-2 ">
           <Button
-            className="bg-green-500 text-white"
+            className="bg-green-600 text-white"
             children="Add Project"
             onClick={() => setProjectDialogOpen(true)}
           />
