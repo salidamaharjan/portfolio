@@ -8,6 +8,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 import Button from "../component/ui/Button";
+import Resume from "./Resume";
 
 function Portfolio() {
   const navigate = useNavigate();
@@ -74,17 +75,17 @@ function Portfolio() {
       </aside>
       <div>
         {location.pathname === "/portfolio" ? (
-          <div className="w-[90dvw] h-[90dvh]">
+          <div className="w-[88dvw] h-[80dvh]">
             <div className="flex justify-between">
-              <div className="text-red-500 font-bold">Portfolio</div>
-              <div className="flex justify-end pr-4">
+              <div>
+                <Resume />
+              </div>
                 <Button
-                  className="bg-green-600 text-white"
+                  className="flex bg-blue-500 h-[35px] text-white"
                   onClick={() => navigate("/portfolio/editPortfolio")}
                 >
                   Edit Portfolio
                 </Button>
-              </div>
             </div>
           </div>
         ) : (

@@ -37,6 +37,7 @@ function Navbar({ className }: NavbarProps) {
               localStorage.removeItem("token");
               navigate("/");
             }}
+            className="text-red-500"
           >
             Logout <FontAwesomeIcon icon={faRightFromBracket} />
           </a>
