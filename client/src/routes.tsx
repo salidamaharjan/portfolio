@@ -7,7 +7,7 @@ import Resume from "./pages/Resume.tsx";
 import AboutMe from "./pages/AboutMe.tsx";
 import Works from "./pages/Works.tsx";
 import Contact from "./pages/Contact.tsx";
-import Misc from "./pages/Misc.tsx";
+import  EditPortfolio  from "./pages/EditPortfolio.tsx";
 
 const router = createBrowserRouter([
   {
@@ -42,6 +42,10 @@ const router = createBrowserRouter([
             path: "contact",
             element: <Contact />,
           },
+          {
+            path: "editPortfolio",
+            element: <EditPortfolio />
+          }
         ],
       },
     ],

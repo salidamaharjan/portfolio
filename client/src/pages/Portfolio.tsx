@@ -6,18 +6,10 @@ import {
   faDiagramProject,
   faEnvelopesBulk,
 } from "@fortawesome/free-solid-svg-icons";
-import EducationForm from "../component/EducationForm";
-import ExperienceForm from "../component/ExperienceForm";
-import ProjectForm from "../component/ProjectForm";
+
 import Button from "../component/ui/Button";
-import { Dialog } from "../component/ui/Dialog";
-import { useState } from "react";
 
 function Portfolio() {
-  const [educationDialogOpen, setEducationDialogOpen] = useState(false);
-  const [experienceDialogOpen, setExperienceDialogOpen] = useState(false);
-  const [projectDialogOpen, setProjectDialogOpen] = useState(false);
-
   const navigate = useNavigate();
   const location = useLocation();
   // console.log(location.pathname, "location");
@@ -86,48 +78,12 @@ function Portfolio() {
             <div className="flex justify-between">
               <div className="text-red-500 font-bold">Portfolio</div>
               <div className="flex justify-end pr-4">
-                <Button>Edit Portfolio</Button>
-              </div>
-            </div>
-            <div>
-              <div className="flex gap-2 ">
                 <Button
-                  children="Add Education"
-                  onClick={() => setEducationDialogOpen(true)}
-                />
-                <Dialog
-                  title="Add Your Education"
-                  open={educationDialogOpen}
-                  onClose={() => setEducationDialogOpen(false)}
+                  className="bg-green-500 text-white"
+                  onClick={() => navigate("/portfolio/editPortfolio")}
                 >
-                  <EducationForm />
-                </Dialog>
-              </div>
-              <div className="flex gap-2 ">
-                <Button
-                  children="Add Experience"
-                  onClick={() => setExperienceDialogOpen(true)}
-                />
-                <Dialog
-                  title="Add Your Experience"
-                  open={experienceDialogOpen}
-                  onClose={() => setExperienceDialogOpen(false)}
-                >
-                  <ExperienceForm />
-                </Dialog>
-              </div>
-              <div className=" flex gap-2 ">
-                <Button
-                  children="Add Project"
-                  onClick={() => setProjectDialogOpen(true)}
-                />
-                <Dialog
-                  title="Add Your Project"
-                  open={projectDialogOpen}
-                  onClose={() => setProjectDialogOpen(false)}
-                >
-                  <ProjectForm />
-                </Dialog>
+                  Edit Portfolio
+                </Button>
               </div>
             </div>
           </div>
