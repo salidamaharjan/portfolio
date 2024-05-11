@@ -8,9 +8,9 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import Button from "../component/ui/Button";
 import { Dialog } from "../component/ui/Dialog";
-import EducationForm from "../component/EducationForm";
-import ExperienceForm from "../component/ExperienceForm";
-import ProjectForm from "../component/ProjectForm";
+import EducationForm from "../component/EducationAddForm";
+import ExperienceForm from "../component/ExperienceAddForm";
+import ProjectForm from "../component/ProjectAddForm";
 
 type EducationProps = {
   id: number;
@@ -118,6 +118,7 @@ function Resume() {
             <EducationForm />
           </Dialog>
         </div>
+        <Button className="bg-green-600 text-white">Edit Education</Button>
       </div>
       <div>
         <div className="font-bold text-md lg:text-lg text-blue-600">
@@ -154,6 +155,7 @@ function Resume() {
             <ProjectForm />
           </Dialog>
         </div>
+        <Button className="bg-green-600 text-white">Edit Project</Button>
       </div>
       <div>
         <div className="font-bold text-md lg:text-lg text-blue-600">
@@ -193,6 +195,7 @@ function Resume() {
             <ExperienceForm />
           </Dialog>
         </div>
+        <Button className="bg-green-600 text-white">Edit Experience</Button>
       </div>
     </div>
   );
