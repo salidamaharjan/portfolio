@@ -7,7 +7,8 @@ import Resume from "./pages/Resume.tsx";
 import AboutMe from "./pages/AboutMe.tsx";
 import Works from "./pages/Works.tsx";
 import Contact from "./pages/Contact.tsx";
-import  EditPortfolio  from "./pages/EditPortfolio.tsx";
+import AddToPortfolio from "./pages/AddToPortfolio.tsx";
+import EditPortfolio from "./pages/EditPortfolio.tsx";
 
 const router = createBrowserRouter([
   {
@@ -43,8 +44,12 @@ const router = createBrowserRouter([
             element: <Contact />,
           },
           {
+            path: "addToPortfolio",
+            element: <AddToPortfolio />
+          },
+          {
             path: "editPortfolio",
-            element: <EditPortfolio />
+            element: <EditPortfolio/>
           }
         ],
       },

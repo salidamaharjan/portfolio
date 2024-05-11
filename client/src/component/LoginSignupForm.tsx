@@ -69,6 +69,7 @@ function Form({ title }: FormProps) {
           </Label>
         </div>
         <Button
+          className="bg-blue-600 text-white"
           onClick={title === "Login" ? handleLoginClick : handleSignupClick}
         >
           {title}
