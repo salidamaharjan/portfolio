@@ -81,7 +81,7 @@ function ExperienceForm({onAdd}: ExperienceAddFormProps) {
       </Label>
       <div className="text-center">
         <Button className="bg-green-600 text-white" onClick={handleAddClick}>
-          Add
+          Save
         </Button>
       </div>
     </div>

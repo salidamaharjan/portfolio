@@ -9,7 +9,7 @@ import {
 import Button from "../component/ui/Button";
 import { Dialog } from "../component/ui/Dialog";
 import EducationForm from "../component/EducationForm";
-import ExperienceForm from "../component/ExperienceAddForm";
+import ExperienceForm from "../component/ExperienceForm";
 import ProjectForm from "../component/ProjectAddForm";
 
 export type Education = {
@@ -21,14 +21,14 @@ export type Education = {
   description: string;
 };
 
-type ProjectProps = {
+export type Project = {
   id: number;
   projectName: string;
   description: string;
   technologiesUsed: string;
 };
 
-type ExperienceProps = {
+export type Experience = {
   id: number;
   title: string;
   company: string;
@@ -40,8 +40,8 @@ function Resume() {
   const [experienceDialogOpen, setExperienceDialogOpen] = useState(false);
   const [projectDialogOpen, setProjectDialogOpen] = useState(false);
   const [educations, setEducations] = useState<Education[]>([]);
-  const [projects, setProjects] = useState<ProjectProps[]>([]);
-  const [experiences, setExperiences] = useState<ExperienceProps[]>([]);
+  const [projects, setProjects] = useState<Project[]>([]);
+  const [experiences, setExperiences] = useState<Experience[]>([]);
   const [educationToEdit, setEducationToEdit] = useState<Education | undefined>(
     undefined
   );
