@@ -10,7 +10,7 @@ import Button from "../component/ui/Button";
 import { Dialog } from "../component/ui/Dialog";
 import EducationForm from "../component/EducationForm";
 import ExperienceForm from "../component/ExperienceForm";
-import ProjectForm from "../component/ProjectAddForm";
+import ProjectForm from "../component/ProjectForm";
 
 export type Education = {
   id?: number;
@@ -38,11 +38,13 @@ export type Experience = {
 };
 function Resume() {
   const [experienceDialogOpen, setExperienceDialogOpen] = useState(false);
-  const [projectDialogOpen, setProjectDialogOpen] = useState(false);
   const [educations, setEducations] = useState<Education[]>([]);
   const [projects, setProjects] = useState<Project[]>([]);
   const [experiences, setExperiences] = useState<Experience[]>([]);
   const [educationToEdit, setEducationToEdit] = useState<Education | undefined>(
+    undefined
+  );
+  const [projectToEdit, setProjectToEdit] = useState<Project | undefined>(
     undefined
   );
   useEffect(() => {
@@ -138,21 +140,17 @@ function Resume() {
         <div className=" flex gap-2 ">
           <Button
             className="bg-green-600 text-xs text-white"
-            children="Add Project"
-            onClick={() => setProjectDialogOpen(true)}
-          />
-          <Dialog
-            title="Add Your Project"
-            open={projectDialogOpen}
-            onClose={() => setProjectDialogOpen(false)}
+            onClick={() =>
+              setProjectToEdit({
+                id: undefined,
+                projectName: "",
+                description: "",
+                technologiesUsed: "",
+              })
+            }
           >
-            <ProjectForm
-              onAdd={async () => {
-                await fetchProject();
-                setProjectDialogOpen(false);
-              }}
-            />
-          </Dialog>
+            Add Project
+          </Button>
         </div>
         <div className="text-sm lg:text-lg ">
           {projects.map((project) => {
@@ -166,7 +164,12 @@ function Resume() {
                     ? "current"
                     : project.technologiesUsed
                 }`}</li>
-                <Button className="bg-blue-600 text-xs text-white">
+                <Button
+                  className="bg-blue-600 text-xs text-white"
+                  onClick={() => {
+                    setProjectToEdit(project);
+                  }}
+                >
                   Edit Project
                 </Button>
               </div>
@@ -233,6 +236,20 @@ function Resume() {
             setEducationToEdit(undefined);
           }}
           formFor={educationToEdit?.id ? "Edit" : "Add"}
+        />
+      </Dialog>
+      <Dialog
+        title={projectToEdit?.id ? "Edit Project" : "Add Your Project"}
+        open={!!projectToEdit}
+        onClose={() => setProjectToEdit(undefined)}
+      >
+        <ProjectForm
+          project={projectToEdit}
+          onAction={async () => {
+            await fetchProject();
+            setProjectToEdit(undefined);
+          }}
+          formFor={projectToEdit?.id ? "Edit" : "Add"}
         />
       </Dialog>
     </div>

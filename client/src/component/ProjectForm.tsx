@@ -2,13 +2,16 @@ import Button from "./ui/Button";
 import Input from "./ui/Input";
 import Label from "./ui/Label";
 import { useState } from "react";
-import { post } from "../lib/http";
+import { post, put } from "../lib/http";
+import { Project } from "../pages/Resume";
 
 type ProjectFormProps = {
-  onAdd: () => void;
+  onAction: () => void;
+  formFor: string;
+  project?: Project;
 };
 
-function ProjectForm({onAdd}: ProjectFormProps) {
+function ProjectForm({ onAction, project, formFor }: ProjectFormProps) {
   const [projectName, setProjectName] = useState("");
   const [description, setDescription] = useState("");
   const [technologiesUsed, setTechnologiesUsed] = useState("");
@@ -23,7 +26,22 @@ function ProjectForm({onAdd}: ProjectFormProps) {
     setProjectName("");
     setDescription("");
     setTechnologiesUsed("");
-    onAdd();
+    onAction();
+  }
+  async function handleEditClick() {
+    const newProject = await put(
+      `http://localhost:3001/api/projects/${project?.id}`,
+      {
+        projectName,
+        description,
+        technologiesUsed,
+      }
+    );
+    console.log(newProject);
+    setProjectName("");
+    setDescription("");
+    setTechnologiesUsed("");
+    onAction();
   }
 
   return (
@@ -56,7 +74,16 @@ function ProjectForm({onAdd}: ProjectFormProps) {
         />
       </Label>
       <div className="text-center">
-        <Button className="bg-green-600 text-white" onClick={handleAddClick}>
+        <Button
+          className="bg-green-600 text-white"
+          onClick={() => {
+            if (formFor === "Add") {
+              handleAddClick();
+            } else {
+              handleEditClick();
+            }
+          }}
+        >
           Add
         </Button>
       </div>
