@@ -129,6 +129,9 @@ function Resume() {
                 >
                   Edit Education
                 </Button>
+                <Button className="bg-red-600 text-xs text-white">
+                  Delete
+                </Button>
               </div>
             );
           })}
@@ -173,6 +176,9 @@ function Resume() {
                   }}
                 >
                   Edit Project
+                </Button>
+                <Button className="bg-red-600 text-xs text-white">
+                  Delete
                 </Button>
               </div>
             );
@@ -222,6 +228,9 @@ function Resume() {
                   }}
                 >
                   Edit Experience
+                </Button>
+                <Button className="bg-red-600 text-xs text-white">
+                  Delete
                 </Button>
               </div>
             );
