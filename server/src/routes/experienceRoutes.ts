@@ -51,8 +51,6 @@ experienceRoutes.put(
       const loggedInUser = (req as any).user;
       // console.log(loggedInUser.id);
       const authorizedId = loggedInUser.id;
-      console.log("req.params.id", req.params.id);
-      console.log(req.body, "req.body");
       await db
         .update(experience)
         .set({
@@ -76,4 +74,23 @@ experienceRoutes.put(
   }
 );
 
+experienceRoutes.delete("/experiences/:id", async (req: Request, res: Response) => {
+  try {
+    const loggedInUser = (req as any).user;
+    // console.log(loggedInUser.id);
+    const authorizedId = loggedInUser.id;
+    await db
+      .delete(experience)
+      .where(
+        and(
+          eq(experience.id, parseInt(req.params.id)),
+          eq(experience.userId, authorizedId)
+        )
+      );
+    res.status(201).json({ message: "Experience Deleted" });
+  } catch (err) {
+    console.log(err);
+    res.status(500).send(err);
+  }
+});
 export default experienceRoutes;
