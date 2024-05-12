@@ -50,3 +50,20 @@ export async function put(url: string, body: any) {
     console.log(err);
   }
 }
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export async function deleteEducation(url: string) {
+  try {
+    const token = localStorage.getItem("token");
+    const response = await fetch(url, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    const data = response.json();
+    return data;
+  } catch (err) {
+    console.log(err);
+  }
+}
