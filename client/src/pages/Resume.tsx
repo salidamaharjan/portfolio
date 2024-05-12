@@ -22,14 +22,14 @@ export type Education = {
 };
 
 export type Project = {
-  id: number;
+  id?: number;
   projectName: string;
   description: string;
   technologiesUsed: string;
 };
 
 export type Experience = {
-  id: number;
+  id?: number;
   title: string;
   company: string;
   jobDescription: string;
@@ -89,7 +89,6 @@ function Resume() {
         <div className="flex gap-2 ">
           <Button
             className="bg-green-600 text-xs text-white"
-            children="Add Education"
             onClick={() =>
               setEducationToEdit({
                 id: undefined,
@@ -100,20 +99,9 @@ function Resume() {
                 yearCompletion: "",
               })
             }
-          />
-          <Dialog
-            title="Add Your Education"
-            open={!!educationToEdit}
-            onClose={() => setEducationToEdit(undefined)}
           >
-            <EducationForm
-              formFor="Add"
-              onAction={() => {
-                fetchEducation();
-                setEducationToEdit(undefined);
-              }}
-            />
-          </Dialog>
+            Add Education
+          </Button>
         </div>
         <div className="text-sm lg:text-lg ">
           {educations.map((education) => {
@@ -132,7 +120,6 @@ function Resume() {
                 <Button
                   className="bg-blue-600 text-xs text-white"
                   onClick={() => {
-                    setEducationToEdit(education);
                     setEducationToEdit(education);
                   }}
                 >
@@ -235,7 +222,7 @@ function Resume() {
         </div>
       </div>
       <Dialog
-        title="Edit Education"
+        title={educationToEdit?.id ? "Edit Education" : "Add Your Education"}
         onClose={() => setEducationToEdit(undefined)}
         open={!!educationToEdit}
       >
@@ -244,9 +231,8 @@ function Resume() {
           onAction={() => {
             fetchEducation();
             setEducationToEdit(undefined);
-            setEducationToEdit(undefined);
           }}
-          formFor="Edit"
+          formFor={educationToEdit?.id ? "Edit" : "Add"}
         />
       </Dialog>
     </div>
