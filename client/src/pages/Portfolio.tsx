@@ -7,7 +7,6 @@ import {
   faEnvelopesBulk,
 } from "@fortawesome/free-solid-svg-icons";
 
-import Button from "../component/ui/Button";
 import Resume from "./Resume";
 
 function Portfolio() {

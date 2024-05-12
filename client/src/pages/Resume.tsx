@@ -84,6 +84,24 @@ function Resume() {
         <div className="font-bold text-md lg:text-lg text-blue-600">
           <FontAwesomeIcon icon={faAward} /> Education
         </div>
+        <div className="flex gap-2 ">
+          <Button
+            className="bg-green-600 text-xs text-white"
+            children="Add Education"
+            onClick={() => setEducationDialogOpen(true)}
+          />
+          <Dialog
+            title="Add Your Education"
+            open={educationDialogOpen}
+            onClose={() => setEducationDialogOpen(false)}
+          >
+            <EducationForm onAdd={()=> {
+              fetchEducation();
+              setEducationDialogOpen(false);
+            }
+            }/>
+          </Dialog>
+        </div>
         <div className="text-sm lg:text-lg ">
           {educations.map((education) => {
             return (
@@ -100,30 +118,32 @@ function Resume() {
                       : education.yearCompletion
                   }`}</li>
                 </div>
+                <Button className="bg-blue-600 text-xs text-white">
+                  Edit Education
+                </Button>
               </div>
             );
           })}
         </div>
-        <div className="flex gap-2 ">
-          <Button
-            className="bg-green-600 text-white"
-            children="Add Education"
-            onClick={() => setEducationDialogOpen(true)}
-          />
-          <Dialog
-            title="Add Your Education"
-            open={educationDialogOpen}
-            onClose={() => setEducationDialogOpen(false)}
-          >
-            <EducationForm />
-          </Dialog>
-        </div>
-        <Button className="bg-green-600 text-white">Edit Education</Button>
       </div>
       <div>
         <div className="font-bold text-md lg:text-lg text-blue-600">
           {" "}
           <FontAwesomeIcon icon={faDiagramProject} /> Projects
+        </div>
+        <div className=" flex gap-2 ">
+          <Button
+            className="bg-green-600 text-xs text-white"
+            children="Add Project"
+            onClick={() => setProjectDialogOpen(true)}
+          />
+          <Dialog
+            title="Add Your Project"
+            open={projectDialogOpen}
+            onClose={() => setProjectDialogOpen(false)}
+          >
+            <ProjectForm />
+          </Dialog>
         </div>
         <div className="text-sm lg:text-lg ">
           {projects.map((project) => {
@@ -137,29 +157,31 @@ function Resume() {
                     ? "current"
                     : project.technologiesUsed
                 }`}</li>
+                <Button className="bg-blue-600 text-xs text-white">
+                  Edit Project
+                </Button>
               </div>
             );
           })}
         </div>
-        <div className=" flex gap-2 ">
-          <Button
-            className="bg-green-600 text-white"
-            children="Add Project"
-            onClick={() => setProjectDialogOpen(true)}
-          />
-          <Dialog
-            title="Add Your Project"
-            open={projectDialogOpen}
-            onClose={() => setProjectDialogOpen(false)}
-          >
-            <ProjectForm />
-          </Dialog>
-        </div>
-        <Button className="bg-green-600 text-white">Edit Project</Button>
       </div>
       <div>
         <div className="font-bold text-md lg:text-lg text-blue-600">
           <FontAwesomeIcon icon={faBriefcase} /> Experiences
+        </div>
+        <div className="flex gap-2">
+          <Button
+            className="bg-green-600 text-xs text-white"
+            children="Add Experience"
+            onClick={() => setExperienceDialogOpen(true)}
+          />
+          <Dialog
+            title="Add Your Experience"
+            open={experienceDialogOpen}
+            onClose={() => setExperienceDialogOpen(false)}
+          >
+            <ExperienceForm />
+          </Dialog>
         </div>
         <div className="text-sm lg:text-lg ">
           {experiences.map((experience) => {
@@ -177,25 +199,13 @@ function Resume() {
                 <li>{`${
                   experience.endDate === null ? "current" : experience.endDate
                 }`}</li>
+                <Button className="bg-blue-600 text-xs text-white">
+                  Edit Experience
+                </Button>
               </div>
             );
           })}
         </div>
-        <div className="flex gap-2">
-          <Button
-            className="bg-green-600 text-white"
-            children="Add Experience"
-            onClick={() => setExperienceDialogOpen(true)}
-          />
-          <Dialog
-            title="Add Your Experience"
-            open={experienceDialogOpen}
-            onClose={() => setExperienceDialogOpen(false)}
-          >
-            <ExperienceForm />
-          </Dialog>
-        </div>
-        <Button className="bg-green-600 text-white">Edit Experience</Button>
       </div>
     </div>
   );

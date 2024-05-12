@@ -4,7 +4,11 @@ import Label from "./ui/Label";
 import { useState } from "react";
 import { post } from "../lib/http";
 
-function EducationForm() {
+type EducationFormProps = {
+  onAdd: () => void;
+};
+
+function EducationForm({ onAdd }: EducationFormProps) {
   const [degree, setDegree] = useState("");
   const [schoolName, setSchoolName] = useState("");
   const [startDate, setStartDate] = useState("");
@@ -25,12 +29,13 @@ function EducationForm() {
     setStartDate("");
     setYearCompletion("");
     setDescription("");
+    onAdd();
   }
 
   return (
     <div className="flex flex-col gap-4 ">
       <Label className="text-black">
-        Degree {" "}
+        Degree{" "}
         <Input
           placeholder="Add Degree"
           type="text"
@@ -75,7 +80,9 @@ function EducationForm() {
         />
       </Label>
       <div className="text-center">
-        <Button className="bg-green-600 text-white" onClick={handleAddClick}>Add</Button>
+        <Button className="bg-green-600 text-white" onClick={handleAddClick}>
+          Add
+        </Button>
       </div>
     </div>
   );
