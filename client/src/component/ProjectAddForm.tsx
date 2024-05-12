@@ -4,7 +4,11 @@ import Label from "./ui/Label";
 import { useState } from "react";
 import { post } from "../lib/http";
 
-function ProjectForm() {
+type ProjectFormProps = {
+  onAdd: () => void;
+};
+
+function ProjectForm({onAdd}: ProjectFormProps) {
   const [projectName, setProjectName] = useState("");
   const [description, setDescription] = useState("");
   const [technologiesUsed, setTechnologiesUsed] = useState("");
@@ -19,6 +23,7 @@ function ProjectForm() {
     setProjectName("");
     setDescription("");
     setTechnologiesUsed("");
+    onAdd;
   }
 
   return (
@@ -51,7 +56,9 @@ function ProjectForm() {
         />
       </Label>
       <div className="text-center">
-        <Button className="bg-green-600 text-white" onClick={handleAddClick}>Add</Button>
+        <Button className="bg-green-600 text-white" onClick={handleAddClick}>
+          Add
+        </Button>
       </div>
     </div>
   );

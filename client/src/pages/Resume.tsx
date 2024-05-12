@@ -95,11 +95,12 @@ function Resume() {
             open={educationDialogOpen}
             onClose={() => setEducationDialogOpen(false)}
           >
-            <EducationForm onAdd={()=> {
-              fetchEducation();
-              setEducationDialogOpen(false);
-            }
-            }/>
+            <EducationForm
+              onAdd={() => {
+                fetchEducation();
+                setEducationDialogOpen(false);
+              }}
+            />
           </Dialog>
         </div>
         <div className="text-sm lg:text-lg ">
@@ -142,7 +143,12 @@ function Resume() {
             open={projectDialogOpen}
             onClose={() => setProjectDialogOpen(false)}
           >
-            <ProjectForm />
+            <ProjectForm
+              onAdd={() => {
+                setProjectDialogOpen(false);
+                fetchProject();
+              }}
+            />
           </Dialog>
         </div>
         <div className="text-sm lg:text-lg ">
@@ -180,7 +186,12 @@ function Resume() {
             open={experienceDialogOpen}
             onClose={() => setExperienceDialogOpen(false)}
           >
-            <ExperienceForm />
+            <ExperienceForm
+              onAdd={() => {
+                setExperienceDialogOpen(false);
+                fetchExperience();
+              }}
+            />
           </Dialog>
         </div>
         <div className="text-sm lg:text-lg ">

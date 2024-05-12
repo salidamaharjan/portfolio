@@ -4,7 +4,11 @@ import Label from "./ui/Label";
 import { useState } from "react";
 import { post } from "../lib/http";
 
-function ExperienceForm() {
+type ExperienceAddFormProps = {
+  onAdd: () => void;
+};
+
+function ExperienceForm({onAdd}: ExperienceAddFormProps) {
   const [title, setTitle] = useState("");
   const [company, setCompany] = useState("");
   const [jobDescription, setJobDescription] = useState("");
@@ -25,6 +29,7 @@ function ExperienceForm() {
     setStartDate("");
     setEndDate("");
     setJobDescription("");
+    onAdd;
   }
 
   return (
@@ -75,7 +80,9 @@ function ExperienceForm() {
         />
       </Label>
       <div className="text-center">
-        <Button className="bg-green-600 text-white" onClick={handleAddClick}>Add</Button>
+        <Button className="bg-green-600 text-white" onClick={handleAddClick}>
+          Add
+        </Button>
       </div>
     </div>
   );
