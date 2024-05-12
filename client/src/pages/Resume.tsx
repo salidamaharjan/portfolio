@@ -37,7 +37,6 @@ export type Experience = {
   endDate: string;
 };
 function Resume() {
-  const [experienceDialogOpen, setExperienceDialogOpen] = useState(false);
   const [educations, setEducations] = useState<Education[]>([]);
   const [projects, setProjects] = useState<Project[]>([]);
   const [experiences, setExperiences] = useState<Experience[]>([]);
@@ -47,6 +46,9 @@ function Resume() {
   const [projectToEdit, setProjectToEdit] = useState<Project | undefined>(
     undefined
   );
+  const [experienceToEdit, setExperienceToEdit] = useState<
+    Experience | undefined
+  >(undefined);
   useEffect(() => {
     fetchEducation();
     fetchProject();
@@ -185,20 +187,17 @@ function Resume() {
           <Button
             className="bg-green-600 text-xs text-white"
             children="Add Experience"
-            onClick={() => setExperienceDialogOpen(true)}
+            onClick={() =>
+              setExperienceToEdit({
+                id: undefined,
+                title: "",
+                company: "",
+                jobDescription: "",
+                startDate: "",
+                endDate: "",
+              })
+            }
           />
-          <Dialog
-            title="Add Your Experience"
-            open={experienceDialogOpen}
-            onClose={() => setExperienceDialogOpen(false)}
-          >
-            <ExperienceForm
-              onAdd={() => {
-                fetchExperience();
-                setExperienceDialogOpen(false);
-              }}
-            />
-          </Dialog>
         </div>
         <div className="text-sm lg:text-lg ">
           {experiences.map((experience) => {
@@ -216,7 +215,12 @@ function Resume() {
                 <li>{`${
                   experience.endDate === null ? "current" : experience.endDate
                 }`}</li>
-                <Button className="bg-blue-600 text-xs text-white">
+                <Button
+                  className="bg-blue-600 text-xs text-white"
+                  onClick={() => {
+                    setExperienceToEdit(experience);
+                  }}
+                >
                   Edit Experience
                 </Button>
               </div>
@@ -250,6 +254,20 @@ function Resume() {
             setProjectToEdit(undefined);
           }}
           formFor={projectToEdit?.id ? "Edit" : "Add"}
+        />
+      </Dialog>
+      <Dialog
+        title={experienceToEdit?.id ? "Edit Experience" : "Add Your Experience"}
+        open={!!experienceToEdit}
+        onClose={() => setExperienceToEdit(undefined)}
+      >
+        <ExperienceForm
+          experience={experienceToEdit}
+          onAction={async () => {
+            await fetchExperience();
+            setExperienceToEdit(undefined);
+          }}
+          formFor={experienceToEdit?.id ? "Edit" : "Add"}
         />
       </Dialog>
     </div>

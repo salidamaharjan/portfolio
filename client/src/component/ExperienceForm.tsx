@@ -2,13 +2,20 @@ import Button from "./ui/Button";
 import Input from "./ui/Input";
 import Label from "./ui/Label";
 import { useState } from "react";
-import { post } from "../lib/http";
+import { post, put } from "../lib/http";
+import { Experience } from "../pages/Resume";
 
 type ExperienceAddFormProps = {
-  onAdd: () => void;
+  onAction: () => void;
+  formFor: string;
+  experience?: Experience;
 };
 
-function ExperienceForm({onAdd}: ExperienceAddFormProps) {
+function ExperienceForm({
+  onAction,
+  formFor,
+  experience,
+}: ExperienceAddFormProps) {
   const [title, setTitle] = useState("");
   const [company, setCompany] = useState("");
   const [jobDescription, setJobDescription] = useState("");
@@ -29,7 +36,27 @@ function ExperienceForm({onAdd}: ExperienceAddFormProps) {
     setStartDate("");
     setEndDate("");
     setJobDescription("");
-    onAdd();
+    onAction();
+  }
+
+  async function handleEditClick() {
+    const newExperience = await put(
+      `http://localhost:3001/api/experiences/${experience?.id}`,
+      {
+        title,
+        company,
+        jobDescription,
+        startDate,
+        endDate,
+      }
+    );
+    console.log(newExperience);
+    setTitle("");
+    setCompany("");
+    setStartDate("");
+    setEndDate("");
+    setJobDescription("");
+    onAction();
   }
 
   return (
@@ -80,7 +107,16 @@ function ExperienceForm({onAdd}: ExperienceAddFormProps) {
         />
       </Label>
       <div className="text-center">
-        <Button className="bg-green-600 text-white" onClick={handleAddClick}>
+        <Button
+          className="bg-green-600 text-white"
+          onClick={() => {
+            if (formFor === "Add") {
+              handleAddClick();
+            } else {
+              handleEditClick();
+            }
+          }}
+        >
           Save
         </Button>
       </div>
