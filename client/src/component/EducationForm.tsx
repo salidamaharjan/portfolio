@@ -2,18 +2,23 @@ import Button from "./ui/Button";
 import Input from "./ui/Input";
 import Label from "./ui/Label";
 import { useState } from "react";
-import { post } from "../lib/http";
+import { post, put } from "../lib/http";
+import { Education } from "../pages/Resume";
 
 type EducationFormProps = {
-  onAdd: () => void;
+  onAction: () => void;
+  formFor: string;
+  education?: Education;
 };
 
-function EducationForm({ onAdd }: EducationFormProps) {
-  const [degree, setDegree] = useState("");
-  const [schoolName, setSchoolName] = useState("");
-  const [startDate, setStartDate] = useState("");
-  const [yearCompletion, setYearCompletion] = useState("");
-  const [description, setDescription] = useState("");
+function EducationForm({ onAction, formFor, education }: EducationFormProps) {
+  const [degree, setDegree] = useState(education?.degree ?? "");
+  const [schoolName, setSchoolName] = useState(education?.schoolName ?? "");
+  const [startDate, setStartDate] = useState(education?.startDate ?? "");
+  const [yearCompletion, setYearCompletion] = useState(
+    education?.yearCompletion ?? ""
+  );
+  const [description, setDescription] = useState(education?.description ?? "");
 
   async function handleAddClick() {
     const newEducation = await post("http://localhost:3001/api/educations", {
@@ -29,7 +34,21 @@ function EducationForm({ onAdd }: EducationFormProps) {
     setStartDate("");
     setYearCompletion("");
     setDescription("");
-    onAdd();
+    onAction();
+  }
+  async function handleEditClick() {
+    console.log(education?.id);
+    const editEducation = await put(
+      `http://localhost:3001/api/educations/${education?.id}`,
+      {
+        degree,
+        schoolName,
+        startDate,
+        yearCompletion,
+        description,
+      }
+    );
+    console.log(editEducation);
   }
 
   return (
@@ -80,8 +99,17 @@ function EducationForm({ onAdd }: EducationFormProps) {
         />
       </Label>
       <div className="text-center">
-        <Button className="bg-green-600 text-white" onClick={handleAddClick}>
-          Add
+        <Button
+          className="bg-green-600 text-white"
+          onClick={() => {
+            if (formFor === "Add") {
+              handleAddClick();
+            } else {
+              handleEditClick();
+            }
+          }}
+        >
+          Save
         </Button>
       </div>
     </div>

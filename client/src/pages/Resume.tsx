@@ -8,12 +8,12 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import Button from "../component/ui/Button";
 import { Dialog } from "../component/ui/Dialog";
-import EducationForm from "../component/EducationAddForm";
+import EducationForm from "../component/EducationForm";
 import ExperienceForm from "../component/ExperienceAddForm";
 import ProjectForm from "../component/ProjectAddForm";
 
-type EducationProps = {
-  id: number;
+export type Education = {
+  id?: number;
   degree: string;
   schoolName: string;
   startDate: string;
@@ -37,12 +37,14 @@ type ExperienceProps = {
   endDate: string;
 };
 function Resume() {
-  const [educationDialogOpen, setEducationDialogOpen] = useState(false);
   const [experienceDialogOpen, setExperienceDialogOpen] = useState(false);
   const [projectDialogOpen, setProjectDialogOpen] = useState(false);
-  const [educations, setEducations] = useState<EducationProps[]>([]);
+  const [educations, setEducations] = useState<Education[]>([]);
   const [projects, setProjects] = useState<ProjectProps[]>([]);
   const [experiences, setExperiences] = useState<ExperienceProps[]>([]);
+  const [educationToEdit, setEducationToEdit] = useState<Education | undefined>(
+    undefined
+  );
   useEffect(() => {
     fetchEducation();
     fetchProject();
@@ -88,17 +90,27 @@ function Resume() {
           <Button
             className="bg-green-600 text-xs text-white"
             children="Add Education"
-            onClick={() => setEducationDialogOpen(true)}
+            onClick={() =>
+              setEducationToEdit({
+                id: undefined,
+                degree: "",
+                description: "",
+                schoolName: "",
+                startDate: "",
+                yearCompletion: "",
+              })
+            }
           />
           <Dialog
             title="Add Your Education"
-            open={educationDialogOpen}
-            onClose={() => setEducationDialogOpen(false)}
+            open={!!educationToEdit}
+            onClose={() => setEducationToEdit(undefined)}
           >
             <EducationForm
-              onAdd={() => {
+              formFor="Add"
+              onAction={() => {
                 fetchEducation();
-                setEducationDialogOpen(false);
+                setEducationToEdit(undefined);
               }}
             />
           </Dialog>
@@ -117,7 +129,13 @@ function Resume() {
                     ? "current"
                     : education.yearCompletion
                 }`}</li>
-                <Button className="bg-blue-600 text-xs text-white">
+                <Button
+                  className="bg-blue-600 text-xs text-white"
+                  onClick={() => {
+                    setEducationToEdit(education);
+                    setEducationToEdit(education);
+                  }}
+                >
                   Edit Education
                 </Button>
               </div>
@@ -143,7 +161,7 @@ function Resume() {
           >
             <ProjectForm
               onAdd={async () => {
-                 await fetchProject();
+                await fetchProject();
                 setProjectDialogOpen(false);
               }}
             />
@@ -216,6 +234,21 @@ function Resume() {
           })}
         </div>
       </div>
+      <Dialog
+        title="Edit Education"
+        onClose={() => setEducationToEdit(undefined)}
+        open={!!educationToEdit}
+      >
+        <EducationForm
+          education={educationToEdit}
+          onAction={() => {
+            fetchEducation();
+            setEducationToEdit(undefined);
+            setEducationToEdit(undefined);
+          }}
+          formFor="Edit"
+        />
+      </Dialog>
     </div>
   );
 }
