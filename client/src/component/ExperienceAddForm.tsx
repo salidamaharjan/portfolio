@@ -29,7 +29,7 @@ function ExperienceForm({onAdd}: ExperienceAddFormProps) {
     setStartDate("");
     setEndDate("");
     setJobDescription("");
-    onAdd;
+    onAdd();
   }
 
   return (

@@ -23,7 +23,7 @@ function ProjectForm({onAdd}: ProjectFormProps) {
     setProjectName("");
     setDescription("");
     setTechnologiesUsed("");
-    onAdd;
+    onAdd();
   }
 
   return (

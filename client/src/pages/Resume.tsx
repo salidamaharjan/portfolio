@@ -106,19 +106,17 @@ function Resume() {
         <div className="text-sm lg:text-lg ">
           {educations.map((education) => {
             return (
-              <div>
-                <div key={education.id}>
-                  {" "}
-                  <div className="font-bold text-sm">{education.degree}</div>
-                  <li>{education.description}</li>
-                  <li>{education.schoolName}</li>
-                  <li>{education.startDate}</li>
-                  <li>{`${
-                    education.yearCompletion === null
-                      ? "current"
-                      : education.yearCompletion
-                  }`}</li>
-                </div>
+              <div key={education.id}>
+                {" "}
+                <div className="font-bold text-sm">{education.degree}</div>
+                <li>{education.description}</li>
+                <li>{education.schoolName}</li>
+                <li>{education.startDate}</li>
+                <li>{`${
+                  education.yearCompletion === null
+                    ? "current"
+                    : education.yearCompletion
+                }`}</li>
                 <Button className="bg-blue-600 text-xs text-white">
                   Edit Education
                 </Button>
@@ -144,9 +142,9 @@ function Resume() {
             onClose={() => setProjectDialogOpen(false)}
           >
             <ProjectForm
-              onAdd={() => {
+              onAdd={async () => {
+                 await fetchProject();
                 setProjectDialogOpen(false);
-                fetchProject();
               }}
             />
           </Dialog>
@@ -188,8 +186,8 @@ function Resume() {
           >
             <ExperienceForm
               onAdd={() => {
-                setExperienceDialogOpen(false);
                 fetchExperience();
+                setExperienceDialogOpen(false);
               }}
             />
           </Dialog>
