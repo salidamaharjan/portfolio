@@ -1,4 +1,4 @@
-import { get, deleteEducation} from "../lib/http";
+import { get, deleteEducation } from "../lib/http";
 import { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -84,13 +84,21 @@ function Resume() {
     }
   }
 
-  async function handleDeleteClick(id: number) {
- try{
-  await deleteEducation(`http://localhost:3001/api/educations/${id}`);
-  fetchEducation();
- }catch(err){
-  console.log("err", err);
- }
+  async function handleDeleteEducation(id: number) {
+    try {
+      await deleteEducation(`http://localhost:3001/api/educations/${id}`);
+      fetchEducation();
+    } catch (err) {
+      console.log("err", err);
+    }
+  }
+  async function handleDeleteExperience(id: number) {
+    try {
+      await deleteEducation(`http://localhost:3001/api/experiences/${id}`);
+      fetchExperience();
+    } catch (err) {
+      console.log("err", err);
+    }
   }
 
   return (
@@ -138,8 +146,9 @@ function Resume() {
                 >
                   Edit Education
                 </Button>
-                <Button className="bg-red-600 text-xs text-white"
-                onClick={()=>handleDeleteClick(education.id!)}
+                <Button
+                  className="bg-red-600 text-xs text-white"
+                  onClick={() => handleDeleteEducation(education.id!)}
                 >
                   Delete
                 </Button>
@@ -240,7 +249,10 @@ function Resume() {
                 >
                   Edit Experience
                 </Button>
-                <Button className="bg-red-600 text-xs text-white">
+                <Button
+                  className="bg-red-600 text-xs text-white"
+                  onClick={() => handleDeleteExperience(experience.id!)}
+                >
                   Delete
                 </Button>
               </div>
