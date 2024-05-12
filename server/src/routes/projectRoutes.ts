@@ -69,4 +69,24 @@ projectRoutes.put("/projects/:id", async (req: Request, res: Response) => {
   }
 });
 
+projectRoutes.delete("/projects/:id", async (req: Request, res: Response) => {
+  try {
+    const loggedInUser = (req as any).user;
+    // console.log(loggedInUser.id);
+    const authorizedId = loggedInUser.id;
+    await db
+      .delete(project)
+      .where(
+        and(
+          eq(project.id, parseInt(req.params.id)),
+          eq(project.userId, authorizedId)
+        )
+      );
+    res.status(201).json({ message: "Project Deleted" });
+  } catch (err) {
+    console.log(err);
+    res.status(500).send(err);
+  }
+});
+
 export default projectRoutes;
