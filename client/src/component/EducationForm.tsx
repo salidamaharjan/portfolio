@@ -38,7 +38,7 @@ function EducationForm({ onAction, formFor, education }: EducationFormProps) {
   }
   async function handleEditClick() {
     console.log(education?.id);
-    const editEducation = await put(
+    await put(
       `http://localhost:3001/api/educations/${education?.id}`,
       {
         degree,
@@ -48,7 +48,12 @@ function EducationForm({ onAction, formFor, education }: EducationFormProps) {
         description,
       }
     );
-    console.log(editEducation);
+    setDegree("");
+    setSchoolName("");
+    setStartDate("");
+    setYearCompletion("");
+    setDescription("");
+    onAction();
   }
 
   return (

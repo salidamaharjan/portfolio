@@ -34,7 +34,7 @@ educationRoutes.post("/educations", async (req: Request, res: Response) => {
     });
     res.status(201).json({ message: "Education Detail Added" });
   } catch (err) {
-    console.log(err)
+    console.log(err);
 
     res.status(500).send(err);
   }
@@ -45,7 +45,8 @@ educationRoutes.put("/educations/:id", async (req: Request, res: Response) => {
     const loggedInUser = (req as any).user;
     // console.log(loggedInUser.id);
     const authorizedId = loggedInUser.id;
-      console.log(req.params.id);
+    console.log("req.params.id", req.params.id);
+    console.log(req.body, "req.body");
     await db
       .update(education)
       .set({
@@ -59,7 +60,7 @@ educationRoutes.put("/educations/:id", async (req: Request, res: Response) => {
       .where(eq(education.id, parseInt(req.params.id)));
     res.status(201).json({ message: "Education Updated" });
   } catch (err) {
-    console.log(err)
+    console.log(err);
     res.status(500).send(err);
   }
 });

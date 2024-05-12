@@ -39,7 +39,7 @@ export async function put(url: string, body: any) {
     const response = await fetch(url, {
       method: "PUT",
       headers: {
-        "Content-Type": "application.json",
+        "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
       },
       body: JSON.stringify(body),
