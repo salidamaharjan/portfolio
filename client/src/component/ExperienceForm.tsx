@@ -16,11 +16,11 @@ function ExperienceForm({
   formFor,
   experience,
 }: ExperienceAddFormProps) {
-  const [title, setTitle] = useState("");
-  const [company, setCompany] = useState("");
-  const [jobDescription, setJobDescription] = useState("");
-  const [startDate, setStartDate] = useState("");
-  const [endDate, setEndDate] = useState("");
+  const [title, setTitle] = useState(experience?.title ?? "");
+  const [company, setCompany] = useState(experience?.company ?? "");
+  const [jobDescription, setJobDescription] = useState(experience?.jobDescription ?? "");
+  const [startDate, setStartDate] = useState(experience?.startDate ?? "");
+  const [endDate, setEndDate] = useState(experience?.endDate ?? "");
 
   async function handleAddClick() {
     const newExperience = await post("http://localhost:3001/api/experiences", {
