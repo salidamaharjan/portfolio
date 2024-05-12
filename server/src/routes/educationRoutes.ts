@@ -1,7 +1,7 @@
 import express, { Response, Request } from "express";
 import db from "../config/db";
 import { education } from "../schema";
-import { eq } from "drizzle-orm";
+import { and, eq } from "drizzle-orm";
 
 const educationRoutes = express.Router();
 
@@ -55,9 +55,13 @@ educationRoutes.put("/educations/:id", async (req: Request, res: Response) => {
         startDate: req.body.startDate,
         yearCompletion: req.body.yearCompletion,
         description: req.body.description,
-        userId: authorizedId,
       })
-      .where(eq(education.id, parseInt(req.params.id)));
+      .where(
+        and(
+          eq(education.id, parseInt(req.params.id)),
+          eq(education.userId, authorizedId)
+        )
+      );
     res.status(201).json({ message: "Education Updated" });
   } catch (err) {
     console.log(err);
