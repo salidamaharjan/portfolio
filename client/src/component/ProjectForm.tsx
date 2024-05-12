@@ -12,9 +12,9 @@ type ProjectFormProps = {
 };
 
 function ProjectForm({ onAction, project, formFor }: ProjectFormProps) {
-  const [projectName, setProjectName] = useState("");
-  const [description, setDescription] = useState("");
-  const [technologiesUsed, setTechnologiesUsed] = useState("");
+  const [projectName, setProjectName] = useState(project?.projectName ?? "");
+  const [description, setDescription] = useState(project?.description ?? "");
+  const [technologiesUsed, setTechnologiesUsed] = useState(project?.technologiesUsed ?? "");
 
   async function handleAddClick() {
     const newProject = await post("http://localhost:3001/api/projects", {
@@ -84,7 +84,7 @@ function ProjectForm({ onAction, project, formFor }: ProjectFormProps) {
             }
           }}
         >
-          Add
+          Save
         </Button>
       </div>
     </div>

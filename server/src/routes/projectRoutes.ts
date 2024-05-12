@@ -1,13 +1,13 @@
 import express, { Response, Request } from "express";
 import db from "../config/db";
 import { project } from "../schema";
-import { eq } from "drizzle-orm";
+import { eq, and } from "drizzle-orm";
 
 const projectRoutes = express.Router();
 
 projectRoutes.get(
   "/projects",
-  
+
   async (req: Request, res: Response) => {
     try {
       const loggedInUser = (req as any).user;
@@ -24,8 +24,7 @@ projectRoutes.get(
 
 projectRoutes.post(
   "/projects",
- 
-  
+
   async (req: Request, res: Response) => {
     try {
       const loggedInUser = (req as any).user;
@@ -42,5 +41,32 @@ projectRoutes.post(
     }
   }
 );
+
+projectRoutes.put("/projects/:id", async (req: Request, res: Response) => {
+  try {
+    const loggedInUser = (req as any).user;
+    // console.log(loggedInUser.id);
+    const authorizedId = loggedInUser.id;
+    console.log("req.params.id", req.params.id);
+    console.log(req.body, "req.body");
+    await db
+      .update(project)
+      .set({
+        projectName: req.body.projectName,
+        description: req.body.description,
+        technologiesUsed: req.body.technologiesUsed,
+      })
+      .where(
+        and(
+          eq(project.id, parseInt(req.params.id)),
+          eq(project.userId, authorizedId)
+        )
+      );
+    res.status(201).json({ message: "Project Updated" });
+  } catch (err) {
+    console.log(err);
+    res.status(500).send(err);
+  }
+});
 
 export default projectRoutes;
