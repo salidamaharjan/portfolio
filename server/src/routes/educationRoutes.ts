@@ -40,29 +40,20 @@ educationRoutes.post("/educations", async (req: Request, res: Response) => {
   }
 });
 
-educationRoutes.put("/educations/:id", async (req: Request, res: Response) => {
+educationRoutes.delete("/educations/:id", async (req: Request, res: Response) => {
   try {
     const loggedInUser = (req as any).user;
     // console.log(loggedInUser.id);
     const authorizedId = loggedInUser.id;
-    console.log("req.params.id", req.params.id);
-    console.log(req.body, "req.body");
     await db
-      .update(education)
-      .set({
-        degree: req.body.degree,
-        schoolName: req.body.schoolName,
-        startDate: req.body.startDate,
-        yearCompletion: req.body.yearCompletion,
-        description: req.body.description,
-      })
+      .delete(education)
       .where(
         and(
           eq(education.id, parseInt(req.params.id)),
           eq(education.userId, authorizedId)
         )
       );
-    res.status(201).json({ message: "Education Updated" });
+    res.status(201).json({ message: "Education Deleted" });
   } catch (err) {
     console.log(err);
     res.status(500).send(err);
