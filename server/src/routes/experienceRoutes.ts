@@ -1,7 +1,7 @@
 import express, { Response, Request } from "express";
 import db from "../config/db";
 import { experience } from "../schema";
-import { eq } from "drizzle-orm";
+import { eq, and } from "drizzle-orm";
 
 const experienceRoutes = express.Router();
 
@@ -39,6 +39,38 @@ experienceRoutes.post(
       });
       res.status(201).json({ message: "Experience Added" });
     } catch (err) {
+      res.status(500).send(err);
+    }
+  }
+);
+
+experienceRoutes.put(
+  "/experiences/:id",
+  async (req: Request, res: Response) => {
+    try {
+      const loggedInUser = (req as any).user;
+      // console.log(loggedInUser.id);
+      const authorizedId = loggedInUser.id;
+      console.log("req.params.id", req.params.id);
+      console.log(req.body, "req.body");
+      await db
+        .update(experience)
+        .set({
+          title: req.body.title,
+          company: req.body.company,
+          jobDescription: req.body.jobDescription,
+          startDate: req.body.startDate,
+          endDate: req.body.endDate,
+        })
+        .where(
+          and(
+            eq(experience.id, parseInt(req.params.id)),
+            eq(experience.userId, authorizedId)
+          )
+        );
+      res.status(201).json({ message: "Experience Updated" });
+    } catch (err) {
+      console.log(err);
       res.status(500).send(err);
     }
   }
