@@ -101,6 +101,15 @@ function Resume() {
     }
   }
 
+  async function handleDeleteProject(id: number) {
+    try {
+      await deleteEducation(`http://localhost:3001/api/projects/${id}`);
+      fetchProject();
+    } catch (err) {
+      console.log("err", err);
+    }
+  }
+
   return (
     <div className="flex gap-4">
       <div>
@@ -197,7 +206,10 @@ function Resume() {
                 >
                   Edit Project
                 </Button>
-                <Button className="bg-red-600 text-xs text-white">
+                <Button
+                  className="bg-red-600 text-xs text-white"
+                  onClick={() => handleDeleteProject(project.id!)}
+                >
                   Delete
                 </Button>
               </div>
