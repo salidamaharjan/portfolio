@@ -1,4 +1,4 @@
-import { get } from "../lib/http";
+import { get, deleteEducation} from "../lib/http";
 import { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -84,6 +84,15 @@ function Resume() {
     }
   }
 
+  async function handleDeleteClick(id: number) {
+ try{
+  await deleteEducation(`http://localhost:3001/api/educations/${id}`);
+  fetchEducation();
+ }catch(err){
+  console.log("err", err);
+ }
+  }
+
   return (
     <div className="flex gap-4">
       <div>
@@ -129,7 +138,9 @@ function Resume() {
                 >
                   Edit Education
                 </Button>
-                <Button className="bg-red-600 text-xs text-white">
+                <Button className="bg-red-600 text-xs text-white"
+                onClick={()=>handleDeleteClick(education.id!)}
+                >
                   Delete
                 </Button>
               </div>

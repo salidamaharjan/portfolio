@@ -2,7 +2,7 @@ import Button from "./ui/Button";
 import Input from "./ui/Input";
 import Label from "./ui/Label";
 import { useState } from "react";
-import { post, put } from "../lib/http";
+import { post, put} from "../lib/http";
 import { Education } from "../pages/Resume";
 
 type EducationFormProps = {
