@@ -7,7 +7,7 @@ import {
   faEnvelopesBulk,
 } from "@fortawesome/free-solid-svg-icons";
 
-import Resume from "./Resume";
+// import Resume from "./Resume";
 import AboutMe from "./AboutMe";
 
 function Portfolio() {
@@ -22,7 +22,8 @@ function Portfolio() {
       <aside className="flex flex-col pt-1 gap-5">
         <div
           className={`${
-            location.pathname === "/portfolio/aboutme" || location.pathname === "/portfolio"
+            location.pathname === "/portfolio/aboutme" ||
+            location.pathname === "/portfolio"
               ? "flex flex-col text-green-600"
               : "flex flex-col"
           }`}
@@ -30,8 +31,12 @@ function Portfolio() {
             navigate("/portfolio/aboutme");
           }}
         >
-          <FontAwesomeIcon icon={faImagePortrait} />
-          <span className="text-xs text-center">About</span>
+          <div className="flex flex-col hover:text-green-600">
+            <FontAwesomeIcon icon={faImagePortrait} />
+            <span className="text-xs hover:text-green-600 text-center">
+              About
+            </span>
+          </div>
         </div>
         <div
           className={`${
@@ -43,8 +48,12 @@ function Portfolio() {
             navigate("/portfolio/resume");
           }}
         >
-          <FontAwesomeIcon icon={faRectangleList} />
-          <span className="text-xs text-center">Resume</span>
+          <div className="flex flex-col hover:text-green-600">
+            <FontAwesomeIcon icon={faRectangleList} />
+            <span className="text-xs text-center hover:text-green-600">
+              Resume
+            </span>
+          </div>
         </div>
         <div
           className={`${
@@ -56,8 +65,12 @@ function Portfolio() {
             navigate("/portfolio/works");
           }}
         >
-          <FontAwesomeIcon icon={faDiagramProject} />
-          <span className="text-xs text-center">Works</span>
+          <div className="flex flex-col hover:text-green-600">
+            <FontAwesomeIcon icon={faDiagramProject} />
+            <span className="text-xs  hover:text-green-600 text-center">
+              Works
+            </span>
+          </div>
         </div>
         <div
           className={`${
@@ -69,8 +82,10 @@ function Portfolio() {
             navigate("/portfolio/contact");
           }}
         >
-          <FontAwesomeIcon icon={faEnvelopesBulk} />
-          <span className="text-xs text-center">Contact</span>
+          <div className="flex flex-col hover:text-green-600">
+            <FontAwesomeIcon icon={faEnvelopesBulk} />
+            <span className="text-xs   text-center">Contact</span>
+          </div>
         </div>
       </aside>
       <div>

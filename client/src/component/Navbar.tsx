@@ -22,49 +22,55 @@ function Navbar({ className }: NavbarProps) {
     >
       {token ? (
         <div className="flex gap-4">
-          <a
-            className={`${
-              location.pathname === "/portfolio" ||
-              location.pathname === "/portfolio/aboutme"
-                ? "text-green-600"
-                : ""
-            }`}
-            onClick={() => {
-              navigate("/portfolio");
-            }}
-          >
-            <FontAwesomeIcon icon={faUserTie} /> Portfolio
-          </a>
+          <div className="hover:text-green-600">
+            <a
+              className={`${
+                location.pathname === "/portfolio" ||
+                location.pathname === "/portfolio/aboutme"
+                  ? "text-green-600"
+                  : ""
+              }`}
+              onClick={() => {
+                navigate("/portfolio");
+              }}
+            >
+              <FontAwesomeIcon icon={faUserTie} /> Portfolio
+            </a>
+          </div>
           <a
             onClick={() => {
               localStorage.removeItem("token");
               navigate("/");
             }}
-            className="text-red-500"
+            className="text-red-500 hover:text-yellow-400"
           >
             Logout <FontAwesomeIcon icon={faRightFromBracket} />
           </a>
         </div>
       ) : (
         <div className="flex gap-4">
-          <a
-            className={`${location.pathname === "/" ? "text-green-600" : ""}`}
-            onClick={() => {
-              navigate("/");
-            }}
-          >
-            <FontAwesomeIcon icon={faRightToBracket} /> Login
-          </a>
-          <a
-            className={`${
-              location.pathname === "/signup" ? "text-green-600" : ""
-            }`}
-            onClick={() => {
-              navigate("/signup");
-            }}
-          >
-            <FontAwesomeIcon icon={faUserPlus} /> Signup
-          </a>
+          <div className="hover:text-green-600">
+            <a
+              className={`${location.pathname === "/" ? "text-green-600" : ""}`}
+              onClick={() => {
+                navigate("/");
+              }}
+            >
+              <FontAwesomeIcon icon={faRightToBracket} /> Login
+            </a>
+          </div>
+          <div className="hover:text-green-600">
+            <a
+              className={`${
+                location.pathname === "/signup" ? "text-green-600" : ""
+              }`}
+              onClick={() => {
+                navigate("/signup");
+              }}
+            >
+              <FontAwesomeIcon icon={faUserPlus} /> Signup
+            </a>
+          </div>
         </div>
       )}
     </nav>
