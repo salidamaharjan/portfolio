@@ -16,7 +16,7 @@ function Portfolio() {
   // console.log(location.pathname, "location");
   return (
     <div
-      className="flex gap-6
+      className="flex p-4 gap-6
     "
     >
       <aside className="flex flex-col pt-1 gap-5">
@@ -88,15 +88,13 @@ function Portfolio() {
           </div>
         </div>
       </aside>
-      <div>
+      <div className="flex flex-1 px-4 justify-between">
         {location.pathname === "/portfolio" ? (
-          <div className="w-[88dvw] h-[80dvh]">
-            <div className="flex justify-between">
+          <div className="w-[88dvw] h-[80dvh] flex justify-between">
               <div>
                 <AboutMe />
                 {/* <Resume /> */}
               </div>
-            </div>
           </div>
         ) : (
           <Outlet />

@@ -112,7 +112,7 @@ function AboutMe() {
           </div>
           <div className="text-center">
             <Button className="border-l-0 text-xs hover:text-sky-400 text-gray-700 rounded-none border-b-0 border-r-0">
-              Download CV
+              Download Resume
             </Button>
             <Button className="border-b-0 text-xs hover:text-sky-400 text-gray-700 rounded-none border-r-0">
               Contact Me
