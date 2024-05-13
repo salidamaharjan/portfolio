@@ -113,12 +113,13 @@ function Resume() {
   return (
     <div className="flex flex-col gap-4">
       <div>
-        <div className="font-bold text-md lg:text-lg text-blue-600">
+        <div className="flex justify-between font-bold text-md lg:text-lg text-blue-600">
+          <div>
           <FontAwesomeIcon icon={faAward} /> Education
-        </div>
-        <div className="flex gap-2 ">
+          </div>
+          <div className="flex gap-2 ">
           <Button
-            className="bg-green-600 text-xs text-white"
+            className="bg-green-600 font-normal text-xs text-white"
             onClick={() =>
               setEducationToEdit({
                 id: undefined,
@@ -133,6 +134,8 @@ function Resume() {
             Add Education
           </Button>
         </div>
+        </div>
+        
         <div className="text-sm flex gap-4 flex-wrap justify-between lg:text-lg ">
           {educations.map((education) => {
             return (
