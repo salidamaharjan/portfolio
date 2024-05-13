@@ -88,13 +88,11 @@ function Portfolio() {
           </div>
         </div>
       </aside>
-      <div className="flex flex-1 px-4 justify-between">
+      <div>
         {location.pathname === "/portfolio" ? (
-          <div className="w-[88dvw] h-[80dvh] flex justify-between">
-              <div>
-                <AboutMe />
-                {/* <Resume /> */}
-              </div>
+          <div className="w-[88dvw] h-[80dvh]">
+            <AboutMe />
+            {/* <Resume /> */}
           </div>
         ) : (
           <Outlet />

@@ -111,7 +111,7 @@ function Resume() {
   }
 
   return (
-    <div className="flex flex-1 flex-wrap justify-between gap-4">
+    <div className="flex flex-col gap-4">
       <div>
         <div className="font-bold text-md lg:text-lg text-blue-600">
           <FontAwesomeIcon icon={faAward} /> Education
@@ -133,7 +133,7 @@ function Resume() {
             Add Education
           </Button>
         </div>
-        <div className="text-sm lg:text-lg ">
+        <div className="text-sm flex gap-4 flex-wrap justify-between lg:text-lg ">
           {educations.map((education) => {
             return (
               <div key={education.id}>
