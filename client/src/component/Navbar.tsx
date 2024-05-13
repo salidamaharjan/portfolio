@@ -24,7 +24,10 @@ function Navbar({ className }: NavbarProps) {
         <div className="flex gap-4">
           <a
             className={`${
-              location.pathname === "/portfolio" ? "text-green-600" : ""
+              location.pathname === "/portfolio" ||
+              location.pathname === "/portfolio/aboutme"
+                ? "text-green-600"
+                : ""
             }`}
             onClick={() => {
               navigate("/portfolio");

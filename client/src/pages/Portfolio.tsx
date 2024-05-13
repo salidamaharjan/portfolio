@@ -8,6 +8,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 import Resume from "./Resume";
+import AboutMe from "./AboutMe";
 
 function Portfolio() {
   const navigate = useNavigate();
@@ -15,13 +16,13 @@ function Portfolio() {
   // console.log(location.pathname, "location");
   return (
     <div
-      className="flex gap-16
+      className="flex gap-6
     "
     >
       <aside className="flex flex-col pt-1 gap-5">
         <div
           className={`${
-            location.pathname === "/portfolio/aboutme"
+            location.pathname === "/portfolio/aboutme" || location.pathname === "/portfolio"
               ? "flex flex-col text-green-600"
               : "flex flex-col"
           }`}
@@ -77,7 +78,8 @@ function Portfolio() {
           <div className="w-[88dvw] h-[80dvh]">
             <div className="flex justify-between">
               <div>
-                <Resume />
+                <AboutMe />
+                {/* <Resume /> */}
               </div>
             </div>
           </div>
