@@ -114,13 +114,13 @@ function Resume() {
   return (
     <div className="flex flex-col gap-4">
       <div>
-        <div className="flex justify-between font-bold text-md lg:text-lg text-blue-600">
+        <div className="flex justify-between font-bold text-md lg:text-lg text-blue-900">
           <div>
             <FontAwesomeIcon icon={faAward} /> Education
           </div>
           <div className="group flex relative">
             <Button
-              className="bg-green-600 font-normal text-xs text-white"
+              className="bg-green-700 font-normal text-xs text-white"
               onClick={() =>
                 setEducationToEdit({
                   id: undefined,
@@ -140,24 +140,15 @@ function Resume() {
             >
               Add Education
             </span>
-            {/* <div className="group flex relative">
-              <span className="bg-red-400 text-white px-2 py-1">Button</span>
-              <span
-                className="group-hover:opacity-100 transition-opacity bg-gray-800 px-1 text-sm text-gray-100 rounded-md absolute left-1/2 
-    -translate-x-1/2 translate-y-full opacity-0 m-4 mx-auto"
-              >
-                Tooltip
-              </span>
-            </div> */}
           </div>
         </div>
 
-        <div className="text-sm flex gap-4 flex-wrap justify-between lg:text-lg ">
+        <div className="text-sm flex gap-10 text-gray-500 flex-wrap lg:text-lg ">
           {educations.map((education) => {
             return (
               <div key={education.id}>
                 {" "}
-                <div className="font-bold text-sm">{education.degree}</div>
+                <div className="font-bold text-black text-sm">{education.degree}</div>
                 <li>{education.description}</li>
                 <li>{education.schoolName}</li>
                 <li>{education.startDate}</li>
@@ -185,32 +176,40 @@ function Resume() {
           })}
         </div>
       </div>
-      <div className="flex flex-col ">
-        <div className="font-bold text-md lg:text-lg text-blue-600">
-          {" "}
-          <FontAwesomeIcon icon={faDiagramProject} /> Projects
+      <div>
+        <div className="flex justify-between font-bold text-md lg:text-lg text-blue-900">
+          <div>
+            {" "}
+            <FontAwesomeIcon icon={faDiagramProject} /> Projects
+          </div>
+          <div className="group flex relative">
+            <Button
+              className="bg-green-700 text-xs font-normal  text-white"
+              onClick={() =>
+                setProjectToEdit({
+                  id: undefined,
+                  projectName: "",
+                  description: "",
+                  technologiesUsed: "",
+                })
+              }
+            >
+              <FontAwesomeIcon icon={faPlus} />
+            </Button>
+            <span
+              className="group-hover:opacity-100 transition-opacity  px-1 text-xs text-green-600 rounded-md absolute top-[-25px]
+    -translate-x-1/2 translate-y-full opacity-0 m-4 mx-auto"
+            >
+              Add Project
+            </span>
+          </div>
         </div>
-        <div className=" flex gap-2 ">
-          <Button
-            className="bg-green-600 text-xs text-white"
-            onClick={() =>
-              setProjectToEdit({
-                id: undefined,
-                projectName: "",
-                description: "",
-                technologiesUsed: "",
-              })
-            }
-          >
-            Add Project
-          </Button>
-        </div>
-        <div className="text-sm lg:text-lg ">
+        <div className="text-sm text-gray-500 flex gap-10 flex-wrap  lg:text-lg ">
           {projects.map((project) => {
             return (
               <div key={project.id}>
                 {" "}
-                <div className="font-bold text-sm">{project.projectName}</div>
+                <div className="font-bold text-black last:text-sm">{project.projectName}</div>
                 <li>{project.description}</li>
                 <li>{project.technologiesUsed}</li>
                 <Button
