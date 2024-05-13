@@ -11,6 +11,7 @@ import { Dialog } from "../component/ui/Dialog";
 import EducationForm from "../component/EducationForm";
 import ExperienceForm from "../component/ExperienceForm";
 import ProjectForm from "../component/ProjectForm";
+import { faPlus } from "@fortawesome/free-solid-svg-icons/faPlus";
 
 export type Education = {
   id?: number;
@@ -115,27 +116,42 @@ function Resume() {
       <div>
         <div className="flex justify-between font-bold text-md lg:text-lg text-blue-600">
           <div>
-          <FontAwesomeIcon icon={faAward} /> Education
+            <FontAwesomeIcon icon={faAward} /> Education
           </div>
-          <div className="flex gap-2 ">
-          <Button
-            className="bg-green-600 font-normal text-xs text-white"
-            onClick={() =>
-              setEducationToEdit({
-                id: undefined,
-                degree: "",
-                description: "",
-                schoolName: "",
-                startDate: "",
-                yearCompletion: "",
-              })
-            }
-          >
-            Add Education
-          </Button>
+          <div className="group flex relative">
+            <Button
+              className="bg-green-600 font-normal text-xs text-white"
+              onClick={() =>
+                setEducationToEdit({
+                  id: undefined,
+                  degree: "",
+                  description: "",
+                  schoolName: "",
+                  startDate: "",
+                  yearCompletion: "",
+                })
+              }
+            >
+              <FontAwesomeIcon icon={faPlus} />
+            </Button>
+            <span
+              className="group-hover:opacity-100 transition-opacity  px-1 text-xs text-green-600 rounded-md absolute top-[-30px]
+    -translate-x-1/2 translate-y-full opacity-0 m-4 mx-auto"
+            >
+              Add Education
+            </span>
+            {/* <div className="group flex relative">
+              <span className="bg-red-400 text-white px-2 py-1">Button</span>
+              <span
+                className="group-hover:opacity-100 transition-opacity bg-gray-800 px-1 text-sm text-gray-100 rounded-md absolute left-1/2 
+    -translate-x-1/2 translate-y-full opacity-0 m-4 mx-auto"
+              >
+                Tooltip
+              </span>
+            </div> */}
+          </div>
         </div>
-        </div>
-        
+
         <div className="text-sm flex gap-4 flex-wrap justify-between lg:text-lg ">
           {educations.map((education) => {
             return (
