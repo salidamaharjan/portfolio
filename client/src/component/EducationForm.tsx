@@ -2,7 +2,7 @@ import Button from "./ui/Button";
 import Input from "./ui/Input";
 import Label from "./ui/Label";
 import { useState } from "react";
-import { post, put} from "../lib/http";
+import { post, put } from "../lib/http";
 import { Education } from "../pages/Resume";
 
 type EducationFormProps = {
@@ -21,14 +21,14 @@ function EducationForm({ onAction, formFor, education }: EducationFormProps) {
   const [description, setDescription] = useState(education?.description ?? "");
 
   async function handleAddClick() {
-    const newEducation = await post("http://localhost:3001/api/educations", {
+    await post("http://localhost:3001/api/educations", {
       degree,
       schoolName,
       startDate,
       yearCompletion,
       description,
     });
-    console.log(newEducation);
+    // console.log(newEducation);
     setDegree("");
     setSchoolName("");
     setStartDate("");
@@ -37,17 +37,14 @@ function EducationForm({ onAction, formFor, education }: EducationFormProps) {
     onAction();
   }
   async function handleEditClick() {
-    console.log(education?.id);
-    await put(
-      `http://localhost:3001/api/educations/${education?.id}`,
-      {
-        degree,
-        schoolName,
-        startDate,
-        yearCompletion,
-        description,
-      }
-    );
+    // console.log(education?.id);
+    await put(`http://localhost:3001/api/educations/${education?.id}`, {
+      degree,
+      schoolName,
+      startDate,
+      yearCompletion,
+      description,
+    });
     setDegree("");
     setSchoolName("");
     setStartDate("");

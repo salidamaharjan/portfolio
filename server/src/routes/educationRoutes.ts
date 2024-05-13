@@ -22,7 +22,7 @@ educationRoutes.get("/educations", async (req: Request, res: Response) => {
 educationRoutes.post("/educations", async (req: Request, res: Response) => {
   try {
     const loggedInUser = (req as any).user;
-    // console.log(loggedInUser.id);
+    console.log(loggedInUser.id);
     const authorizedId = loggedInUser.id;
     await db.insert(education).values({
       degree: req.body.degree,
@@ -32,7 +32,7 @@ educationRoutes.post("/educations", async (req: Request, res: Response) => {
       description: req.body.description,
       userId: authorizedId,
     });
-    res.status(201).json({ message: "Education Detail Added" });
+    res.status(201).json({ message: "Education Added" });
   } catch (err) {
     console.log(err);
 
@@ -40,23 +40,54 @@ educationRoutes.post("/educations", async (req: Request, res: Response) => {
   }
 });
 
-educationRoutes.delete("/educations/:id", async (req: Request, res: Response) => {
+educationRoutes.put("/educations/:id", async (req: Request, res: Response) => {
   try {
     const loggedInUser = (req as any).user;
     // console.log(loggedInUser.id);
     const authorizedId = loggedInUser.id;
+    console.log("req.params.id", req.params.id);
+    console.log(req.body, "req.body");
     await db
-      .delete(education)
+      .update(education)
+      .set({
+        degree: req.body.degree,
+        schoolName: req.body.schoolName,
+        startDate: req.body.startDate,
+        yearCompletion: req.body.yearCompletion,
+        description: req.body.description,
+      })
       .where(
         and(
           eq(education.id, parseInt(req.params.id)),
           eq(education.userId, authorizedId)
         )
       );
-    res.status(201).json({ message: "Education Deleted" });
+    res.status(201).json({ message: "Education Updated" });
   } catch (err) {
     console.log(err);
     res.status(500).send(err);
   }
 });
+educationRoutes.delete(
+  "/experiences/:id",
+  async (req: Request, res: Response) => {
+    try {
+      const loggedInUser = (req as any).user;
+      // console.log(loggedInUser.id);
+      const authorizedId = loggedInUser.id;
+      await db
+        .delete(education)
+        .where(
+          and(
+            eq(education.id, parseInt(req.params.id)),
+            eq(education.userId, authorizedId)
+          )
+        );
+      res.status(201).json({ message: "Education Deleted" });
+    } catch (err) {
+      console.log(err);
+      res.status(500).send(err);
+    }
+  }
+);
 export default educationRoutes;

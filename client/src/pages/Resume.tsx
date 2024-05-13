@@ -279,9 +279,9 @@ function Resume() {
       >
         <EducationForm
           education={educationToEdit}
-          onAction={() => {
-            fetchEducation();
-            setEducationToEdit(undefined);
+          onAction={async () => {
+             await fetchEducation();
+             setEducationToEdit(undefined);
           }}
           formFor={educationToEdit?.id ? "Edit" : "Add"}
         />
