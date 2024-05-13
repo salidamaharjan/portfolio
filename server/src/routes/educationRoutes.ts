@@ -28,7 +28,9 @@ educationRoutes.post("/educations", async (req: Request, res: Response) => {
       degree: req.body.degree,
       schoolName: req.body.schoolName,
       startDate: req.body.startDate,
-      yearCompletion: req.body.yearCompletion,
+      yearCompletion: !!req.body.yearCompletion
+        ? req.body.yearCompletion
+        : null,
       description: req.body.description,
       userId: authorizedId,
     });
@@ -53,7 +55,9 @@ educationRoutes.put("/educations/:id", async (req: Request, res: Response) => {
         degree: req.body.degree,
         schoolName: req.body.schoolName,
         startDate: req.body.startDate,
-        yearCompletion: req.body.yearCompletion,
+        yearCompletion: !!req.body.yearCompletion
+          ? req.body.yearCompletion
+          : null,
         description: req.body.description,
       })
       .where(
@@ -68,8 +72,9 @@ educationRoutes.put("/educations/:id", async (req: Request, res: Response) => {
     res.status(500).send(err);
   }
 });
+
 educationRoutes.delete(
-  "/experiences/:id",
+  "/educations/:id",
   async (req: Request, res: Response) => {
     try {
       const loggedInUser = (req as any).user;

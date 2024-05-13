@@ -143,8 +143,8 @@ function Resume() {
                 <li>{education.schoolName}</li>
                 <li>{education.startDate}</li>
                 <li>{`${
-                  education.yearCompletion === null
-                    ? "current"
+                  !education.yearCompletion
+                    ? "Current"
                     : education.yearCompletion
                 }`}</li>
                 <Button
@@ -193,11 +193,7 @@ function Resume() {
                 {" "}
                 <div className="font-bold text-sm">{project.projectName}</div>
                 <li>{project.description}</li>
-                <li>{`${
-                  project.technologiesUsed === null
-                    ? "current"
-                    : project.technologiesUsed
-                }`}</li>
+                <li>{project.technologiesUsed}</li>
                 <Button
                   className="bg-blue-600 text-xs text-white"
                   onClick={() => {
@@ -246,12 +242,10 @@ function Resume() {
                 <li>{experience.company}</li>
                 <li>{experience.jobDescription}</li>
                 <li>{`${
-                  experience.startDate === null
-                    ? "current"
-                    : experience.startDate
+                  experience.startDate === null ? "current" : experience.startDate
                 }`}</li>
                 <li>{`${
-                  experience.endDate === null ? "current" : experience.endDate
+                  !experience.endDate ? "current" : experience.endDate
                 }`}</li>
                 <Button
                   className="bg-blue-600 text-xs text-white"
@@ -280,8 +274,8 @@ function Resume() {
         <EducationForm
           education={educationToEdit}
           onAction={async () => {
-             await fetchEducation();
-             setEducationToEdit(undefined);
+            await fetchEducation();
+            setEducationToEdit(undefined);
           }}
           formFor={educationToEdit?.id ? "Edit" : "Add"}
         />
