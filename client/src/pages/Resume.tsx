@@ -225,7 +225,7 @@ function Resume() {
                 </div>
                 <div className="flex mt-2  gap-4">
                   <Button
-                    className="text-blue-900 text-xs"
+                    className="text-blue-900 font-normal text-xs"
                     onClick={() => {
                       setProjectToEdit(project);
                     }}
@@ -233,7 +233,7 @@ function Resume() {
                     Edit
                   </Button>
                   <Button
-                    className="text-red-600 text-xs "
+                    className="text-red-600 font-normal text-xs "
                     onClick={() => handleDeleteProject(project.id!)}
                   >
                     Delete
@@ -278,22 +278,21 @@ function Resume() {
             return (
               <div key={experience.id}>
                 {" "}
-                <div className="font-bold text-black last:text-sm">
-                  {experience.title}
+                <div className="grid gap-1">
+                  <div className="font-medium text-sm text-black last:text-sm">
+                    {experience.title} at {experience.company}
+                    <div className="text-xs font-normal text-gray-400">
+                      {`${experience.startDate}`} -{" "}
+                      {`${
+                        !experience.endDate ? "current" : experience.endDate
+                      }`}
+                    </div>
+                  </div>
+                  <li className="text-xs">{experience.jobDescription}</li>
                 </div>
-                <li>{experience.company}</li>
-                <li>{experience.jobDescription}</li>
-                <li>{`${
-                  experience.startDate === null
-                    ? "current"
-                    : experience.startDate
-                }`}</li>
-                <li>{`${
-                  !experience.endDate ? "current" : experience.endDate
-                }`}</li>
                 <div className="flex mt-2 gap-4">
                   <Button
-                    className="text-blue-900 text-xs"
+                    className="text-blue-900 font-normal text-xs"
                     onClick={() => {
                       setExperienceToEdit(experience);
                     }}
@@ -301,7 +300,7 @@ function Resume() {
                     Edit
                   </Button>
                   <Button
-                    className="text-red-600 text-xs "
+                    className="text-red-600 font-normal text-xs "
                     onClick={() => handleDeleteExperience(experience.id!)}
                   >
                     Delete
