@@ -23,7 +23,7 @@ function Form({ title }: FormProps) {
     });
     // console.log("login data", data);
     localStorage.setItem("token", data.accessToken);
-    navigate("/portfolio");
+    navigate("/");
     setUsername("");
     setPassword("");
   }
@@ -34,7 +34,7 @@ function Form({ title }: FormProps) {
     });
     // console.log("signup data", data);
     localStorage.setItem("token", data.accessToken);
-    navigate("/portfolio");
+    navigate("/");
     setUsername("");
     setPassword("");
   }
@@ -91,7 +91,7 @@ function Form({ title }: FormProps) {
             Already have an account{" "}
             <span
               onClick={() => {
-                navigate("/");
+                navigate("/login");
               }}
               className="underline text-blue-600 underline-offset-2 "
             >

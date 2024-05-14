@@ -21,13 +21,13 @@ function Portfolio() {
       <aside className="flex flex-row justify-evenly border-t md:border-t-0 w-[100dvw] md:w-auto bg-white pb-2 md:pb-0 md:flex-col fixed bottom-0 md:sticky md:top-[60px] self-start left-0 pt-1 gap-5">
         <div
           className={`${
-            location.pathname === "/portfolio/aboutme" ||
-            location.pathname === "/portfolio"
+            location.pathname === "/aboutme" ||
+            location.pathname === "/"
               ? "flex flex-col text-green-600"
               : "flex flex-col"
           }`}
           onClick={() => {
-            navigate("/portfolio/aboutme");
+            navigate("/aboutme");
           }}
         >
           <div className="flex flex-col hover:text-green-600">
@@ -39,12 +39,12 @@ function Portfolio() {
         </div>
         <div
           className={`${
-            location.pathname === "/portfolio/resume"
+            location.pathname === "/resume"
               ? "flex flex-col text-green-600"
               : "flex flex-col"
           }`}
           onClick={() => {
-            navigate("/portfolio/resume");
+            navigate("/resume");
           }}
         >
           <div className="flex flex-col hover:text-green-600">
@@ -56,12 +56,12 @@ function Portfolio() {
         </div>
         <div
           className={`${
-            location.pathname === "/portfolio/works"
+            location.pathname === "/works"
               ? "flex flex-col text-green-600"
               : "flex flex-col"
           }`}
           onClick={() => {
-            navigate("/portfolio/works");
+            navigate("/works");
           }}
         >
           <div className="flex flex-col hover:text-green-600">
@@ -73,12 +73,12 @@ function Portfolio() {
         </div>
         <div
           className={`${
-            location.pathname === "/portfolio/contact"
+            location.pathname === "/contact"
               ? "flex flex-col text-green-600"
               : "flex flex-col"
           }`}
           onClick={() => {
-            navigate("/portfolio/contact");
+            navigate("/contact");
           }}
         >
           <div className="flex flex-col hover:text-green-600">
@@ -88,7 +88,7 @@ function Portfolio() {
         </div>
       </aside>
       <div className="flex-1">
-        {location.pathname === "/portfolio" ? (
+        {location.pathname === "/" ? (
           <div>
             <AboutMe />
           </div>

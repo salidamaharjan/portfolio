@@ -3,7 +3,6 @@ import {
   faGithub,
   faLinkedin,
   faReact,
-  faTwitter,
 } from "@fortawesome/free-brands-svg-icons";
 import Button from "../component/ui/Button";
 import { faVuejs } from "@fortawesome/free-brands-svg-icons/faVuejs";

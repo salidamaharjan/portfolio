@@ -8,7 +8,6 @@ const userRoutes = express.Router();
 
 userRoutes.get(
   "/users",
-
   async (req: Request, res: Response) => {
     try {
       const resultOfUsers = await db.query.user.findMany();

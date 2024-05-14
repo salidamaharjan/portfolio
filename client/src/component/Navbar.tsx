@@ -25,13 +25,13 @@ function Navbar({ className }: NavbarProps) {
           <div className="hover:text-green-600">
             <a
               className={`${
-                location.pathname === "/portfolio" ||
-                location.pathname === "/portfolio/aboutme"
+                location.pathname === "/" ||
+                location.pathname === "/aboutme"
                   ? "text-green-600"
                   : ""
               }`}
               onClick={() => {
-                navigate("/portfolio");
+                navigate("/");
               }}
             >
               <FontAwesomeIcon icon={faUserTie} /> Portfolio
@@ -51,9 +51,9 @@ function Navbar({ className }: NavbarProps) {
         <div className="flex gap-4">
           <div className="hover:text-green-600">
             <a
-              className={`${location.pathname === "/" ? "text-green-600" : ""}`}
+              className={`${location.pathname === "/login" ? "text-green-600" : ""}`}
               onClick={() => {
-                navigate("/");
+                navigate("/login");
               }}
             >
               <FontAwesomeIcon icon={faRightToBracket} /> Login

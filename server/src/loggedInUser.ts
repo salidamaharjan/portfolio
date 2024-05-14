@@ -24,7 +24,7 @@ function loggedInUserMiddleware(
     next();
   } catch (err) {
     // console.log("req.username", (req as any).user);
-    res.status(500).json(err);
+    next();
   }
 }
 
