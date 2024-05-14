@@ -1,17 +1,17 @@
 import userRoutes from "./userRoutes";
 import express from "express";
-import educationRoutes from "./educationRoutes";
+import { educationRoutes, educationGetRoutes } from "./educationRoutes";
 import projectRoutes from "./projectRoutes";
 import signupRoutes from "./signupRoutes";
 import loginRoutes from "./loginRoutes";
 import experienceRoutes from "./experienceRoutes";
-import loggedInUserMiddleware from "../loggedInUser";
+import authOr401Middleware from "../auth";
 const router = express.Router();
 
-router.use("/api", signupRoutes, loginRoutes);
+router.use("/api", signupRoutes, educationGetRoutes, loginRoutes);
 router.use(
   "/api",
-  loggedInUserMiddleware,
+  authOr401Middleware,
   userRoutes,
   educationRoutes,
   projectRoutes,
