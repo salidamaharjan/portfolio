@@ -113,7 +113,7 @@ function Resume() {
 
   return (
     <div className="flex flex-col gap-4">
-      <div className="border-2 border-gray-300 rounded-md p-4">
+      <div className="border-2 shadow-md border-gray-300 rounded-md p-4">
         <div className="flex justify-between font-bold text-md lg:text-lg text-blue-900">
           <div>
             <FontAwesomeIcon icon={faAward} /> Education
@@ -180,7 +180,7 @@ function Resume() {
           })}
         </div>
       </div>
-      <div className="border-2 border-gray-300 rounded-md p-4">
+      <div className="border-2 shadow-md border-gray-300 rounded-md p-4">
         <div className="flex justify-between font-bold text-md lg:text-lg text-blue-900">
           <div>
             {" "}
@@ -239,7 +239,7 @@ function Resume() {
           })}
         </div>
       </div>
-      <div className="border-2 border-gray-300 rounded-md p-4">
+      <div className="border-2 shadow-md border-gray-300 rounded-md p-4">
         <div className="flex justify-between font-bold text-md lg:text-lg text-blue-900">
           <div>
             <FontAwesomeIcon icon={faBriefcase} /> Experiences
