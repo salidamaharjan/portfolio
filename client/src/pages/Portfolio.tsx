@@ -19,7 +19,7 @@ function Portfolio() {
       className="flex p-4 gap-6
     "
     >
-      <aside className="flex flex-col pt-1 gap-5">
+      <aside className="flex sticky top-[60px] self-start left-0 flex-col pt-1 gap-5">
         <div
           className={`${
             location.pathname === "/portfolio/aboutme" ||
