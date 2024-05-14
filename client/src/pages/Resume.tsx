@@ -142,10 +142,10 @@ function Resume() {
             </span>
           </div>
         </div>
-        <div className="text-sm flex gap-10 text-gray-500 flex-wrap lg:text-lg ">
+        <div className="text-sm grid grid-cols-2 gap-10 text-gray-500 flex-wrap lg:text-lg ">
           {educations.map((education) => {
             return (
-              <div className="border-2 border-gray-200 rounded-md shadow-md p-2" key={education.id}>
+              <div key={education.id}>
                 {" "}
                 <div className="font-bold text-black text-sm">
                   {education.degree}
@@ -210,7 +210,10 @@ function Resume() {
         <div className="text-sm text-gray-500 flex gap-10 flex-wrap  lg:text-lg ">
           {projects.map((project) => {
             return (
-              <div className="border-2 border-gray-200 rounded-md shadow-md p-2" key={project.id}>
+              <div
+                className="border-2 border-gray-200 rounded-md shadow-md p-2"
+                key={project.id}
+              >
                 {" "}
                 <div className="font-bold text-black last:text-sm">
                   {project.projectName}
@@ -270,7 +273,10 @@ function Resume() {
         <div className="text-sm text-gray-500 flex gap-10 flex-wrap lg:text-lg ">
           {experiences.map((experience) => {
             return (
-              <div className="border-2 border-gray-200 rounded-md shadow-md p-2" key={experience.id}>
+              <div
+                className="border-2 border-gray-200 rounded-md shadow-md p-2"
+                key={experience.id}
+              >
                 {" "}
                 <div className="font-bold text-black last:text-sm">
                   {experience.title}
@@ -286,20 +292,20 @@ function Resume() {
                   !experience.endDate ? "current" : experience.endDate
                 }`}</li>
                 <div className="flex mt-2 gap-4">
-                <Button
-                  className="text-blue-600 text-xs"
-                  onClick={() => {
-                    setExperienceToEdit(experience);
-                  }}
-                >
-                  Edit
-                </Button>
-                <Button
-                  className="text-red-600 text-xs "
-                  onClick={() => handleDeleteExperience(experience.id!)}
-                >
-                  Delete
-                </Button>
+                  <Button
+                    className="text-blue-600 text-xs"
+                    onClick={() => {
+                      setExperienceToEdit(experience);
+                    }}
+                  >
+                    Edit
+                  </Button>
+                  <Button
+                    className="text-red-600 text-xs "
+                    onClick={() => handleDeleteExperience(experience.id!)}
+                  >
+                    Delete
+                  </Button>
                 </div>
               </div>
             );

@@ -88,7 +88,7 @@ function Portfolio() {
           </div>
         </div>
       </aside>
-      <div>
+      <div className="flex-1">
         {location.pathname === "/portfolio" ? (
           <div className="w-[88dvw] h-[80dvh]">
             <AboutMe />
