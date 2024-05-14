@@ -179,7 +179,7 @@ function Resume() {
           })}
         </div>
       </div>
-      <div className="border-2 shadow-md border-gray-300 rounded-md p-4">
+      <div className="flex gap-4 flex-col border-2 shadow-md border-gray-300 rounded-md p-4">
         <div className="flex justify-between font-bold text-md lg:text-lg text-blue-900">
           <div>
             {" "}
@@ -210,7 +210,7 @@ function Resume() {
         <div className="text-sm text-gray-500 flex gap-10 flex-wrap  lg:text-lg ">
           {projects.map((project) => {
             return (
-              <div key={project.id}>
+              <div className="border-2 border-gray-200 rounded-md shadow-md p-2" key={project.id}>
                 {" "}
                 <div className="font-bold text-black last:text-sm">
                   {project.projectName}
@@ -238,7 +238,7 @@ function Resume() {
           })}
         </div>
       </div>
-      <div className="border-2 shadow-md border-gray-300 rounded-md p-4">
+      <div className="flex gap-4 flex-col border-2 shadow-md border-gray-300 rounded-md p-4">
         <div className="flex justify-between font-bold text-md lg:text-lg text-blue-900">
           <div>
             <FontAwesomeIcon icon={faBriefcase} /> Experiences
@@ -270,7 +270,7 @@ function Resume() {
         <div className="text-sm text-gray-500 flex gap-10 flex-wrap lg:text-lg ">
           {experiences.map((experience) => {
             return (
-              <div key={experience.id}>
+              <div className="border-2 border-gray-200 rounded-md shadow-md p-2" key={experience.id}>
                 {" "}
                 <div className="font-bold text-black last:text-sm">
                   {experience.title}
