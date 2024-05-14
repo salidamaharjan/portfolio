@@ -143,7 +143,7 @@ function Resume() {
             </span>
           </div>
         </div>
-        <div className="text-sm grid grid-cols-2 text-gray-500 flex-wrap lg:text-lg ">
+        <div className="text-sm grid grid-cols-2 gap-4 text-gray-500 flex-wrap lg:text-lg ">
           {educations.map((education) => {
             return (
               <div key={education.id}>

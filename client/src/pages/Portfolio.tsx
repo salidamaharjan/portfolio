@@ -16,7 +16,7 @@ function Portfolio() {
   // console.log(location.pathname, "location");
   return (
     <div
-      className="flex p-4 gap-6
+      className="flex h-dvh p-4 gap-6
     "
     >
       <aside className="flex sticky top-[60px] self-start left-0 flex-col pt-1 gap-5">
