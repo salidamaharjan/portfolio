@@ -113,7 +113,7 @@ function Resume() {
 
   return (
     <div className="flex flex-col gap-4">
-      <div className="flex gap-4 flex-col border-2 shadow-md border-gray-300 rounded-md p-4">
+      <div className="flex gap-4 flex-col  shadow-[0_0_3px_1px_#ccc] rounded-md p-4">
         <div className="flex justify-between font-bold text-md lg:text-lg text-blue-900">
           <div>
             <FontAwesomeIcon icon={faAward} /> Education
@@ -179,7 +179,7 @@ function Resume() {
           })}
         </div>
       </div>
-      <div className="flex gap-4 flex-col border-2 shadow-md border-gray-300 rounded-md p-4">
+      <div className="flex gap-4 flex-col shadow-[0_0_3px_1px_#ccc] rounded-md p-4">
         <div className="flex justify-between font-bold text-md lg:text-lg text-blue-900">
           <div>
             {" "}
@@ -207,13 +207,10 @@ function Resume() {
             </span>
           </div>
         </div>
-        <div className="text-sm text-gray-500 flex gap-10 flex-wrap  lg:text-lg ">
+        <div className="text-sm text-gray-500 grid grid-cols-2 gap-10 flex-wrap  lg:text-lg ">
           {projects.map((project) => {
             return (
-              <div
-                className="border-2 border-gray-200 rounded-md shadow-md p-2"
-                key={project.id}
-              >
+              <div key={project.id}>
                 {" "}
                 <div className="font-bold text-black last:text-sm">
                   {project.projectName}
@@ -222,12 +219,12 @@ function Resume() {
                 <li>{project.technologiesUsed}</li>
                 <div className="flex mt-2  gap-4">
                   <Button
-                    className="text-blue-600 text-xs"
+                    className="text-blue-900 text-xs"
                     onClick={() => {
                       setProjectToEdit(project);
                     }}
                   >
-                    Edit Project
+                    Edit
                   </Button>
                   <Button
                     className="text-red-600 text-xs "
@@ -241,7 +238,7 @@ function Resume() {
           })}
         </div>
       </div>
-      <div className="flex gap-4 flex-col border-2 shadow-md border-gray-300 rounded-md p-4">
+      <div className="flex gap-4 flex-col shadow-[0_0_3px_1px_#ccc] rounded-md p-4">
         <div className="flex justify-between font-bold text-md lg:text-lg text-blue-900">
           <div>
             <FontAwesomeIcon icon={faBriefcase} /> Experiences
@@ -270,13 +267,10 @@ function Resume() {
             </span>
           </div>
         </div>
-        <div className="text-sm text-gray-500 flex gap-10 flex-wrap lg:text-lg ">
+        <div className="text-sm text-gray-500 grid grid-cols-2 gap-10 flex-wrap lg:text-lg ">
           {experiences.map((experience) => {
             return (
-              <div
-                className="border-2 border-gray-200 rounded-md shadow-md p-2"
-                key={experience.id}
-              >
+              <div key={experience.id}>
                 {" "}
                 <div className="font-bold text-black last:text-sm">
                   {experience.title}
@@ -293,7 +287,7 @@ function Resume() {
                 }`}</li>
                 <div className="flex mt-2 gap-4">
                   <Button
-                    className="text-blue-600 text-xs"
+                    className="text-blue-900 text-xs"
                     onClick={() => {
                       setExperienceToEdit(experience);
                     }}
