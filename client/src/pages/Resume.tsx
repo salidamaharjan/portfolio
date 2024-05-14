@@ -149,18 +149,18 @@ function Resume() {
               <div key={education.id}>
                 {" "}
                 <div className="grid gap-1">
-                <div className="font-medium text-black text-sm">
-                  {education.degree} at {education.schoolName}
-                  <div className="text-xs font-normal text-gray-400">
-                    {education.startDate} -{" "}
-                    {`${
-                      !education.yearCompletion
-                        ? "Current"
-                        : education.yearCompletion
-                    }`}
+                  <div className="font-medium text-black text-sm">
+                    {education.degree} at {education.schoolName}
+                    <div className="text-xs font-normal text-gray-400">
+                      {education.startDate} -{" "}
+                      {`${
+                        !education.yearCompletion
+                          ? "Current"
+                          : education.yearCompletion
+                      }`}
+                    </div>
                   </div>
-                </div>
-                <li className="text-xs">{education.description}</li>
+                  <li className="text-xs">{education.description}</li>
                 </div>
                 <div className="flex mt-2 gap-4">
                   <Button
@@ -216,11 +216,13 @@ function Resume() {
             return (
               <div key={project.id}>
                 {" "}
-                <div className="font-bold text-black last:text-sm">
+                <div className="font-medium text-sm text-black last:text-sm">
                   {project.projectName}
                 </div>
-                <li>{project.description}</li>
-                <li>{project.technologiesUsed}</li>
+                <div className="text-xs">
+                  <li>{project.description}</li>
+                  <li>{project.technologiesUsed}</li>
+                </div>
                 <div className="flex mt-2  gap-4">
                   <Button
                     className="text-blue-900 text-xs"
