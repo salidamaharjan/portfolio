@@ -11,7 +11,7 @@ import { faJs } from "@fortawesome/free-brands-svg-icons/faJs";
 import { faNodeJs } from "@fortawesome/free-brands-svg-icons/faNodeJs";
 function AboutMe() {
   return (
-    <div className="flex h-[630px] gap-6">
+    <div className="grid md:grid-cols-2 h-[630px] gap-6">
       <div className="flex flex-col gap-4">
         <div className="flex flex-col gap-8">
           <img
