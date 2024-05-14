@@ -159,7 +159,7 @@ function Resume() {
                     ? "Current"
                     : education.yearCompletion
                 }`}</li>
-                <div className="flex gap-4">
+                <div className="flex mt-2 gap-4">
                   <Button
                     className="text-xs text-blue-900"
                     onClick={() => {
@@ -218,7 +218,7 @@ function Resume() {
                 </div>
                 <li>{project.description}</li>
                 <li>{project.technologiesUsed}</li>
-                <div className="flex gap-4">
+                <div className="flex mt-2  gap-4">
                   <Button
                     className="text-blue-600 text-xs"
                     onClick={() => {
@@ -286,14 +286,14 @@ function Resume() {
                 <li>{`${
                   !experience.endDate ? "current" : experience.endDate
                 }`}</li>
-                <div className="flex gap-4">
+                <div className="flex mt-2 gap-4">
                 <Button
                   className="text-blue-600 text-xs"
                   onClick={() => {
                     setExperienceToEdit(experience);
                   }}
                 >
-                  Edit Experience
+                  Edit
                 </Button>
                 <Button
                   className="text-red-600 text-xs "
