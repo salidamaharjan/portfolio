@@ -148,7 +148,9 @@ function Resume() {
             return (
               <div key={education.id}>
                 {" "}
-                <div className="font-bold text-black text-sm">{education.degree}</div>
+                <div className="font-bold text-black text-sm">
+                  {education.degree}
+                </div>
                 <li>{education.description}</li>
                 <li>{education.schoolName}</li>
                 <li>{education.startDate}</li>
@@ -209,7 +211,9 @@ function Resume() {
             return (
               <div key={project.id}>
                 {" "}
-                <div className="font-bold text-black last:text-sm">{project.projectName}</div>
+                <div className="font-bold text-black last:text-sm">
+                  {project.projectName}
+                </div>
                 <li>{project.description}</li>
                 <li>{project.technologiesUsed}</li>
                 <Button
@@ -231,144 +235,43 @@ function Resume() {
           })}
         </div>
       </div>
-      <div className="flex flex-col ">
-        <div className="font-bold text-md lg:text-lg text-blue-600">
-          <FontAwesomeIcon icon={faBriefcase} /> Experiences
+      <div>
+        <div className="flex justify-between font-bold text-md lg:text-lg text-blue-900">
+          <div>
+            <FontAwesomeIcon icon={faBriefcase} /> Experiences
+          </div>
+          <div className="group flex relative">
+            <Button
+              className="bg-green-700 text-xs font-normal  text-white"
+              onClick={() =>
+                setExperienceToEdit({
+                  id: undefined,
+                  title: "",
+                  company: "",
+                  jobDescription: "",
+                  startDate: "",
+                  endDate: "",
+                })
+              }
+            >
+              <FontAwesomeIcon icon={faPlus} />
+            </Button>
+            <span
+              className="group-hover:opacity-100 transition-opacity  px-1 text-xs text-green-600 rounded-md absolute top-[-30px]
+    -translate-x-1/2 translate-y-full opacity-0 m-4 mx-auto"
+            >
+              Add Experience
+            </span>
+          </div>
         </div>
-        <div className="flex gap-2">
-          <Button
-            className="bg-green-600 text-xs text-white"
-            children="Add Experience"
-            onClick={() =>
-              setExperienceToEdit({
-                id: undefined,
-                title: "",
-                company: "",
-                jobDescription: "",
-                startDate: "",
-                endDate: "",
-              })
-            }
-          />
-        </div>
-        <div className="text-sm lg:text-lg ">
+        <div className="text-sm text-gray-500 flex gap-10 flex-wrap lg:text-lg ">
           {experiences.map((experience) => {
             return (
               <div key={experience.id}>
                 {" "}
-                <div className="font-bold text-sm">{experience.title}</div>
-                <li>{experience.company}</li>
-                <li>{experience.jobDescription}</li>
-                <li>{`${
-                  experience.startDate === null
-                    ? "current"
-                    : experience.startDate
-                }`}</li>
-                <li>{`${
-                  !experience.endDate ? "current" : experience.endDate
-                }`}</li>
-                <Button
-                  className="bg-blue-600 text-xs text-white"
-                  onClick={() => {
-                    setExperienceToEdit(experience);
-                  }}
-                >
-                  Edit Experience
-                </Button>
-                <Button
-                  className="bg-red-600 text-xs text-white"
-                  onClick={() => handleDeleteExperience(experience.id!)}
-                >
-                  Delete
-                </Button>
-              </div>
-            );
-          })}
-        </div>
-      </div>
-
-      <div className="flex flex-col ">
-        <div className="font-bold text-md lg:text-lg text-blue-600">
-          <FontAwesomeIcon icon={faBriefcase} /> Extra Experiences
-        </div>
-        <div className="flex gap-2">
-          <Button
-            className="bg-green-600 text-xs text-white"
-            children="Add Experience"
-            onClick={() =>
-              setExperienceToEdit({
-                id: undefined,
-                title: "",
-                company: "",
-                jobDescription: "",
-                startDate: "",
-                endDate: "",
-              })
-            }
-          />
-        </div>
-        <div className="text-sm lg:text-lg ">
-          {experiences.map((experience) => {
-            return (
-              <div key={experience.id}>
-                {" "}
-                <div className="font-bold text-sm">{experience.title}</div>
-                <li>{experience.company}</li>
-                <li>{experience.jobDescription}</li>
-                <li>{`${
-                  experience.startDate === null
-                    ? "current"
-                    : experience.startDate
-                }`}</li>
-                <li>{`${
-                  !experience.endDate ? "current" : experience.endDate
-                }`}</li>
-                <Button
-                  className="bg-blue-600 text-xs text-white"
-                  onClick={() => {
-                    setExperienceToEdit(experience);
-                  }}
-                >
-                  Edit Experience
-                </Button>
-                <Button
-                  className="bg-red-600 text-xs text-white"
-                  onClick={() => handleDeleteExperience(experience.id!)}
-                >
-                  Delete
-                </Button>
-              </div>
-            );
-          })}
-        </div>
-      </div>
-
-      <div className="flex flex-col ">
-        <div className="font-bold text-md lg:text-lg text-blue-600">
-          <FontAwesomeIcon icon={faBriefcase} /> Extra Experiences
-        </div>
-        <div className="flex gap-2">
-          <Button
-            className="bg-green-600 text-xs text-white"
-            children="Add Experience"
-            onClick={() =>
-              setExperienceToEdit({
-                id: undefined,
-                title: "",
-                company: "",
-                jobDescription: "",
-                startDate: "",
-                endDate: "",
-              })
-            }
-          />
-        </div>
-        <div className="text-sm lg:text-lg ">
-          {experiences.map((experience) => {
-            return (
-              <div key={experience.id}>
-                {" "}
-                <div className="font-bold text-sm">{experience.title}</div>
+                <div className="font-bold text-black last:text-sm">
+                  {experience.title}
+                </div>
                 <li>{experience.company}</li>
                 <li>{experience.jobDescription}</li>
                 <li>{`${
