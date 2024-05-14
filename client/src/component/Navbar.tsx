@@ -18,7 +18,7 @@ function Navbar({ className }: NavbarProps) {
 
   return (
     <nav
-      className={`flex justify-end text-sm lg:text-lg border-b-2 px-4 py-2 font-bold ${className}`}
+      className={`flex justify-end text-sm lg:text-lg border-b-2 px-4 py-2 font-bold sticky top-0 bg-white ${className}`}
     >
       {token ? (
         <div className="flex gap-4">
