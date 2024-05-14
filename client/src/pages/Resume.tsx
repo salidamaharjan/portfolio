@@ -143,7 +143,7 @@ function Resume() {
             </span>
           </div>
         </div>
-        <div className="text-sm grid grid-cols-2 gap-4 text-gray-500 flex-wrap lg:text-lg ">
+        <div className="text-sm grid grid-cols-1 md:grid-cols-2 gap-4 text-gray-500 flex-wrap lg:text-lg ">
           {educations.map((education) => {
             return (
               <div key={education.id}>
@@ -211,7 +211,7 @@ function Resume() {
             </span>
           </div>
         </div>
-        <div className="text-sm text-gray-500 grid grid-cols-2 gap-10 flex-wrap  lg:text-lg ">
+        <div className="text-sm text-gray-500 grid grid-cols-1 md:grid-cols-2 gap-10 flex-wrap  lg:text-lg ">
           {projects.map((project) => {
             return (
               <div key={project.id}>
@@ -244,7 +244,7 @@ function Resume() {
           })}
         </div>
       </div>
-      <div className="flex gap-1 flex-col shadow-[0_0_3px_1px_#ccc] rounded-md p-4">
+      <div className="flex gap-1 flex-col shadow-[0_0_3px_1px_#ccc] rounded-md mb-10 md:mb-0 p-4">
         <div className="flex justify-between font-bold text-md lg:text-lg text-blue-900">
           <div>
             <FontAwesomeIcon icon={faBriefcase} /> Experiences
@@ -273,7 +273,7 @@ function Resume() {
             </span>
           </div>
         </div>
-        <div className="text-sm text-gray-500 grid grid-cols-2 gap-10 flex-wrap lg:text-lg ">
+        <div className="text-sm text-gray-500 grid grid-cols-1 md:grid-cols-2 gap-10 flex-wrap lg:text-lg ">
           {experiences.map((experience) => {
             return (
               <div key={experience.id}>
