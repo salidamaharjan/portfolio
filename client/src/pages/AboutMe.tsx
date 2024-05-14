@@ -13,9 +13,9 @@ function AboutMe() {
   return (
     <div className="grid md:grid-cols-2 h-[630px] gap-6">
       <div className="flex flex-col gap-4">
-        <div className="flex flex-col gap-8">
+        <div className="flex items-center flex-col gap-8">
           <img
-            className="w-[70dvw] h-[70dvh] border-1 rounded-md"
+            className="md:w-[70dvw] md:h-[70dvh] h-[30dvh] w-[50dvw] border-1 rounded-md"
             src="/images/user.jpg"
             alt="User's Image"
           />
