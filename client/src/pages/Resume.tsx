@@ -149,15 +149,17 @@ function Resume() {
                 {" "}
                 <div className="font-bold text-black text-sm">
                   {education.degree}
+                  <div className="text-xs font-normal text-gray-400">
+                    {education.startDate} -{" "}
+                    {`${
+                      !education.yearCompletion
+                        ? "Current"
+                        : education.yearCompletion
+                    }`}
+                  </div>
                 </div>
                 <li>{education.description}</li>
                 <li>{education.schoolName}</li>
-                <li>{education.startDate}</li>
-                <li>{`${
-                  !education.yearCompletion
-                    ? "Current"
-                    : education.yearCompletion
-                }`}</li>
                 <div className="flex mt-2 gap-4">
                   <Button
                     className="text-xs text-blue-900"
