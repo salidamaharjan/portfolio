@@ -113,11 +113,12 @@ function Resume() {
 
   return (
     <div className="flex flex-col gap-4">
-      <div className="flex gap-4 flex-col  shadow-[0_0_3px_1px_#ccc] rounded-md p-4">
+      <div className="flex gap-1 flex-col shadow-[0_0_3px_1px_#ccc] rounded-md p-4">
         <div className="flex justify-between font-bold text-md lg:text-lg text-blue-900">
           <div>
             <FontAwesomeIcon icon={faAward} /> Education
           </div>
+
           <div className="group flex relative">
             <Button
               className="text-green-700 font-normal text-xs"
@@ -142,13 +143,14 @@ function Resume() {
             </span>
           </div>
         </div>
-        <div className="text-sm grid grid-cols-2 gap-10 text-gray-500 flex-wrap lg:text-lg ">
+        <div className="text-sm grid grid-cols-2 text-gray-500 flex-wrap lg:text-lg ">
           {educations.map((education) => {
             return (
               <div key={education.id}>
                 {" "}
-                <div className="font-bold text-black text-sm">
-                  {education.degree}
+                <div className="grid gap-1">
+                <div className="font-medium text-black text-sm">
+                  {education.degree} at {education.schoolName}
                   <div className="text-xs font-normal text-gray-400">
                     {education.startDate} -{" "}
                     {`${
@@ -158,11 +160,11 @@ function Resume() {
                     }`}
                   </div>
                 </div>
-                <li>{education.description}</li>
-                <li>{education.schoolName}</li>
+                <li className="text-xs">{education.description}</li>
+                </div>
                 <div className="flex mt-2 gap-4">
                   <Button
-                    className="text-xs text-blue-900"
+                    className="text-xs font-normal text-blue-900"
                     onClick={() => {
                       setEducationToEdit(education);
                     }}
@@ -170,7 +172,7 @@ function Resume() {
                     Edit
                   </Button>
                   <Button
-                    className="text-red-600 text-xs"
+                    className="text-red-600 font-normal text-xs"
                     onClick={() => handleDeleteEducation(education.id!)}
                   >
                     Delete
@@ -181,7 +183,7 @@ function Resume() {
           })}
         </div>
       </div>
-      <div className="flex gap-4 flex-col shadow-[0_0_3px_1px_#ccc] rounded-md p-4">
+      <div className="flex gap-1 flex-col shadow-[0_0_3px_1px_#ccc] rounded-md p-4">
         <div className="flex justify-between font-bold text-md lg:text-lg text-blue-900">
           <div>
             {" "}
@@ -240,7 +242,7 @@ function Resume() {
           })}
         </div>
       </div>
-      <div className="flex gap-4 flex-col shadow-[0_0_3px_1px_#ccc] rounded-md p-4">
+      <div className="flex gap-1 flex-col shadow-[0_0_3px_1px_#ccc] rounded-md p-4">
         <div className="flex justify-between font-bold text-md lg:text-lg text-blue-900">
           <div>
             <FontAwesomeIcon icon={faBriefcase} /> Experiences
