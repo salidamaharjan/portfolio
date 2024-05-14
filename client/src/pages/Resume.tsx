@@ -120,7 +120,7 @@ function Resume() {
           </div>
           <div className="group flex relative">
             <Button
-              className="bg-green-700 font-normal text-xs text-white"
+              className="text-green-700 font-normal text-xs"
               onClick={() =>
                 setEducationToEdit({
                   id: undefined,
@@ -159,20 +159,22 @@ function Resume() {
                     ? "Current"
                     : education.yearCompletion
                 }`}</li>
-                <Button
-                  className="bg-blue-600 text-xs text-white"
-                  onClick={() => {
-                    setEducationToEdit(education);
-                  }}
-                >
-                  Edit Education
-                </Button>
-                <Button
-                  className="bg-red-600 text-xs text-white"
-                  onClick={() => handleDeleteEducation(education.id!)}
-                >
-                  Delete
-                </Button>
+                <div className="flex gap-4">
+                  <Button
+                    className="text-xs text-blue-900"
+                    onClick={() => {
+                      setEducationToEdit(education);
+                    }}
+                  >
+                    Edit
+                  </Button>
+                  <Button
+                    className="text-red-600 text-xs"
+                    onClick={() => handleDeleteEducation(education.id!)}
+                  >
+                    Delete
+                  </Button>
+                </div>
               </div>
             );
           })}
@@ -186,7 +188,7 @@ function Resume() {
           </div>
           <div className="group flex relative">
             <Button
-              className="bg-green-700 text-xs font-normal  text-white"
+              className="text-green-700 text-xs font-normal"
               onClick={() =>
                 setProjectToEdit({
                   id: undefined,
@@ -216,20 +218,22 @@ function Resume() {
                 </div>
                 <li>{project.description}</li>
                 <li>{project.technologiesUsed}</li>
-                <Button
-                  className="bg-blue-600 text-xs text-white"
-                  onClick={() => {
-                    setProjectToEdit(project);
-                  }}
-                >
-                  Edit Project
-                </Button>
-                <Button
-                  className="bg-red-600 text-xs text-white"
-                  onClick={() => handleDeleteProject(project.id!)}
-                >
-                  Delete
-                </Button>
+                <div className="flex gap-4">
+                  <Button
+                    className="text-blue-600 text-xs"
+                    onClick={() => {
+                      setProjectToEdit(project);
+                    }}
+                  >
+                    Edit Project
+                  </Button>
+                  <Button
+                    className="text-red-600 text-xs "
+                    onClick={() => handleDeleteProject(project.id!)}
+                  >
+                    Delete
+                  </Button>
+                </div>
               </div>
             );
           })}
@@ -242,7 +246,7 @@ function Resume() {
           </div>
           <div className="group flex relative">
             <Button
-              className="bg-green-700 text-xs font-normal  text-white"
+              className="text-green-700 text-xs font-normal"
               onClick={() =>
                 setExperienceToEdit({
                   id: undefined,
@@ -282,8 +286,9 @@ function Resume() {
                 <li>{`${
                   !experience.endDate ? "current" : experience.endDate
                 }`}</li>
+                <div className="flex gap-4">
                 <Button
-                  className="bg-blue-600 text-xs text-white"
+                  className="text-blue-600 text-xs"
                   onClick={() => {
                     setExperienceToEdit(experience);
                   }}
@@ -291,11 +296,12 @@ function Resume() {
                   Edit Experience
                 </Button>
                 <Button
-                  className="bg-red-600 text-xs text-white"
+                  className="text-red-600 text-xs "
                   onClick={() => handleDeleteExperience(experience.id!)}
                 >
                   Delete
                 </Button>
+                </div>
               </div>
             );
           })}
