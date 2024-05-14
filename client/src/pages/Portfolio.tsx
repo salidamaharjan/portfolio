@@ -7,7 +7,6 @@ import {
   faEnvelopesBulk,
 } from "@fortawesome/free-solid-svg-icons";
 
-// import Resume from "./Resume";
 import AboutMe from "./AboutMe";
 
 function Portfolio() {
@@ -16,10 +15,10 @@ function Portfolio() {
   // console.log(location.pathname, "location");
   return (
     <div
-      className="flex h-dvh p-4 gap-6
+      className="md:flex flex md:flex-row flex-col-reverse p-4 gap-6
     "
     >
-      <aside className="flex sticky top-[60px] self-start left-0 flex-col pt-1 gap-5">
+      <aside className="flex flex-row justify-evenly border-t md:border-t-0 w-[100dvw] md:w-auto bg-white pb-2 md:pb-0 md:flex-col fixed bottom-0 md:sticky md:top-[60px] self-start left-0 pt-1 gap-5">
         <div
           className={`${
             location.pathname === "/portfolio/aboutme" ||
@@ -90,9 +89,8 @@ function Portfolio() {
       </aside>
       <div className="flex-1">
         {location.pathname === "/portfolio" ? (
-          <div className="w-[88dvw] h-[80dvh]">
+          <div>
             <AboutMe />
-            {/* <Resume /> */}
           </div>
         ) : (
           <Outlet />

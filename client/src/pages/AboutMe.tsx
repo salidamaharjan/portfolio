@@ -40,7 +40,7 @@ function AboutMe() {
         </div>
         <div className="flex-1 text-lg text-blue-900">
           Skills
-          <ul className="md:columns-3 columns-2 text-gray-700 list-disc pt-2 text-lg font-light">
+          <ul className="md:columns-3 columns-2 text-gray-700 list-disc ml-4 pt-2 text-lg font-light">
             <li>
               <FontAwesomeIcon icon={faJs} /> JavaScript
             </li>
@@ -91,7 +91,7 @@ function AboutMe() {
             <li>Rest API</li>
           </ul>
         </div>
-        <div className="flex flex-col text-2xl gap-2 mb-12 md:mb-0">
+        <div className="flex flex-col text-2xl gap-2 mb-16 md:mb-0">
           <div className="flex gap-2 justify-center">
             <a
               className="text-blue-900"
