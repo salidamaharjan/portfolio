@@ -29,20 +29,22 @@ function AboutMe() {
           </div>
         </div>
       </div>
-      <div className="flex flex-col text-lg gap-2 text-blue-900 font-bold">
-        About Me
-        <div className="font-light text-gray-700">
-          I am Salida Maharjan, full stack web developer. I am from Minnesota,
-          USA. Highly motivated coding boot camp graduate with a passion in web
-          development.
+      <div className="flex flex-col text-lg gap-6 text-blue-900 font-bold">
+        <div className="flex flex-col text-lg text-blue-900">
+          <div>About Me</div>
+          <div className="font-light text-gray-700">
+            I am Salida Maharjan, full stack web developer. I am from Minnesota,
+            USA. Highly motivated coding boot camp graduate with a passion in
+            web development.
+          </div>
         </div>
         <div className="flex-1 text-lg text-blue-900">
           Skills
-          <ul className="columns-3 text-gray-700 list-disc pt-2 text-lg font-light">
-            <li >
+          <ul className="md:columns-3 columns-2 text-gray-700 list-disc pt-2 text-lg font-light">
+            <li>
               <FontAwesomeIcon icon={faJs} /> JavaScript
             </li>
-            <li >
+            <li>
               <img
                 className="w-[15px] inline"
                 src="https://www.typescriptlang.org/favicon-32x32.png?v=8944a05a8b601855de116c8a56d3b3ae"
@@ -89,7 +91,7 @@ function AboutMe() {
             <li>Rest API</li>
           </ul>
         </div>
-        <div className="flex flex-col text-2xl gap-2">
+        <div className="flex flex-col text-2xl gap-2 mb-12 md:mb-0">
           <div className="flex gap-2 justify-center">
             <a
               className="text-blue-900"
