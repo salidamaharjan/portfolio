@@ -58,7 +58,7 @@ function Resume() {
 
   async function fetchEducation() {
     try {
-      const educationData = await get("http://localhost:3001/api/educations");
+      const educationData = await get(`http://localhost:3001/api/educations/user1`);
       setEducations(educationData);
       // console.log("educationData", educationData);
     } catch (err) {

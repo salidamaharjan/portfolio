@@ -1,20 +1,23 @@
 import express, { Response, Request } from "express";
 import db from "../config/db";
-import { project } from "../schema";
+import { project, user } from "../schema";
 import { eq, and } from "drizzle-orm";
 
 const projectRoutes = express.Router();
+const projectGetRoutes = express.Router();
 
-projectRoutes.get(
-  "/projects",
+projectGetRoutes.get(
+  "/projects/:username",
 
   async (req: Request, res: Response) => {
     try {
-      const loggedInUser = (req as any).user;
-      const authorizedId = loggedInUser.id;
-      const allProject = await db.query.project.findMany({
-        where: eq(project.userId, authorizedId),
+      const userProject = await db.query.user.findFirst({
+        where: eq(user.username, req.params.username),
+        with: {
+          project: true,
+        },
       });
+      const allProject = userProject?.project;
       res.status(201).json(allProject);
     } catch (err) {
       res.status(500).send(err);
@@ -89,4 +92,4 @@ projectRoutes.delete("/projects/:id", async (req: Request, res: Response) => {
   }
 });
 
-export default projectRoutes;
+export {projectRoutes, projectGetRoutes};
