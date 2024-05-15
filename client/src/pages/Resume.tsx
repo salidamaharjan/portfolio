@@ -67,7 +67,7 @@ function Resume() {
   }
   async function fetchProject() {
     try {
-      const projectData = await get("http://localhost:3001/api/projects");
+      const projectData = await get("http://localhost:3001/api/projects/user1");
       setProjects(projectData);
       // console.log("projectData", projectData);
     } catch (err) {
