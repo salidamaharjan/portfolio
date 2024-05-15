@@ -1,4 +1,4 @@
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate, useParams, useLocation } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faUserTie,
@@ -6,7 +6,6 @@ import {
   faRightToBracket,
   faUserPlus,
 } from "@fortawesome/free-solid-svg-icons";
-
 type NavbarProps = {
   className?: string;
 };
@@ -15,7 +14,7 @@ function Navbar({ className }: NavbarProps) {
   const navigate = useNavigate();
   const location = useLocation();
   const token = localStorage.getItem("token");
-
+  const { username } = useParams();
   return (
     <nav
       className={`flex justify-end text-sm z-50 lg:text-lg border-b-2 px-4 py-2 font-bold sticky top-0 bg-white ${className}`}
@@ -25,8 +24,7 @@ function Navbar({ className }: NavbarProps) {
           <div className="hover:text-green-600">
             <a
               className={`${
-                location.pathname === "/" ||
-                location.pathname === "/aboutme"
+                location.pathname.endsWith(`${username}`)
                   ? "text-green-600"
                   : ""
               }`}
@@ -51,7 +49,9 @@ function Navbar({ className }: NavbarProps) {
         <div className="flex gap-4">
           <div className="hover:text-green-600">
             <a
-              className={`${location.pathname === "/login" ? "text-green-600" : ""}`}
+              className={`${
+                location.pathname === "/login" ? "text-green-600" : ""
+              }`}
               onClick={() => {
                 navigate("/login");
               }}
