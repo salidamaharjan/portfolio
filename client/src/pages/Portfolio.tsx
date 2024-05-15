@@ -7,7 +7,7 @@ import {
   faEnvelopesBulk,
 } from "@fortawesome/free-solid-svg-icons";
 
-import AboutMe from "./AboutMe";
+// import AboutMe from "./AboutMe";
 
 function Portfolio() {
   const navigate = useNavigate();

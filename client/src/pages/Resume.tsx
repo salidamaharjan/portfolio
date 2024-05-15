@@ -1,5 +1,6 @@
 import { get, deleteEducation } from "../lib/http";
 import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faAward,
@@ -50,7 +51,7 @@ function Resume() {
   const [experienceToEdit, setExperienceToEdit] = useState<
     Experience | undefined
   >(undefined);
-  
+  const {username} = useParams();
   useEffect(() => {
     fetchEducation();
     fetchProject();
@@ -60,7 +61,7 @@ function Resume() {
   async function fetchEducation() {
     try {
       const educationData = await get(
-        `http://localhost:3001/api/educations/user1`
+        `http://localhost:3001/api/educations/${username}`
       );
       setEducations(educationData);
       // console.log("educationData", educationData);
@@ -70,7 +71,7 @@ function Resume() {
   }
   async function fetchProject() {
     try {
-      const projectData = await get("http://localhost:3001/api/projects/user1");
+      const projectData = await get(`http://localhost:3001/api/projects/${username}`);
       setProjects(projectData);
       // console.log("projectData", projectData);
     } catch (err) {
@@ -80,7 +81,7 @@ function Resume() {
   async function fetchExperience() {
     try {
       const experienceData = await get(
-        "http://localhost:3001/api/experiences/user1"
+        `http://localhost:3001/api/experiences/${username}`
       );
       setExperiences(experienceData);
       // console.log("experienceData", experienceData);
