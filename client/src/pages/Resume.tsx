@@ -119,30 +119,33 @@ function Resume() {
           <div>
             <FontAwesomeIcon icon={faAward} /> Education
           </div>
-
-          <div className="group flex relative">
-            <Button
-              className="text-green-700 font-normal text-xs"
-              onClick={() =>
-                setEducationToEdit({
-                  id: undefined,
-                  degree: "",
-                  description: "",
-                  schoolName: "",
-                  startDate: "",
-                  yearCompletion: "",
-                })
-              }
-            >
-              <FontAwesomeIcon icon={faPlus} />
-            </Button>
-            <span
-              className="group-hover:opacity-100 transition-opacity  px-1 text-xs text-green-600 rounded-md absolute top-[-30px]
+          {token ? (
+            <div className="group flex relative">
+              <Button
+                className="text-green-700 font-normal text-xs"
+                onClick={() =>
+                  setEducationToEdit({
+                    id: undefined,
+                    degree: "",
+                    description: "",
+                    schoolName: "",
+                    startDate: "",
+                    yearCompletion: "",
+                  })
+                }
+              >
+                <FontAwesomeIcon icon={faPlus} />
+              </Button>
+              <span
+                className="group-hover:opacity-100 transition-opacity  px-1 text-xs text-green-600 rounded-md absolute top-[-30px]
     -translate-x-1/2 translate-y-full opacity-0 m-4 mx-auto"
-            >
-              Add Education
-            </span>
-          </div>
+              >
+                Add Education
+              </span>
+            </div>
+          ) : (
+            <></>
+          )}
         </div>
         <div className="text-sm grid grid-cols-1 md:grid-cols-2 gap-4 text-gray-500 flex-wrap lg:text-lg ">
           {educations.map((education) => {
@@ -194,27 +197,31 @@ function Resume() {
             {" "}
             <FontAwesomeIcon icon={faDiagramProject} /> Projects
           </div>
-          <div className="group flex relative">
-            <Button
-              className="text-green-700 text-xs font-normal"
-              onClick={() =>
-                setProjectToEdit({
-                  id: undefined,
-                  projectName: "",
-                  description: "",
-                  technologiesUsed: "",
-                })
-              }
-            >
-              <FontAwesomeIcon icon={faPlus} />
-            </Button>
-            <span
-              className="group-hover:opacity-100 transition-opacity  px-1 text-xs text-green-600 rounded-md absolute top-[-25px]
+          {token ? (
+            <div className="group flex relative">
+              <Button
+                className="text-green-700 text-xs font-normal"
+                onClick={() =>
+                  setProjectToEdit({
+                    id: undefined,
+                    projectName: "",
+                    description: "",
+                    technologiesUsed: "",
+                  })
+                }
+              >
+                <FontAwesomeIcon icon={faPlus} />
+              </Button>
+              <span
+                className="group-hover:opacity-100 transition-opacity  px-1 text-xs text-green-600 rounded-md absolute top-[-25px]
     -translate-x-1/2 translate-y-full opacity-0 m-4 mx-auto"
-            >
-              Add Project
-            </span>
-          </div>
+              >
+                Add Project
+              </span>
+            </div>
+          ) : (
+            <></>
+          )}
         </div>
         <div className="text-sm text-gray-500 grid grid-cols-1 md:grid-cols-2 gap-10 flex-wrap  lg:text-lg ">
           {projects.map((project) => {
@@ -258,29 +265,33 @@ function Resume() {
           <div>
             <FontAwesomeIcon icon={faBriefcase} /> Experiences
           </div>
-          <div className="group flex relative">
-            <Button
-              className="text-green-700 text-xs font-normal"
-              onClick={() =>
-                setExperienceToEdit({
-                  id: undefined,
-                  title: "",
-                  company: "",
-                  jobDescription: "",
-                  startDate: "",
-                  endDate: "",
-                })
-              }
-            >
-              <FontAwesomeIcon icon={faPlus} />
-            </Button>
-            <span
-              className="group-hover:opacity-100 transition-opacity  px-1 text-xs text-green-600 rounded-md absolute top-[-30px]
+          {token ? (
+            <div className="group flex relative">
+              <Button
+                className="text-green-700 text-xs font-normal"
+                onClick={() =>
+                  setExperienceToEdit({
+                    id: undefined,
+                    title: "",
+                    company: "",
+                    jobDescription: "",
+                    startDate: "",
+                    endDate: "",
+                  })
+                }
+              >
+                <FontAwesomeIcon icon={faPlus} />
+              </Button>
+              <span
+                className="group-hover:opacity-100 transition-opacity  px-1 text-xs text-green-600 rounded-md absolute top-[-30px]
     -translate-x-1/2 translate-y-full opacity-0 m-4 mx-auto"
-            >
-              Add Experience
-            </span>
-          </div>
+              >
+                Add Experience
+              </span>
+            </div>
+          ) : (
+            <></>
+          )}
         </div>
         <div className="text-sm text-gray-500 grid grid-cols-1 md:grid-cols-2 gap-10 flex-wrap lg:text-lg ">
           {experiences.map((experience) => {
