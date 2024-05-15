@@ -23,7 +23,7 @@ function Form({ title }: FormProps) {
     });
     // console.log("login data", data);
     localStorage.setItem("token", data.accessToken);
-    navigate("/");
+    navigate(`/u/${username}`);
     setUsername("");
     setPassword("");
   }
@@ -34,7 +34,7 @@ function Form({ title }: FormProps) {
     });
     // console.log("signup data", data);
     localStorage.setItem("token", data.accessToken);
-    navigate("/");
+    navigate(`/u/${username}`);
     setUsername("");
     setPassword("");
   }

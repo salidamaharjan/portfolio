@@ -26,7 +26,7 @@ loginRoutes.post("/login", async (req: Request, res: Response) => {
       return;
     }
     const token = jwt.sign(
-      { id: findRequestedUser.id },
+      { id: findRequestedUser.id, username: findRequestedUser.username },
       process.env.SECRET_KEY!,
       {
         expiresIn: process.env.JWT_TOKEN_EXPIRATION,

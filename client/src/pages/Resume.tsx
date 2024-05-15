@@ -13,7 +13,7 @@ import EducationForm from "../component/EducationForm";
 import ExperienceForm from "../component/ExperienceForm";
 import ProjectForm from "../component/ProjectForm";
 import { faPlus } from "@fortawesome/free-solid-svg-icons/faPlus";
-
+import { jwtDecode } from "jwt-decode";
 export type Education = {
   id?: number;
   degree: string;
@@ -51,13 +51,16 @@ function Resume() {
   const [experienceToEdit, setExperienceToEdit] = useState<
     Experience | undefined
   >(undefined);
-  const {username} = useParams();
+  const { username } = useParams();
   useEffect(() => {
     fetchEducation();
     fetchProject();
     fetchExperience();
   }, []);
   const token = localStorage.getItem("token");
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const decoded = jwtDecode(token || "") as any;
+  console.log("decoded", decoded);
   async function fetchEducation() {
     try {
       const educationData = await get(
@@ -71,7 +74,9 @@ function Resume() {
   }
   async function fetchProject() {
     try {
-      const projectData = await get(`http://localhost:3001/api/projects/${username}`);
+      const projectData = await get(
+        `http://localhost:3001/api/projects/${username}`
+      );
       setProjects(projectData);
       // console.log("projectData", projectData);
     } catch (err) {
@@ -121,7 +126,7 @@ function Resume() {
           <div>
             <FontAwesomeIcon icon={faAward} /> Education
           </div>
-          {token ? (
+          {decoded.username === username ? (
             <div className="group flex relative">
               <Button
                 className="text-green-700 font-normal text-xs"
@@ -168,7 +173,7 @@ function Resume() {
                   </div>
                   <li className="text-xs">{education.description}</li>
                 </div>
-                {token ? (
+                {decoded.username === username ? (
                   <div className="flex mt-2 gap-4">
                     <Button
                       className="text-xs font-normal text-blue-900"
@@ -199,7 +204,7 @@ function Resume() {
             {" "}
             <FontAwesomeIcon icon={faDiagramProject} /> Projects
           </div>
-          {token ? (
+          {decoded.username === username ? (
             <div className="group flex relative">
               <Button
                 className="text-green-700 text-xs font-normal"
@@ -237,7 +242,7 @@ function Resume() {
                   <li>{project.description}</li>
                   <li>{project.technologiesUsed}</li>
                 </div>
-                {token ? (
+                {decoded.username === username ? (
                   <div className="flex mt-2  gap-4">
                     <Button
                       className="text-blue-900 font-normal text-xs"
@@ -267,7 +272,7 @@ function Resume() {
           <div>
             <FontAwesomeIcon icon={faBriefcase} /> Experiences
           </div>
-          {token ? (
+          {decoded.username === username ? (
             <div className="group flex relative">
               <Button
                 className="text-green-700 text-xs font-normal"
@@ -312,7 +317,7 @@ function Resume() {
                   </div>
                   <li className="text-xs">{experience.jobDescription}</li>
                 </div>
-                {token ? (
+                {decoded.username === username ? (
                   <div className="flex mt-2 gap-4">
                     <Button
                       className="text-blue-900 font-normal text-xs"

@@ -12,9 +12,9 @@ import {
 function Portfolio() {
   const navigate = useNavigate();
   const location = useLocation();
-  console.log(location.pathname, "location");
+  // console.log(location.pathname, "location");
   const { username } = useParams();
-  console.log(username, "username");
+  // console.log(username, "username");
   return (
     <div
       className="md:flex flex md:flex-row flex-col-reverse p-4 gap-6

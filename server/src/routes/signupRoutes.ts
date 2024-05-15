@@ -22,7 +22,7 @@ signupRoutes.post("/signup", async (req: Request, res: Response) => {
       .insert(user)
       .values({ username, password: await bcrypt.hash(password, 15) })
       .returning({ id: user.id, username: user.username});
-    const token = jwt.sign({ id: newUser[0].id }, process.env.SECRET_KEY!, {
+    const token = jwt.sign({ id: newUser[0].id, username: newUser[0].username }, process.env.SECRET_KEY!, {
       expiresIn: process.env.JWT_TOKEN_EXPIRATION,
     });
     res.status(201).send({
