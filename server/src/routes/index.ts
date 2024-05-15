@@ -4,7 +4,7 @@ import { educationRoutes, educationGetRoutes } from "./educationRoutes";
 import { projectRoutes, projectGetRoutes } from "./projectRoutes";
 import signupRoutes from "./signupRoutes";
 import loginRoutes from "./loginRoutes";
-import experienceRoutes from "./experienceRoutes";
+import { experienceRoutes, experienceGetRoutes } from "./experienceRoutes";
 import authOr401Middleware from "../auth";
 const router = express.Router();
 
@@ -13,6 +13,7 @@ router.use(
   signupRoutes,
   educationGetRoutes,
   projectGetRoutes,
+  experienceGetRoutes,
   loginRoutes
 );
 router.use(

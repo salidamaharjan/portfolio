@@ -77,7 +77,7 @@ function Resume() {
 
   async function fetchExperience() {
     try {
-      const experienceData = await get("http://localhost:3001/api/experiences");
+      const experienceData = await get("http://localhost:3001/api/experiences/user1");
       setExperiences(experienceData);
       // console.log("experienceData", experienceData);
     } catch (err) {

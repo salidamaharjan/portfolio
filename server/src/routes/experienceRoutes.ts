@@ -99,4 +99,4 @@ experienceRoutes.delete(
     }
   }
 );
-export default experienceRoutes;
+export { experienceRoutes, experienceGetRoutes };
