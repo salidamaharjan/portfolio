@@ -1,20 +1,23 @@
 import express, { Response, Request } from "express";
 import db from "../config/db";
-import { experience } from "../schema";
+import { experience, user } from "../schema";
 import { eq, and } from "drizzle-orm";
 
 const experienceRoutes = express.Router();
+const experienceGetRoutes = express.Router();
 
 experienceRoutes.get(
-  "/experiences",
+  "/experiences/:username",
 
   async (req: Request, res: Response) => {
     try {
-      const loggedInUser = (req as any).user;
-      const authorizedId = loggedInUser.id;
-      const allExperience = await db.query.experience.findMany({
-        where: eq(experience.userId, authorizedId),
+      const userExperience = await db.query.user.findFirst({
+        where: eq(user.username, req.params.username),
+        with: {
+          experience: true,
+        },
       });
+      const allExperience = userExperience?.experience;
       res.status(200).json(allExperience);
     } catch (err) {
       res.status(500).json({ message: err });
