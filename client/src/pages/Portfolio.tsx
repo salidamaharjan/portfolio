@@ -1,4 +1,4 @@
-import { useNavigate, useLocation, Outlet, useParams} from "react-router-dom";
+import { useNavigate, useLocation, Outlet, useParams } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faImagePortrait,
@@ -23,30 +23,29 @@ function Portfolio() {
       <aside className="flex flex-row justify-evenly border-t md:border-t-0 w-[100dvw] md:w-auto bg-white pb-2 md:pb-0 md:flex-col fixed bottom-0 md:sticky md:top-[60px] self-start left-0 pt-1 gap-5">
         <div
           className={`${
-            location.pathname === "/aboutme" ||
-            location.pathname === "/"
+            location.pathname.endsWith(username || "")
               ? "flex flex-col text-green-600"
               : "flex flex-col"
           }`}
           onClick={() => {
-            navigate("/aboutme");
+            navigate("");
           }}
         >
           <div className="flex flex-col hover:text-green-600">
             <FontAwesomeIcon icon={faImagePortrait} />
             <span className="text-xs hover:text-green-600 text-center">
-              About
+              About Me
             </span>
           </div>
         </div>
         <div
           className={`${
-            location.pathname === "/resume"
+            location.pathname.endsWith("/resume")
               ? "flex flex-col text-green-600"
               : "flex flex-col"
           }`}
           onClick={() => {
-            navigate("/resume");
+            navigate("resume");
           }}
         >
           <div className="flex flex-col hover:text-green-600">
@@ -58,12 +57,12 @@ function Portfolio() {
         </div>
         <div
           className={`${
-            location.pathname === "/works"
+            location.pathname.endsWith("/works")
               ? "flex flex-col text-green-600"
               : "flex flex-col"
           }`}
           onClick={() => {
-            navigate("/works");
+            navigate("works");
           }}
         >
           <div className="flex flex-col hover:text-green-600">
@@ -75,12 +74,12 @@ function Portfolio() {
         </div>
         <div
           className={`${
-            location.pathname === "/contact"
+            location.pathname.endsWith("/contact")
               ? "flex flex-col text-green-600"
               : "flex flex-col"
           }`}
           onClick={() => {
-            navigate("/contact");
+            navigate("contact");
           }}
         >
           <div className="flex flex-col hover:text-green-600">
@@ -95,7 +94,7 @@ function Portfolio() {
             <AboutMe />
           </div>
         ) : ( */}
-          <Outlet />
+        <Outlet />
         {/* )} */}
       </div>
     </div>
