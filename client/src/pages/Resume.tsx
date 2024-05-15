@@ -64,7 +64,7 @@ function Resume() {
   async function fetchEducation() {
     try {
       const educationData = await get(
-        `http://localhost:3001/api/educations/${username}`
+        `http://localhost:3001/api/educations/${username || "user1"}`
       );
       setEducations(educationData);
       // console.log("educationData", educationData);
@@ -75,7 +75,7 @@ function Resume() {
   async function fetchProject() {
     try {
       const projectData = await get(
-        `http://localhost:3001/api/projects/${username}`
+        `http://localhost:3001/api/projects/${username || "user1"}`
       );
       setProjects(projectData);
       // console.log("projectData", projectData);
@@ -86,7 +86,7 @@ function Resume() {
   async function fetchExperience() {
     try {
       const experienceData = await get(
-        `http://localhost:3001/api/experiences/${username}`
+        `http://localhost:3001/api/experiences/${username || "user1"}`
       );
       setExperiences(experienceData);
       // console.log("experienceData", experienceData);

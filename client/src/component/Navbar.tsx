@@ -31,7 +31,7 @@ function Navbar({ className }: NavbarProps) {
                   : ""
               }`}
               onClick={() => {
-                navigate("/");
+                navigate("");
               }}
             >
               <FontAwesomeIcon icon={faUserTie} /> Portfolio

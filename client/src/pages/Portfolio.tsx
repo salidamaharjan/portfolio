@@ -1,5 +1,12 @@
-import { useNavigate, useLocation, Outlet, useParams } from "react-router-dom";
+import {
+  redirect,
+  useNavigate,
+  useLocation,
+  Outlet,
+  useParams,
+} from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useEffect } from "react";
 import {
   faImagePortrait,
   faRectangleList,
@@ -7,23 +14,24 @@ import {
   faEnvelopesBulk,
 } from "@fortawesome/free-solid-svg-icons";
 
-// import AboutMe from "./AboutMe";
-
 function Portfolio() {
   const navigate = useNavigate();
   const location = useLocation();
-  // console.log(location.pathname, "location");
   const { username } = useParams();
-  // console.log(username, "username");
+
+  useEffect(() => {
+    // For now default profile is set to my user 
+    if (!username) {
+      navigate("/u/user1");
+    }
+  }, [username, navigate]);
+
   return (
-    <div
-      className="md:flex flex md:flex-row flex-col-reverse p-4 gap-6
-    "
-    >
+    <div className="md:flex flex md:flex-row flex-col-reverse p-4 gap-6">
       <aside className="flex flex-row justify-evenly border-t md:border-t-0 w-[100dvw] md:w-auto bg-white pb-2 md:pb-0 md:flex-col fixed bottom-0 md:sticky md:top-[60px] self-start left-0 pt-1 gap-5">
         <div
           className={`${
-            location.pathname.endsWith(username || "")
+            location.pathname.endsWith(username || "user1")
               ? "flex flex-col text-green-600"
               : "flex flex-col"
           }`}
