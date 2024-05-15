@@ -55,10 +55,12 @@ function Resume() {
     fetchProject();
     fetchExperience();
   }, []);
-
+  const token = localStorage.getItem("token");
   async function fetchEducation() {
     try {
-      const educationData = await get(`http://localhost:3001/api/educations/user1`);
+      const educationData = await get(
+        `http://localhost:3001/api/educations/user1`
+      );
       setEducations(educationData);
       // console.log("educationData", educationData);
     } catch (err) {
@@ -74,17 +76,17 @@ function Resume() {
       console.log("err", err);
     }
   }
-
   async function fetchExperience() {
     try {
-      const experienceData = await get("http://localhost:3001/api/experiences/user1");
+      const experienceData = await get(
+        "http://localhost:3001/api/experiences/user1"
+      );
       setExperiences(experienceData);
       // console.log("experienceData", experienceData);
     } catch (err) {
       console.log("err", err);
     }
   }
-
   async function handleDeleteEducation(id: number) {
     try {
       await deleteEducation(`http://localhost:3001/api/educations/${id}`);
@@ -101,7 +103,6 @@ function Resume() {
       console.log("err", err);
     }
   }
-
   async function handleDeleteProject(id: number) {
     try {
       await deleteEducation(`http://localhost:3001/api/projects/${id}`);
@@ -162,22 +163,26 @@ function Resume() {
                   </div>
                   <li className="text-xs">{education.description}</li>
                 </div>
-                <div className="flex mt-2 gap-4">
-                  <Button
-                    className="text-xs font-normal text-blue-900"
-                    onClick={() => {
-                      setEducationToEdit(education);
-                    }}
-                  >
-                    Edit
-                  </Button>
-                  <Button
-                    className="text-red-600 font-normal text-xs"
-                    onClick={() => handleDeleteEducation(education.id!)}
-                  >
-                    Delete
-                  </Button>
-                </div>
+                {token ? (
+                  <div className="flex mt-2 gap-4">
+                    <Button
+                      className="text-xs font-normal text-blue-900"
+                      onClick={() => {
+                        setEducationToEdit(education);
+                      }}
+                    >
+                      Edit
+                    </Button>
+                    <Button
+                      className="text-red-600 font-normal text-xs"
+                      onClick={() => handleDeleteEducation(education.id!)}
+                    >
+                      Delete
+                    </Button>
+                  </div>
+                ) : (
+                  <></>
+                )}
               </div>
             );
           })}
@@ -223,22 +228,26 @@ function Resume() {
                   <li>{project.description}</li>
                   <li>{project.technologiesUsed}</li>
                 </div>
-                <div className="flex mt-2  gap-4">
-                  <Button
-                    className="text-blue-900 font-normal text-xs"
-                    onClick={() => {
-                      setProjectToEdit(project);
-                    }}
-                  >
-                    Edit
-                  </Button>
-                  <Button
-                    className="text-red-600 font-normal text-xs "
-                    onClick={() => handleDeleteProject(project.id!)}
-                  >
-                    Delete
-                  </Button>
-                </div>
+                {token ? (
+                  <div className="flex mt-2  gap-4">
+                    <Button
+                      className="text-blue-900 font-normal text-xs"
+                      onClick={() => {
+                        setProjectToEdit(project);
+                      }}
+                    >
+                      Edit
+                    </Button>
+                    <Button
+                      className="text-red-600 font-normal text-xs "
+                      onClick={() => handleDeleteProject(project.id!)}
+                    >
+                      Delete
+                    </Button>
+                  </div>
+                ) : (
+                  <></>
+                )}
               </div>
             );
           })}
@@ -290,22 +299,26 @@ function Resume() {
                   </div>
                   <li className="text-xs">{experience.jobDescription}</li>
                 </div>
-                <div className="flex mt-2 gap-4">
-                  <Button
-                    className="text-blue-900 font-normal text-xs"
-                    onClick={() => {
-                      setExperienceToEdit(experience);
-                    }}
-                  >
-                    Edit
-                  </Button>
-                  <Button
-                    className="text-red-600 font-normal text-xs "
-                    onClick={() => handleDeleteExperience(experience.id!)}
-                  >
-                    Delete
-                  </Button>
-                </div>
+                {token ? (
+                  <div className="flex mt-2 gap-4">
+                    <Button
+                      className="text-blue-900 font-normal text-xs"
+                      onClick={() => {
+                        setExperienceToEdit(experience);
+                      }}
+                    >
+                      Edit
+                    </Button>
+                    <Button
+                      className="text-red-600 font-normal text-xs "
+                      onClick={() => handleDeleteExperience(experience.id!)}
+                    >
+                      Delete
+                    </Button>
+                  </div>
+                ) : (
+                  <></>
+                )}
               </div>
             );
           })}
