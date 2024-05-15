@@ -1,4 +1,4 @@
-import { useNavigate, useLocation, Outlet } from "react-router-dom";
+import { useNavigate, useLocation, Outlet, useParams} from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faImagePortrait,
@@ -12,7 +12,9 @@ import AboutMe from "./AboutMe";
 function Portfolio() {
   const navigate = useNavigate();
   const location = useLocation();
-  // console.log(location.pathname, "location");
+  console.log(location.pathname, "location");
+  const { username } = useParams();
+  console.log(username, "username");
   return (
     <div
       className="md:flex flex md:flex-row flex-col-reverse p-4 gap-6
@@ -88,13 +90,13 @@ function Portfolio() {
         </div>
       </aside>
       <div className="flex-1">
-        {location.pathname === "/" ? (
+        {/* {location.pathname === "/" ? (
           <div>
             <AboutMe />
           </div>
-        ) : (
+        ) : ( */}
           <Outlet />
-        )}
+        {/* )} */}
       </div>
     </div>
   );

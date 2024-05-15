@@ -50,6 +50,7 @@ function Resume() {
   const [experienceToEdit, setExperienceToEdit] = useState<
     Experience | undefined
   >(undefined);
+  
   useEffect(() => {
     fetchEducation();
     fetchProject();

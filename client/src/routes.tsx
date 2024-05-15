@@ -43,6 +43,28 @@ const router = createBrowserRouter([
           },
         ],
       },
+      {
+        path: "/u/:username",
+        element: <Portfolio />,
+        children: [
+          {
+            path: "resume",
+            element: <Resume />,
+          },
+          {
+            path: "",
+            element: <AboutMe />,
+          },
+          {
+            path: "works",
+            element: <Works />,
+          },
+          {
+            path: "contact",
+            element: <Contact />,
+          },
+        ],
+      },
     ],
   },
 ]);
