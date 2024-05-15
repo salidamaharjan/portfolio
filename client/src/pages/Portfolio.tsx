@@ -1,5 +1,4 @@
 import {
-  redirect,
   useNavigate,
   useLocation,
   Outlet,
@@ -13,6 +12,7 @@ import {
   faDiagramProject,
   faEnvelopesBulk,
 } from "@fortawesome/free-solid-svg-icons";
+import clsx from "clsx";
 
 function Portfolio() {
   const navigate = useNavigate();
@@ -20,7 +20,7 @@ function Portfolio() {
   const { username } = useParams();
 
   useEffect(() => {
-    // For now default profile is set to my user 
+    // For now default profile is set to my user
     if (!username) {
       navigate("/u/user1");
     }
@@ -30,14 +30,10 @@ function Portfolio() {
     <div className="md:flex flex md:flex-row flex-col-reverse p-4 gap-6">
       <aside className="flex flex-row justify-evenly border-t md:border-t-0 w-[100dvw] md:w-auto bg-white pb-2 md:pb-0 md:flex-col fixed bottom-0 md:sticky md:top-[60px] self-start left-0 pt-1 gap-5">
         <div
-          className={`${
-            location.pathname.endsWith(username || "user1")
-              ? "flex flex-col text-green-600"
-              : "flex flex-col"
-          }`}
-          onClick={() => {
-            navigate("");
-          }}
+          className={clsx("flex flex-col", {
+            "text-green-600": location.pathname.endsWith(username || "/"),
+          })}
+          onClick={() => navigate("")}
         >
           <div className="flex flex-col hover:text-green-600">
             <FontAwesomeIcon icon={faImagePortrait} />
@@ -47,14 +43,10 @@ function Portfolio() {
           </div>
         </div>
         <div
-          className={`${
-            location.pathname.endsWith("/resume")
-              ? "flex flex-col text-green-600"
-              : "flex flex-col"
-          }`}
-          onClick={() => {
-            navigate("resume");
-          }}
+          className={clsx("flex flex-col", {
+            "text-green-600": location.pathname.endsWith("/resume"),
+          })}
+          onClick={() => navigate("resume")}
         >
           <div className="flex flex-col hover:text-green-600">
             <FontAwesomeIcon icon={faRectangleList} />
@@ -64,14 +56,10 @@ function Portfolio() {
           </div>
         </div>
         <div
-          className={`${
-            location.pathname.endsWith("/works")
-              ? "flex flex-col text-green-600"
-              : "flex flex-col"
-          }`}
-          onClick={() => {
-            navigate("works");
-          }}
+          className={clsx("flex flex-col", {
+            "text-green-600": location.pathname.endsWith("/works"),
+          })}
+          onClick={() => navigate("works")}
         >
           <div className="flex flex-col hover:text-green-600">
             <FontAwesomeIcon icon={faDiagramProject} />
@@ -81,14 +69,10 @@ function Portfolio() {
           </div>
         </div>
         <div
-          className={`${
-            location.pathname.endsWith("/contact")
-              ? "flex flex-col text-green-600"
-              : "flex flex-col"
-          }`}
-          onClick={() => {
-            navigate("contact");
-          }}
+          className={clsx("flex flex-col", {
+            "text-green-600": location.pathname.endsWith("/contact"),
+          })}
+          onClick={() => navigate("contact")}
         >
           <div className="flex flex-col hover:text-green-600">
             <FontAwesomeIcon icon={faEnvelopesBulk} />
@@ -97,13 +81,7 @@ function Portfolio() {
         </div>
       </aside>
       <div className="flex-1">
-        {/* {location.pathname === "/" ? (
-          <div>
-            <AboutMe />
-          </div>
-        ) : ( */}
         <Outlet />
-        {/* )} */}
       </div>
     </div>
   );

@@ -6,6 +6,8 @@ import {
   faRightToBracket,
   faUserPlus,
 } from "@fortawesome/free-solid-svg-icons";
+import clsx from "clsx";
+
 type NavbarProps = {
   className?: string;
 };
@@ -23,14 +25,10 @@ function Navbar({ className }: NavbarProps) {
         <div className="flex gap-4">
           <div className="hover:text-green-600">
             <a
-              className={`${
-                location.pathname.endsWith(`${username}`)
-                  ? "text-green-600"
-                  : ""
-              }`}
-              onClick={() => {
-                navigate("");
-              }}
+              className={clsx({
+                "text-green-600": location.pathname.endsWith(`${username}`),
+              })}
+              onClick={() => navigate("")}
             >
               <FontAwesomeIcon icon={faUserTie} /> Portfolio
             </a>
@@ -49,24 +47,20 @@ function Navbar({ className }: NavbarProps) {
         <div className="flex gap-4">
           <div className="hover:text-green-600">
             <a
-              className={`${
-                location.pathname === "/login" ? "text-green-600" : ""
-              }`}
-              onClick={() => {
-                navigate("/login");
-              }}
+              className={clsx({
+                "text-green-600": location.pathname === "/login",
+              })}
+              onClick={() => navigate("/login")}
             >
               <FontAwesomeIcon icon={faRightToBracket} /> Login
             </a>
           </div>
           <div className="hover:text-green-600">
             <a
-              className={`${
-                location.pathname === "/signup" ? "text-green-600" : ""
-              }`}
-              onClick={() => {
-                navigate("/signup");
-              }}
+              className={clsx({
+                "text-green-600": location.pathname === "/signup",
+              })}
+              onClick={() => navigate("/signup")}
             >
               <FontAwesomeIcon icon={faUserPlus} /> Signup
             </a>
