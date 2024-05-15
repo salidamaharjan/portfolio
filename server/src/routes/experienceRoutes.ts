@@ -6,7 +6,7 @@ import { eq, and } from "drizzle-orm";
 const experienceRoutes = express.Router();
 const experienceGetRoutes = express.Router();
 
-experienceRoutes.get(
+experienceGetRoutes.get(
   "/experiences/:username",
 
   async (req: Request, res: Response) => {
