@@ -3,19 +3,26 @@ import { get } from "../lib/http";
 import {
   faGithub,
   faLinkedin,
-  faReact,
+  // faReact,
 } from "@fortawesome/free-brands-svg-icons";
 import Button from "../component/ui/Button";
-import { faVuejs } from "@fortawesome/free-brands-svg-icons/faVuejs";
-import { faJs } from "@fortawesome/free-brands-svg-icons/faJs";
-import { faNodeJs } from "@fortawesome/free-brands-svg-icons/faNodeJs";
+// import { faVuejs } from "@fortawesome/free-brands-svg-icons/faVuejs";
+// import { faJs } from "@fortawesome/free-brands-svg-icons/faJs";
+// import { faNodeJs } from "@fortawesome/free-brands-svg-icons/faNodeJs";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 
+type Skill = {
+  id?: number;
+  skillName: string;
+};
+
 function AboutMe() {
   const [aboutMe, setAboutMe] = useState("");
+  const [skills, setSkills] = useState<Skill[]>([]);
   useEffect(() => {
     fetchAboutMe();
+    fetchSkill();
   }, []);
   const { username } = useParams();
 
@@ -27,6 +34,18 @@ function AboutMe() {
       setAboutMe(aboutMeData.description);
     } catch (err) {
       console.log("err", err);
+    }
+  }
+
+  async function fetchSkill() {
+    try {
+      const skillsData = await get(
+        `http://localhost:3001/api/skill/${username || "user1"}`
+      );
+      console.log("skillsData", skillsData);
+      setSkills(skillsData);
+    } catch (err) {
+      console.log(err);
     }
   }
   return (
@@ -56,6 +75,20 @@ function AboutMe() {
         <div className="flex-1 text-lg text-blue-900">
           Skills
           <ul className="md:columns-3 columns-2 text-gray-700 list-disc ml-4 pt-2 text-lg font-light">
+            {skills.map((skill) => {
+              return (
+                <li key={skill.id}>
+                  <img
+                    className="w-[15px] inline"
+                    src="https://www.typescriptlang.org/favicon-32x32.png?v=8944a05a8b601855de116c8a56d3b3ae"
+                    alt="TypeScript"
+                  />{" "}
+                  {skill.skillName}
+                </li>
+              );
+            })}
+          </ul>
+          {/* <ul className="md:columns-3 columns-2 text-gray-700 list-disc ml-4 pt-2 text-lg font-light">
             <li>
               <FontAwesomeIcon icon={faJs} /> JavaScript
             </li>
@@ -104,7 +137,7 @@ function AboutMe() {
             </li>
             <li>SQL</li>
             <li>Rest API</li>
-          </ul>
+          </ul> */}
         </div>
         <div className="flex flex-col text-2xl gap-2 mb-16 md:mb-0">
           <div className="flex gap-2 justify-center">
