@@ -24,10 +24,11 @@ export const user = pgTable("user", {
     .$onUpdateFn(() => new Date())
     .notNull(),
 });
-export const userRelations = relations(user, ({ many }) => ({
+export const userRelations = relations(user, ({ many, one }) => ({
   education: many(education),
   project: many(project),
   experience: many(experience),
+  aboutMe: one(aboutMe),
 }));
 
 export const education = pgTable("education", {
@@ -89,3 +90,10 @@ export const aboutMe = pgTable("aboutMe", {
     .references(() => user.id, { onDelete: "cascade" })
     .notNull(),
 });
+
+export const aboutMeRelations = relations(aboutMe, ({ one }) => ({
+  user: one(user, {
+    fields: [aboutMe.userId],
+    references: [user.id],
+  }),
+}));
