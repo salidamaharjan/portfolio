@@ -7,12 +7,14 @@ import loginRoutes from "./loginRoutes";
 import { aboutMeGetRoutes } from "./aboutMeRoutes";
 import { experienceRoutes, experienceGetRoutes } from "./experienceRoutes";
 import authOr401Middleware from "../auth";
+import { skillGetRoutes } from "./skillRoutes";
 const router = express.Router();
 
 router.use(
   "/api",
   signupRoutes,
   educationGetRoutes,
+  skillGetRoutes,
   aboutMeGetRoutes,
   projectGetRoutes,
   experienceGetRoutes,

@@ -29,7 +29,7 @@ export const userRelations = relations(user, ({ many, one }) => ({
   project: many(project),
   experience: many(experience),
   aboutMe: one(aboutMe),
-  skill: one(skill),
+  skill: many(skill),
 }));
 
 export const education = pgTable("education", {
