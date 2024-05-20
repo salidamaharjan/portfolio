@@ -29,6 +29,7 @@ export const userRelations = relations(user, ({ many, one }) => ({
   project: many(project),
   experience: many(experience),
   aboutMe: one(aboutMe),
+  skill: one(skill),
 }));
 
 export const education = pgTable("education", {
@@ -98,10 +99,17 @@ export const aboutMeRelations = relations(aboutMe, ({ one }) => ({
   }),
 }));
 
-export const skills = pgTable("skills", {
+export const skill = pgTable("skill", {
   id: serial("id").primaryKey(),
   skillName: varchar("skillName", { length: 500 }),
   userId: integer("user_id")
     .references(() => user.id, { onDelete: "cascade" })
     .notNull(),
 });
+
+export const skillRelations = relations(skill, ({ one }) => ({
+  user: one(user, {
+    fields: [skill.userId],
+    references: [user.id],
+  }),
+}));
