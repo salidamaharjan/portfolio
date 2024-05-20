@@ -22,9 +22,9 @@ function AboutMe() {
   async function fetchAboutMe() {
     try {
       const aboutMeData = await get(
-        `http://localhost:3001/api/aboutMe/${username} || "user1"`
+        `http://localhost:3001/api/aboutMe/${username || "user1"}`
       );
-      setAboutMe(aboutMeData);
+      setAboutMe(aboutMeData.description);
       console.log("aboutMe", aboutMe);
     } catch (err) {
       console.log("err", err);
@@ -53,6 +53,7 @@ function AboutMe() {
         <div className="flex flex-col text-lg text-blue-900">
           <div>About Me</div>
           <div className="font-light text-gray-700">
+            {aboutMe}
             {/* I am Salida Maharjan, full stack web developer. I am from Minnesota,
             USA. Highly motivated coding boot camp graduate with a passion in
             web development. */}
