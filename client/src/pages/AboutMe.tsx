@@ -25,7 +25,6 @@ function AboutMe() {
         `http://localhost:3001/api/aboutMe/${username || "user1"}`
       );
       setAboutMe(aboutMeData.description);
-      console.log("aboutMe", aboutMe);
     } catch (err) {
       console.log("err", err);
     }
@@ -52,12 +51,7 @@ function AboutMe() {
       <div className="flex flex-col text-lg gap-6 text-blue-900 font-bold">
         <div className="flex flex-col text-lg text-blue-900">
           <div>About Me</div>
-          <div className="font-light text-gray-700">
-            {aboutMe}
-            {/* I am Salida Maharjan, full stack web developer. I am from Minnesota,
-            USA. Highly motivated coding boot camp graduate with a passion in
-            web development. */}
-          </div>
+          <div className="font-light text-gray-700">{aboutMe}</div>
         </div>
         <div className="flex-1 text-lg text-blue-900">
           Skills
