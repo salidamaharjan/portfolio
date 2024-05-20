@@ -60,7 +60,7 @@ function Resume() {
   const token = localStorage.getItem("token");
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const decoded = jwtDecode(token || "") as any;
-  console.log("decoded", decoded);
+  // console.log("decoded", decoded);
   async function fetchEducation() {
     try {
       const educationData = await get(

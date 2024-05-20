@@ -1,4 +1,5 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { get } from "../lib/http";
 import {
   faGithub,
   faLinkedin,
@@ -8,7 +9,27 @@ import Button from "../component/ui/Button";
 import { faVuejs } from "@fortawesome/free-brands-svg-icons/faVuejs";
 import { faJs } from "@fortawesome/free-brands-svg-icons/faJs";
 import { faNodeJs } from "@fortawesome/free-brands-svg-icons/faNodeJs";
+import { useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
+
 function AboutMe() {
+  const [aboutMe, setAboutMe] = useState("");
+  useEffect(() => {
+    fetchAboutMe();
+  }, []);
+  const { username } = useParams();
+
+  async function fetchAboutMe() {
+    try {
+      const aboutMeData = await get(
+        `http://localhost:3001/api/aboutMe/${username} || "user1"`
+      );
+      setAboutMe(aboutMeData);
+      console.log("aboutMe", aboutMe);
+    } catch (err) {
+      console.log("err", err);
+    }
+  }
   return (
     <div className="grid md:grid-cols-2 h-[630px] gap-6">
       <div className="flex flex-col gap-4">
@@ -32,9 +53,9 @@ function AboutMe() {
         <div className="flex flex-col text-lg text-blue-900">
           <div>About Me</div>
           <div className="font-light text-gray-700">
-            I am Salida Maharjan, full stack web developer. I am from Minnesota,
+            {/* I am Salida Maharjan, full stack web developer. I am from Minnesota,
             USA. Highly motivated coding boot camp graduate with a passion in
-            web development.
+            web development. */}
           </div>
         </div>
         <div className="flex-1 text-lg text-blue-900">

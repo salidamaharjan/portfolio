@@ -1,4 +1,4 @@
-import { useNavigate, useLocation, Outlet, useParams } from "react-router-dom";
+import { useNavigate, Outlet, useParams } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect } from "react";
 import {
@@ -7,13 +7,10 @@ import {
   faDiagramProject,
   faEnvelopesBulk,
 } from "@fortawesome/free-solid-svg-icons";
-import clsx from "clsx";
 import AsideLinks from "../component/AsideLinks";
-import Contact from "./Contact";
 
 function Portfolio() {
   const navigate = useNavigate();
-  const location = useLocation();
   const { username } = useParams();
 
   useEffect(() => {
