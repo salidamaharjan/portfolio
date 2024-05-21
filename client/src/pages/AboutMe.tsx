@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { get, post } from "../lib/http";
+import { get, deleteItem } from "../lib/http";
 import {
   faGithub,
   faLinkedin,
@@ -24,6 +24,7 @@ function AboutMe() {
   const [aboutMe, setAboutMe] = useState("");
   const [skills, setSkills] = useState<Skill[]>([]);
   const [isOpen, setIsOpen] = useState(Boolean);
+  const [showX, setShowX] = useState(Boolean);
   useEffect(() => {
     fetchAboutMe();
     fetchSkill();
@@ -48,10 +49,13 @@ function AboutMe() {
       );
       // console.log("skillsData", skillsData);
       setSkills(skillsData);
+      setShowX(false);
     } catch (err) {
       console.log(err);
     }
   }
+  async function handleXClick() {}
+
   return (
     <div className="grid md:grid-cols-2 h-[630px] gap-6">
       <div className="flex flex-col gap-4">
@@ -92,13 +96,31 @@ function AboutMe() {
           </div>
           <ul className="md:columns-3 columns-2 text-gray-700 list-disc ml-4 pt-2 text-lg font-light">
             {skills.map((skill) => {
-              console.log(skill.iconURL);
+              // console.log(skill.iconURL);
               return (
                 <li className="text-md" key={skill.id}>
                   {skill.iconURL && (
-                    <img className="w-[15px] inline" src={`${skill.iconURL}`} />
+                    <img
+                      className="w-[25px] h-[25px] inline"
+                      src={`${skill.iconURL}`}
+                    />
                   )}{" "}
-                  {skill.skillName}
+                  {skill.skillName}{" "}
+                  {showX === true ? (
+                    <Button
+                      className="py-0 px-1 text-red-500"
+                      onClick={() => {
+                        deleteItem(
+                          `http://localhost:3001/api/skills/${skill.id}`
+                        );
+                        fetchSkill();
+                      }}
+                    >
+                      x
+                    </Button>
+                  ) : (
+                    <></>
+                  )}
                 </li>
               );
             })}
@@ -144,7 +166,14 @@ function AboutMe() {
             <li>Rest API</li>
           </ul> */}
           <div className="text-end">
-            <Button className="text-sm text-red-500">Delete Skill</Button>
+            <Button
+              className="text-sm text-red-500"
+              onClick={() => {
+                return setShowX(true);
+              }}
+            >
+              Delete Skill
+            </Button>
           </div>
           <Dialog
             title={"Add Skill"}

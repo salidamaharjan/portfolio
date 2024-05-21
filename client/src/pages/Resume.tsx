@@ -1,4 +1,4 @@
-import { get, deleteEducation } from "../lib/http";
+import { get, deleteItem } from "../lib/http";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -97,7 +97,7 @@ function Resume() {
   }
   async function handleDeleteEducation(id: number) {
     try {
-      await deleteEducation(`http://localhost:3001/api/educations/${id}`);
+      await deleteItem(`http://localhost:3001/api/educations/${id}`);
       fetchEducation();
     } catch (err) {
       console.log("err", err);
@@ -105,7 +105,7 @@ function Resume() {
   }
   async function handleDeleteExperience(id: number) {
     try {
-      await deleteEducation(`http://localhost:3001/api/experiences/${id}`);
+      await deleteItem(`http://localhost:3001/api/experiences/${id}`);
       fetchExperience();
     } catch (err) {
       console.log("err", err);
@@ -113,7 +113,7 @@ function Resume() {
   }
   async function handleDeleteProject(id: number) {
     try {
-      await deleteEducation(`http://localhost:3001/api/projects/${id}`);
+      await deleteItem(`http://localhost:3001/api/projects/${id}`);
       fetchProject();
     } catch (err) {
       console.log("err", err);

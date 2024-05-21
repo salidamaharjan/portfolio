@@ -23,7 +23,7 @@ skillGetRoutes.get("/skills/:username", async (req: Request, res: Response) => {
 skillRoutes.post("/skills", async (req: Request, res: Response) => {
   try {
     const loggedInUser = (req as any).user;
-    console.log(loggedInUser.id);
+    // console.log(loggedInUser.id);
     const authorizedId = loggedInUser.id;
     await db.insert(skill).values({
       skillName: req.body.skillName,
@@ -39,7 +39,7 @@ skillRoutes.post("/skills", async (req: Request, res: Response) => {
 skillRoutes.delete("/skills/:id", async (req: Request, res: Response) => {
   try {
     const loggedInUser = (req as any).user;
-    console.log(loggedInUser.id);
+    // console.log(loggedInUser.id);
     const authorizedId = loggedInUser.id;
     await db
       .delete(skill)
