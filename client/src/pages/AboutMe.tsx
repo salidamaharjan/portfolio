@@ -95,7 +95,9 @@ function AboutMe() {
               console.log(skill.iconURL);
               return (
                 <li className="text-md" key={skill.id}>
-                  {skill.iconURL && <img className="w-[15px] inline" src={`${skill.iconURL}`} />}{" "}
+                  {skill.iconURL && (
+                    <img className="w-[15px] inline" src={`${skill.iconURL}`} />
+                  )}{" "}
                   {skill.skillName}
                 </li>
               );
@@ -141,6 +143,9 @@ function AboutMe() {
             <li>SQL</li>
             <li>Rest API</li>
           </ul> */}
+          <div className="text-end">
+            <Button className="text-sm text-red-500">Delete Skill</Button>
+          </div>
           <Dialog
             title={"Add Skill"}
             open={isOpen}
