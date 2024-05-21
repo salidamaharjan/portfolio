@@ -40,9 +40,9 @@ function AboutMe() {
   async function fetchSkill() {
     try {
       const skillsData = await get(
-        `http://localhost:3001/api/skill/${username || "user1"}`
+        `http://localhost:3001/api/skills/${username || "user1"}`
       );
-      console.log("skillsData", skillsData);
+      // console.log("skillsData", skillsData);
       setSkills(skillsData);
     } catch (err) {
       console.log(err);

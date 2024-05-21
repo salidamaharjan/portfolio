@@ -7,7 +7,7 @@ import loginRoutes from "./loginRoutes";
 import { aboutMeGetRoutes } from "./aboutMeRoutes";
 import { experienceRoutes, experienceGetRoutes } from "./experienceRoutes";
 import authOr401Middleware from "../auth";
-import { skillGetRoutes } from "./skillRoutes";
+import { skillGetRoutes, skillRoutes } from "./skillRoutes";
 const router = express.Router();
 
 router.use(
@@ -26,7 +26,8 @@ router.use(
   userRoutes,
   educationRoutes,
   projectRoutes,
-  experienceRoutes
+  experienceRoutes,
+  skillRoutes
 );
 
 export default router;
