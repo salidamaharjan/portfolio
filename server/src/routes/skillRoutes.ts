@@ -27,7 +27,7 @@ skillRoutes.post("/skills", async (req: Request, res: Response) => {
     const authorizedId = loggedInUser.id;
     await db
       .insert(skill)
-      .values({ skillName: req.body.skillName, userId: authorizedId });
+      .values({ skillName: req.body.skillName, userId: authorizedId, iconURL: req.body.iconURL});
     res.status(201).json({ message: "Skill Added" });
   } catch (err) {
     res.status(500).json({ message: err });

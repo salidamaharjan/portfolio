@@ -8,17 +8,21 @@ import { Skill } from "../pages/AboutMe";
 type SkillFormProps = {
   onAction: () => void;
   skill?: Skill;
+  iconURL?: Skill;
 };
 function SkillForm({ skill, onAction }: SkillFormProps) {
   const [skillName, setSkillName] = useState(skill?.skillName ?? "");
+  const [iconURL, setIconURL] = useState(skill?.iconURL ?? "");
   const [showAdd, setShowAdded] = useState("");
 
   async function handleSaveClick() {
     await post("http://localhost:3001/api/skills", {
       skillName,
+      iconURL,
     });
     setShowAdded("Added ✅");
     setSkillName("");
+    setIconURL("");
     onAction();
   }
   return (
@@ -31,6 +35,16 @@ function SkillForm({ skill, onAction }: SkillFormProps) {
           type="text"
           value={skillName}
           onChange={(e) => setSkillName(e.target.value)}
+        />
+      </Label>
+      <Label className="text-black text-md">
+        Icon URL{" "}
+        <Input
+          className="text-md"
+          placeholder="Add Icon URL"
+          type="text"
+          value={iconURL}
+          onChange={(e) => setIconURL(e.target.value)}
         />
       </Label>
       <div className="text-green-600 text-xs">{showAdd}</div>
