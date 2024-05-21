@@ -92,7 +92,7 @@ function AboutMe() {
           <ul className="md:columns-3 columns-2 text-gray-700 list-disc ml-4 pt-2 text-lg font-light">
             {skills.map((skill) => {
               return (
-                <li className="text-sm" key={skill.id}>
+                <li className="text-md" key={skill.id}>
                   <img
                     className="w-[15px] inline"
                     src="https://www.typescriptlang.org/favicon-32x32.png?v=8944a05a8b601855de116c8a56d3b3ae"

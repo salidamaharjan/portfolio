@@ -101,7 +101,8 @@ export const aboutMeRelations = relations(aboutMe, ({ one }) => ({
 
 export const skill = pgTable("skill", {
   id: serial("id").primaryKey(),
-  skillName: varchar("skillName", { length: 500 }),
+  iconURL: varchar("icon_url", { length: 500 }),
+  skillName: varchar("skill_name", { length: 500 }).notNull(),
   userId: integer("user_id")
     .references(() => user.id, { onDelete: "cascade" })
     .notNull(),
