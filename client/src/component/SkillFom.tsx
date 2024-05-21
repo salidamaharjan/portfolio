@@ -6,9 +6,10 @@ import { useState } from "react";
 import { Skill } from "../pages/AboutMe";
 
 type SkillFormProps = {
+  onAction: () => void;
   skill?: Skill;
 };
-function SkillForm({ skill }: SkillFormProps) {
+function SkillForm({ skill, onAction }: SkillFormProps) {
   const [skillName, setSkillName] = useState(skill?.skillName ?? "");
 
   async function handleSaveClick() {
@@ -16,6 +17,7 @@ function SkillForm({ skill }: SkillFormProps) {
       skillName,
     });
     setSkillName("");
+    onAction();
   }
   return (
     <div className="flex flex-col gap-4 ">

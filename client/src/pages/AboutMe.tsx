@@ -160,7 +160,11 @@ function AboutMe() {
               return setIsOpen(false);
             }}
           >
-            <SkillForm />
+            <SkillForm
+              onAction={() => {
+                fetchSkill();
+              }}
+            />
           </Dialog>
         </div>
         <div className="flex flex-col text-2xl gap-2 mb-16 md:mb-0">
