@@ -6,15 +6,16 @@ import { useState } from "react";
 import { Skill } from "../pages/AboutMe";
 
 type SkillFormProps = {
-    skill?: Skill
-}
-function SkillForm({skill}: SkillFormProps) {
+  skill?: Skill;
+};
+function SkillForm({ skill }: SkillFormProps) {
   const [skillName, setSkillName] = useState(skill?.skillName ?? "");
 
   async function handleSaveClick() {
     await post("http://localhost:3001/api/skills", {
       skillName,
     });
+    setSkillName("");
   }
   return (
     <div className="flex flex-col gap-4 ">

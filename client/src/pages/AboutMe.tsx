@@ -22,6 +22,7 @@ export type Skill = {
 function AboutMe() {
   const [aboutMe, setAboutMe] = useState("");
   const [skills, setSkills] = useState<Skill[]>([]);
+  const [isOpen, setIsOpen] = useState(true);
   useEffect(() => {
     fetchAboutMe();
     fetchSkill();
@@ -78,7 +79,12 @@ function AboutMe() {
           <div className="flex gap-6">
             <div>Skills</div>
             <div>
-              <Button className="text-sm" onClick={() => {}}>
+              <Button
+                className="text-sm"
+                onClick={() => {
+                  return setIsOpen(true);
+                }}
+              >
                 Add Skill
               </Button>
             </div>
@@ -147,7 +153,13 @@ function AboutMe() {
             <li>SQL</li>
             <li>Rest API</li>
           </ul> */}
-          <Dialog title={"Add Skill"} open={true} onClose={() => {}}>
+          <Dialog
+            title={"Add Skill"}
+            open={isOpen}
+            onClose={() => {
+              return setIsOpen(false);
+            }}
+          >
             <SkillForm />
           </Dialog>
         </div>
