@@ -22,7 +22,7 @@ export type Skill = {
 function AboutMe() {
   const [aboutMe, setAboutMe] = useState("");
   const [skills, setSkills] = useState<Skill[]>([]);
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(Boolean);
   useEffect(() => {
     fetchAboutMe();
     fetchSkill();
@@ -76,7 +76,7 @@ function AboutMe() {
           <div className="font-light text-gray-700">{aboutMe}</div>
         </div>
         <div className="flex-1  text-lg text-blue-900">
-          <div className="flex gap-6">
+          <div className="flex justify-between">
             <div>Skills</div>
             <div>
               <Button
