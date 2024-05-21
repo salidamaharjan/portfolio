@@ -14,6 +14,7 @@ import ExperienceForm from "../component/ExperienceForm";
 import ProjectForm from "../component/ProjectForm";
 import { faPlus } from "@fortawesome/free-solid-svg-icons/faPlus";
 import { jwtDecode } from "jwt-decode";
+
 export type Education = {
   id?: number;
   degree: string;

@@ -14,7 +14,7 @@ import { useEffect, useState } from "react";
 import { Dialog } from "../component/ui/Dialog";
 import SkillForm from "../component/SkillFom";
 
-type Skill = {
+export type Skill = {
   id?: number;
   skillName: string;
 };
@@ -78,14 +78,7 @@ function AboutMe() {
           <div className="flex gap-6">
             <div>Skills</div>
             <div>
-              <Button
-                className="text-sm"
-                onClick={() => {
-                  <Dialog title={"Add Skill"} open={true} onClose={()=>{}}>
-                   <SkillForm/>
-                  </Dialog>
-                }}
-              >
+              <Button className="text-sm" onClick={() => {}}>
                 Add Skill
               </Button>
             </div>
@@ -93,7 +86,7 @@ function AboutMe() {
           <ul className="md:columns-3 columns-2 text-gray-700 list-disc ml-4 pt-2 text-lg font-light">
             {skills.map((skill) => {
               return (
-                <li key={skill.id}>
+                <li className="text-sm" key={skill.id}>
                   <img
                     className="w-[15px] inline"
                     src="https://www.typescriptlang.org/favicon-32x32.png?v=8944a05a8b601855de116c8a56d3b3ae"
@@ -154,6 +147,9 @@ function AboutMe() {
             <li>SQL</li>
             <li>Rest API</li>
           </ul> */}
+          <Dialog title={"Add Skill"} open={true} onClose={() => {}}>
+            <SkillForm />
+          </Dialog>
         </div>
         <div className="flex flex-col text-2xl gap-2 mb-16 md:mb-0">
           <div className="flex gap-2 justify-center">

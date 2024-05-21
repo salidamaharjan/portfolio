@@ -3,9 +3,13 @@ import Button from "./ui/Button";
 import Input from "./ui/Input";
 import Label from "./ui/Label";
 import { useState } from "react";
+import { Skill } from "../pages/AboutMe";
 
-function SkillForm() {
-  const [skillName, setSkillName] = useState("");
+type SkillFormProps = {
+    skill?: Skill
+}
+function SkillForm({skill}: SkillFormProps) {
+  const [skillName, setSkillName] = useState(skill?.skillName ?? "");
 
   async function handleSaveClick() {
     await post("http://localhost:3001/api/skills", {
