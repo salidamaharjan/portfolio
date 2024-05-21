@@ -72,8 +72,20 @@ function AboutMe() {
           <div>About Me</div>
           <div className="font-light text-gray-700">{aboutMe}</div>
         </div>
-        <div className="flex-1 text-lg text-blue-900">
-          Skills
+        <div className="flex-1  text-lg text-blue-900">
+          <div className="flex gap-6">
+            <div>Skills</div>
+            <div>
+              <Button
+                className="text-sm"
+                onClick={() => {
+                  alert("clicked");
+                }}
+              >
+                Add Skill
+              </Button>
+            </div>
+          </div>
           <ul className="md:columns-3 columns-2 text-gray-700 list-disc ml-4 pt-2 text-lg font-light">
             {skills.map((skill) => {
               return (
