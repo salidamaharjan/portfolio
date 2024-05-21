@@ -95,12 +95,7 @@ function AboutMe() {
               console.log(skill.iconURL);
               return (
                 <li className="text-md" key={skill.id}>
-                  <img
-                    className="w-[15px] inline"
-                    src={`${skill.iconURL}`}
-                    // "https://www.typescriptlang.org/favicon-32x32.png?v=8944a05a8b601855de116c8a56d3b3ae"
-                    alt="TypeScript"
-                  />{" "}
+                  {skill.iconURL && <img className="w-[15px] inline" src={`${skill.iconURL}`} />}{" "}
                   {skill.skillName}
                 </li>
               );
@@ -110,16 +105,6 @@ function AboutMe() {
             <li>
               <FontAwesomeIcon icon={faJs} /> JavaScript
             </li>
-            <li>
-              <img
-                className="w-[15px] inline"
-                src="https://www.typescriptlang.org/favicon-32x32.png?v=8944a05a8b601855de116c8a56d3b3ae"
-                alt="TypeScript"
-              />{" "}
-              TypeScript
-            </li>
-            <li>CSS</li>
-            <li>HTML</li>
             <li>
               <FontAwesomeIcon icon={faReact} /> React
             </li>

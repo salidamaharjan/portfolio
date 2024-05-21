@@ -1,7 +1,7 @@
 import { user, skill } from "../schema";
 import express, { Response, Request } from "express";
 import db from "../config/db";
-import { eq } from "drizzle-orm";
+import { and, eq } from "drizzle-orm";
 
 const skillGetRoutes = express.Router();
 const skillRoutes = express.Router();
@@ -25,10 +25,31 @@ skillRoutes.post("/skills", async (req: Request, res: Response) => {
     const loggedInUser = (req as any).user;
     console.log(loggedInUser.id);
     const authorizedId = loggedInUser.id;
-    await db
-      .insert(skill)
-      .values({ skillName: req.body.skillName, userId: authorizedId, iconURL: req.body.iconURL});
+    await db.insert(skill).values({
+      skillName: req.body.skillName,
+      userId: authorizedId,
+      iconURL: req.body.iconURL,
+    });
     res.status(201).json({ message: "Skill Added" });
+  } catch (err) {
+    res.status(500).json({ message: err });
+  }
+});
+
+skillRoutes.delete("/skills/:id", async (req: Request, res: Response) => {
+  try {
+    const loggedInUser = (req as any).user;
+    console.log(loggedInUser.id);
+    const authorizedId = loggedInUser.id;
+    await db
+      .delete(skill)
+      .where(
+        and(
+          eq(skill.id, parseInt(req.params.id)),
+          eq(skill.userId, authorizedId)
+        )
+      );
+      res.status(201).json({ message: "Skill Deleted" });
   } catch (err) {
     res.status(500).json({ message: err });
   }
