@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { get } from "../lib/http";
+import { get, post } from "../lib/http";
 import {
   faGithub,
   faLinkedin,
@@ -11,6 +11,8 @@ import Button from "../component/ui/Button";
 // import { faNodeJs } from "@fortawesome/free-brands-svg-icons/faNodeJs";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { Dialog } from "../component/ui/Dialog";
+import SkillForm from "../component/SkillFom";
 
 type Skill = {
   id?: number;
@@ -79,7 +81,9 @@ function AboutMe() {
               <Button
                 className="text-sm"
                 onClick={() => {
-                  alert("clicked");
+                  <Dialog title={"Add Skill"} open={true} onClose={()=>{}}>
+                   <SkillForm/>
+                  </Dialog>
                 }}
               >
                 Add Skill
