@@ -7,37 +7,14 @@ import { useNavigate } from "react-router-dom";
 
 type FormProps = {
   title: string;
+  onAction: (username: string, password: string) => void;
 };
 
-function Form({ title }: FormProps) {
+function Form({ title, onAction }: FormProps) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
   const navigate = useNavigate();
-
-  async function handleLoginClick() {
-    // alert(`username= ${username}, password= ${password}`);
-    const data = await post("http://localhost:3001/api/login", {
-      username,
-      password,
-    });
-    // console.log("login data", data);
-    localStorage.setItem("token", data.accessToken);
-    navigate(`/u/${username}`);
-    setUsername("");
-    setPassword("");
-  }
-  async function handleSignupClick() {
-    const data = await post("http://localhost:3001/api/signup", {
-      username,
-      password,
-    });
-    // console.log("signup data", data);
-    localStorage.setItem("token", data.accessToken);
-    navigate(`/u/${username}`);
-    setUsername("");
-    setPassword("");
-  }
 
   return (
     <div className="flex flex-col text-2xl font-bold text-blue-600 gap-6 items-center">
@@ -70,7 +47,12 @@ function Form({ title }: FormProps) {
         </div>
         <Button
           className="bg-blue-600 text-white"
-          onClick={title === "Login" ? handleLoginClick : handleSignupClick}
+          onClick={() => {
+            onAction(username, password);
+            setUsername("");
+            setPassword("");
+          }}
+          // onClick={title === "Login" ? handleLoginClick : handleSignupClick}
         >
           {title}
         </Button>
