@@ -1,7 +1,7 @@
 import express, { Response, Request } from "express";
 import db from "../config/db";
-import { user } from "../schema";
-import { eq } from "drizzle-orm";
+import { aboutMe, user } from "../schema";
+import { and, eq } from "drizzle-orm";
 
 const aboutMeRoutes = express.Router();
 const aboutMeGetRoutes = express.Router();
@@ -18,10 +18,33 @@ aboutMeGetRoutes.get(
       });
       const aboutMeSection = userAboutMe?.aboutMe;
       res.status(200).json(aboutMeSection);
-    //   console.log(aboutMeSection);
+      //   console.log(aboutMeSection);
     } catch (err) {
       res.status(500).json({ message: err });
     }
   }
 );
-export { aboutMeGetRoutes };
+
+aboutMeRoutes.put("/aboutMe/:id", async (req: Request, res: Response) => {
+  try {
+    const loggedInUser = (req as any).user;
+    const authorizedId = loggedInUser.id;
+    await db
+      .update(aboutMe)
+      .set({
+        description: req.body.description,
+      })
+      .where(
+        and(
+          eq(aboutMe.id, parseInt(req.params.id)),
+          eq(aboutMe.userId, authorizedId)
+        )
+      );
+    res.status(201).json({ message: "Education Updated" });
+  } catch (err) {
+    console.log(err);
+    res.status(500).send(err);
+  }
+});
+
+export { aboutMeGetRoutes, aboutMeRoutes };

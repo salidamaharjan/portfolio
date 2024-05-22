@@ -4,7 +4,7 @@ import { educationRoutes, educationGetRoutes } from "./educationRoutes";
 import { projectRoutes, projectGetRoutes } from "./projectRoutes";
 import signupRoutes from "./signupRoutes";
 import loginRoutes from "./loginRoutes";
-import { aboutMeGetRoutes } from "./aboutMeRoutes";
+import { aboutMeGetRoutes, aboutMeRoutes } from "./aboutMeRoutes";
 import { experienceRoutes, experienceGetRoutes } from "./experienceRoutes";
 import authOr401Middleware from "../auth";
 import { skillGetRoutes, skillRoutes } from "./skillRoutes";
@@ -27,7 +27,8 @@ router.use(
   educationRoutes,
   projectRoutes,
   experienceRoutes,
-  skillRoutes
+  skillRoutes,
+  aboutMeRoutes
 );
 
 export default router;
