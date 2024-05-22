@@ -18,7 +18,6 @@ aboutMeGetRoutes.get(
       });
       const aboutMeSection = userAboutMe?.aboutMe;
       res.status(200).json(aboutMeSection);
-      //   console.log(aboutMeSection);
     } catch (err) {
       res.status(500).json({ message: err });
     }

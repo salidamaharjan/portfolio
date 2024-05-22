@@ -14,13 +14,14 @@ import { useEffect, useState } from "react";
 import { Dialog } from "../component/ui/Dialog";
 import SkillForm from "../component/SkillForm";
 import SignedIn from "../component/SignedIn";
+import AboutMeForm from "../component/AboutMeForm";
 
 export type Skill = {
   id?: number;
   skillName: string;
   iconURL?: string;
 };
-type AboutMe = {
+export type AboutMe = {
   id?: number;
   description: string;
 };
@@ -28,7 +29,9 @@ type AboutMe = {
 function AboutMe() {
   const [aboutMe, setAboutMe] = useState("");
   const [skills, setSkills] = useState<Skill[]>([]);
-  const [isOpen, setIsOpen] = useState(Boolean);
+  const [isAddSKillOpen, setAddSkillIsOpen] = useState(Boolean);
+  const [isEditAboutMeOpen, setEditAboutMeOpen] = useState(Boolean);
+
   const [showX, setShowX] = useState(Boolean);
 
   useEffect(() => {
@@ -87,7 +90,7 @@ function AboutMe() {
             <SignedIn>
               <Button
                 className="text-blue-900 font-normal text-xs"
-                onClick={() => {}}
+                onClick={() => setEditAboutMeOpen(true)}
               >
                 Edit
               </Button>
@@ -102,9 +105,7 @@ function AboutMe() {
               <div className="flex gap-2">
                 <Button
                   className="text-blue-900 font-normal text-xs"
-                  onClick={() => {
-                    return setIsOpen(true);
-                  }}
+                  onClick={() => setAddSkillIsOpen(true)}
                 >
                   Add Skill
                 </Button>
@@ -146,26 +147,24 @@ function AboutMe() {
               );
             })}
           </ul>
-          {/* <ul className="md:columns-3 columns-2 text-gray-700 list-disc ml-4 pt-2 text-lg font-light">
-            <li>
-              <FontAwesomeIcon icon={faJs} /> JavaScript
-            </li>
-            <li>
-              <FontAwesomeIcon icon={faReact} /> React
-            </li>
-            <li>
-              <FontAwesomeIcon icon={faVuejs} /> Vue.js
-            </li>
-            <li>
-              <FontAwesomeIcon icon={faNodeJs} /> Node.js
-            </li>
-          </ul> */}
-
+          <Dialog
+            title={"Update About Me"}
+            open={isEditAboutMeOpen}
+            onClose={() => {
+              return setEditAboutMeOpen(false);
+            }}
+          >
+            <AboutMeForm
+              onAction={() => {
+                fetchAboutMe();
+              }}
+            />
+          </Dialog>
           <Dialog
             title={"Add Skill"}
-            open={isOpen}
+            open={isAddSKillOpen}
             onClose={() => {
-              return setIsOpen(false);
+              return setAddSkillIsOpen(false);
             }}
           >
             <SkillForm
