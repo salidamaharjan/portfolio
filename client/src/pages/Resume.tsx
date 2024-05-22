@@ -13,7 +13,8 @@ import EducationForm from "../component/EducationForm";
 import ExperienceForm from "../component/ExperienceForm";
 import ProjectForm from "../component/ProjectForm";
 import { faPlus } from "@fortawesome/free-solid-svg-icons/faPlus";
-import { jwtDecode } from "jwt-decode";
+// import { jwtDecode } from "jwt-decode";
+import SignedIn from "../component/SignedIn";
 
 export type Education = {
   id?: number;
@@ -58,9 +59,9 @@ function Resume() {
     fetchProject();
     fetchExperience();
   }, []);
-  const token = localStorage.getItem("token");
+  // const token = localStorage.getItem("token");
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const decoded = jwtDecode(token || "") as any;
+  // const decoded = jwtDecode(token || "") as any;
   // console.log("decoded", decoded);
   async function fetchEducation() {
     try {
@@ -127,7 +128,7 @@ function Resume() {
           <div>
             <FontAwesomeIcon icon={faAward} /> Education
           </div>
-          {decoded.username === username ? (
+          <SignedIn>
             <div className="group flex relative">
               <Button
                 className="text-green-700 font-normal text-xs"
@@ -151,9 +152,7 @@ function Resume() {
                 Add Education
               </span>
             </div>
-          ) : (
-            <></>
-          )}
+          </SignedIn>
         </div>
         <div className="text-sm grid grid-cols-1 md:grid-cols-2 gap-4 text-gray-500 flex-wrap lg:text-lg ">
           {educations.map((education) => {
@@ -174,7 +173,7 @@ function Resume() {
                   </div>
                   <li className="text-xs">{education.description}</li>
                 </div>
-                {decoded.username === username ? (
+                <SignedIn>
                   <div className="flex mt-2 gap-4">
                     <Button
                       className="text-xs font-normal text-blue-900"
@@ -191,9 +190,7 @@ function Resume() {
                       Delete
                     </Button>
                   </div>
-                ) : (
-                  <></>
-                )}
+                </SignedIn>
               </div>
             );
           })}
@@ -205,7 +202,7 @@ function Resume() {
             {" "}
             <FontAwesomeIcon icon={faDiagramProject} /> Projects
           </div>
-          {decoded.username === username ? (
+          <SignedIn>
             <div className="group flex relative">
               <Button
                 className="text-green-700 text-xs font-normal"
@@ -227,9 +224,7 @@ function Resume() {
                 Add Project
               </span>
             </div>
-          ) : (
-            <></>
-          )}
+          </SignedIn>
         </div>
         <div className="text-sm text-gray-500 grid grid-cols-1 md:grid-cols-2 gap-10 flex-wrap  lg:text-lg ">
           {projects.map((project) => {
@@ -243,7 +238,7 @@ function Resume() {
                   <li>{project.description}</li>
                   <li>{project.technologiesUsed}</li>
                 </div>
-                {decoded.username === username ? (
+                <SignedIn>
                   <div className="flex mt-2  gap-4">
                     <Button
                       className="text-blue-900 font-normal text-xs"
@@ -260,9 +255,7 @@ function Resume() {
                       Delete
                     </Button>
                   </div>
-                ) : (
-                  <></>
-                )}
+                </SignedIn>
               </div>
             );
           })}
@@ -273,7 +266,7 @@ function Resume() {
           <div>
             <FontAwesomeIcon icon={faBriefcase} /> Experiences
           </div>
-          {decoded.username === username ? (
+          <SignedIn>
             <div className="group flex relative">
               <Button
                 className="text-green-700 text-xs font-normal"
@@ -297,9 +290,7 @@ function Resume() {
                 Add Experience
               </span>
             </div>
-          ) : (
-            <></>
-          )}
+          </SignedIn>
         </div>
         <div className="text-sm text-gray-500 grid grid-cols-1 md:grid-cols-2 gap-10 flex-wrap lg:text-lg ">
           {experiences.map((experience) => {
@@ -318,7 +309,7 @@ function Resume() {
                   </div>
                   <li className="text-xs">{experience.jobDescription}</li>
                 </div>
-                {decoded.username === username ? (
+                <SignedIn>
                   <div className="flex mt-2 gap-4">
                     <Button
                       className="text-blue-900 font-normal text-xs"
@@ -335,9 +326,7 @@ function Resume() {
                       Delete
                     </Button>
                   </div>
-                ) : (
-                  <></>
-                )}
+                </SignedIn>
               </div>
             );
           })}
