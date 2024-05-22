@@ -37,6 +37,7 @@ function Navbar({ className }: NavbarProps) {
             onClick={() => {
               localStorage.removeItem("token");
               navigate("/");
+              window.location.reload();
             }}
             className="text-red-500 hover:text-yellow-400"
           >

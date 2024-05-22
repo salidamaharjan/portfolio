@@ -13,6 +13,7 @@ import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { Dialog } from "../component/ui/Dialog";
 import SkillForm from "../component/SkillForm";
+import SignedIn from "../component/SignedIn";
 
 export type Skill = {
   id?: number;
@@ -82,22 +83,24 @@ function AboutMe() {
         <div className="flex-1  text-lg text-blue-900">
           <div className="flex justify-between">
             <div>Skills</div>
-            <div className="flex gap-2">
-              <Button
-                className="text-sm"
-                onClick={() => {
-                  return setIsOpen(true);
-                }}
-              >
-                Add Skill
-              </Button>
-              <Button
-                className="text-sm text-red-500"
-                onClick={() => setShowX(true)}
-              >
-                Delete Skill
-              </Button>
-            </div>
+            <SignedIn>
+              <div className="flex gap-2">
+                <Button
+                  className="text-sm"
+                  onClick={() => {
+                    return setIsOpen(true);
+                  }}
+                >
+                  Add Skill
+                </Button>
+                <Button
+                  className="text-sm text-red-500"
+                  onClick={() => setShowX(true)}
+                >
+                  Delete Skill
+                </Button>
+              </div>
+            </SignedIn>
           </div>
           <ul className="grid md:grid-cols-3 grid-cols-2 text-gray-700 list-disc ml-4 pt-2 text-lg font-light">
             {skills.map((skill) => {
