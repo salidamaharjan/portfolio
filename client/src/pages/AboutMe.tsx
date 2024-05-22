@@ -111,7 +111,7 @@ function AboutMe() {
                     />
                   )}{" "}
                   {skill.skillName}{" "}
-                  {showX === true ? (
+                  {showX && (
                     <Button
                       className="py-0 px-1 text-red-500"
                       onClick={async () => {
@@ -123,8 +123,6 @@ function AboutMe() {
                     >
                       x
                     </Button>
-                  ) : (
-                    <></>
                   )}
                 </li>
               );
