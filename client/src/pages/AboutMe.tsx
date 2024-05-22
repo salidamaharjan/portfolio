@@ -20,12 +20,17 @@ export type Skill = {
   skillName: string;
   iconURL?: string;
 };
+type AboutMe = {
+  id?: number;
+  description: string;
+};
 
 function AboutMe() {
   const [aboutMe, setAboutMe] = useState("");
   const [skills, setSkills] = useState<Skill[]>([]);
   const [isOpen, setIsOpen] = useState(Boolean);
   const [showX, setShowX] = useState(Boolean);
+
   useEffect(() => {
     fetchAboutMe();
     fetchSkill();
@@ -77,7 +82,17 @@ function AboutMe() {
       </div>
       <div className="flex flex-col text-lg gap-6 text-blue-900 font-bold">
         <div className="flex flex-col text-lg text-blue-900">
-          <div>About Me</div>
+          <div className="flex justify-between">
+            <div>About Me</div>
+            <SignedIn>
+              <Button
+                className="text-blue-900 font-normal text-xs"
+                onClick={() => {}}
+              >
+                Edit
+              </Button>
+            </SignedIn>
+          </div>
           <div className="font-light text-gray-700">{aboutMe}</div>
         </div>
         <div className="flex-1  text-lg text-blue-900">
@@ -86,7 +101,7 @@ function AboutMe() {
             <SignedIn>
               <div className="flex gap-2">
                 <Button
-                  className="text-sm"
+                  className="text-blue-900 font-normal text-xs"
                   onClick={() => {
                     return setIsOpen(true);
                   }}
@@ -94,7 +109,7 @@ function AboutMe() {
                   Add Skill
                 </Button>
                 <Button
-                  className="text-sm text-red-500"
+                  className="font-normal text-xs text-red-500"
                   onClick={() => setShowX(true)}
                 >
                   Delete Skill
