@@ -2,7 +2,6 @@ import Button from "./ui/Button";
 import Input from "./ui/Input";
 import Label from "./ui/Label";
 import { useState } from "react";
-import { post } from "../lib/http";
 import { useNavigate } from "react-router-dom";
 
 type FormProps = {

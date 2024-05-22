@@ -1,7 +1,11 @@
+import { useNavigate } from "react-router-dom";
 import Form from "../component/LoginSignupForm";
+import { post } from "../lib/http";
 
 function Signup() {
-  async function handleSignupClick() {
+  const navigate = useNavigate();
+
+  async function handleSignupClick(username: string, password: string) {
     const data = await post("http://localhost:3001/api/signup", {
       username,
       password,
@@ -9,12 +13,12 @@ function Signup() {
     // console.log("signup data", data);
     localStorage.setItem("token", data.accessToken);
     navigate(`/u/${username}`);
-    setUsername("");
-    setPassword("");
+    // setUsername("");
+    // setPassword("");
   }
   return (
     <div className="pt-6">
-      <Form title="Signup" onAction={} />
+      <Form title="Signup" onAction={handleSignupClick} />
     </div>
   );
 }

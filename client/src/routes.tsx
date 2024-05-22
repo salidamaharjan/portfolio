@@ -7,7 +7,7 @@ import Resume from "./pages/Resume.tsx";
 import AboutMe from "./pages/AboutMe.tsx";
 import Works from "./pages/Works.tsx";
 import Contact from "./pages/Contact.tsx";
-import { UserProvider } from "./context/userContext.tsx";
+import { UserProvider } from "./context/UserContext.tsx";
 
 const router = createBrowserRouter([
   {
