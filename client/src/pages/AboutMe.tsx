@@ -12,7 +12,7 @@ import Button from "../component/ui/Button";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { Dialog } from "../component/ui/Dialog";
-import SkillForm from "../component/SkillFom";
+import SkillForm from "../component/SkillForm";
 
 export type Skill = {
   id?: number;
@@ -54,7 +54,6 @@ function AboutMe() {
       console.log(err);
     }
   }
-  async function handleXClick() {}
 
   return (
     <div className="grid md:grid-cols-2 h-[630px] gap-6">
@@ -83,7 +82,7 @@ function AboutMe() {
         <div className="flex-1  text-lg text-blue-900">
           <div className="flex justify-between">
             <div>Skills</div>
-            <div>
+            <div className="flex gap-2">
               <Button
                 className="text-sm"
                 onClick={() => {
@@ -92,9 +91,15 @@ function AboutMe() {
               >
                 Add Skill
               </Button>
+              <Button
+                className="text-sm text-red-500"
+                onClick={() => setShowX(true)}
+              >
+                Delete Skill
+              </Button>
             </div>
           </div>
-          <ul className="md:columns-3 columns-2 text-gray-700 list-disc ml-4 pt-2 text-lg font-light">
+          <ul className="grid md:grid-cols-3 grid-cols-2 text-gray-700 list-disc ml-4 pt-2 text-lg font-light">
             {skills.map((skill) => {
               // console.log(skill.iconURL);
               return (
@@ -109,11 +114,11 @@ function AboutMe() {
                   {showX === true ? (
                     <Button
                       className="py-0 px-1 text-red-500"
-                      onClick={() => {
-                        deleteItem(
+                      onClick={async () => {
+                        await deleteItem(
                           `http://localhost:3001/api/skills/${skill.id}`
                         );
-                        fetchSkill();
+                        await fetchSkill();
                       }}
                     >
                       x
@@ -133,48 +138,13 @@ function AboutMe() {
               <FontAwesomeIcon icon={faReact} /> React
             </li>
             <li>
-              <img
-                className="w-[15px] inline"
-                src="https://tailwindcss.com/favicons/favicon.ico?v=3"
-                alt="Tailwind"
-              />{" "}
-              Tailwind
-            </li>
-            <li>
               <FontAwesomeIcon icon={faVuejs} /> Vue.js
             </li>
             <li>
               <FontAwesomeIcon icon={faNodeJs} /> Node.js
             </li>
-            <li>
-              <img
-                className="w-[15px] inline"
-                src="https://orm.drizzle.team/favicon.ico"
-                alt="Drizzle"
-              />{" "}
-              Drizzle
-            </li>
-            <li>
-              <img
-                className="w-[15px] inline"
-                src="https://sequelize.org/favicon.ico"
-                alt=""
-              />{" "}
-              Sequelize
-            </li>
-            <li>SQL</li>
-            <li>Rest API</li>
           </ul> */}
-          <div className="text-end">
-            <Button
-              className="text-sm text-red-500"
-              onClick={() => {
-                return setShowX(true);
-              }}
-            >
-              Delete Skill
-            </Button>
-          </div>
+
           <Dialog
             title={"Add Skill"}
             open={isOpen}
