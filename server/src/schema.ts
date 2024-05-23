@@ -87,6 +87,8 @@ export const experienceRelations = relations(experience, ({ one }) => ({
 export const aboutMe = pgTable("aboutMe", {
   id: serial("id").primaryKey(),
   description: varchar("description", { length: 5000 }).notNull(),
+  name: varchar("name", { length: 500 }).notNull(),
+  title: varchar("title", { length: 500 }).notNull(),
   userId: integer("user_id")
     .references(() => user.id, { onDelete: "cascade" })
     .notNull(),

@@ -29,6 +29,8 @@ aboutMeRoutes.post("/aboutMe", async (req: Request, res: Response) => {
     console.log(loggedInUser.id);
     const authorizedId = loggedInUser.id;
     await db.insert(aboutMe).values({
+      title: req.body.title,
+      name: req.body.name,
       description: req.body.description,
       userId: authorizedId,
     });
