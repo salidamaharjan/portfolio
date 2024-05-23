@@ -35,7 +35,7 @@ function AboutMe() {
   const [isAddSKillOpen, setAddSkillIsOpen] = useState(Boolean);
   const [isEditAboutMeOpen, setEditAboutMeOpen] = useState(Boolean);
   const [showX, setShowX] = useState(Boolean);
-
+  const { userId } = useContext(UserContext);
   useEffect(() => {
     fetchAboutMe();
     fetchSkill();
@@ -165,7 +165,7 @@ function AboutMe() {
                 } else {
                   await post(`http://localhost:3001/api/aboutMe`, {
                     description: updatedDescription,
-                    userID: UserContextId,
+                    userID: userId,
                   });
                 }
                 setEditAboutMeOpen(false);
