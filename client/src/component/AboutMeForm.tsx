@@ -1,27 +1,16 @@
 import Button from "./ui/Button";
 import Input from "./ui/Input";
 import Label from "./ui/Label";
-import { useContext, useState } from "react";
-import { put } from "../lib/http";
+import { useState } from "react";
 import { AboutMe } from "../pages/AboutMe";
-import { UserContext } from "../context/UserContext";
 
 type AboutMeFormProps = {
-  onAction: () => void;
+  onAction: (updatedDescription: string, aboutMeId: number | undefined) => void;
   aboutMe?: AboutMe;
 };
 
 function AboutMeForm({ onAction, aboutMe }: AboutMeFormProps) {
-  const { userId } = useContext(UserContext);
-  const [description, setDescription] = useState(aboutMe?.description ?? "");
-
-  async function handleEditClick() {
-    await put(`http://localhost:3001/api/aboutMe/${userId}`, {
-      description,
-    });
-    setDescription("");
-    onAction();
-  }
+  const [description, setDescription] = useState(aboutMe?.description);
 
   return (
     <div className="flex flex-col gap-4 ">
@@ -38,7 +27,7 @@ function AboutMeForm({ onAction, aboutMe }: AboutMeFormProps) {
         <Button
           className="bg-green-600 text-white"
           onClick={() => {
-            handleEditClick();
+            onAction(description || "", aboutMe?.id );
           }}
         >
           Save

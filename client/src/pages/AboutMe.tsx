@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { get, deleteItem } from "../lib/http";
+import { get, deleteItem, put } from "../lib/http";
 import {
   faGithub,
   faLinkedin,
@@ -23,15 +23,14 @@ export type Skill = {
 };
 export type AboutMe = {
   id?: number;
-  description: string;
+  description: string | undefined;
 };
 
 function AboutMe() {
-  const [aboutMe, setAboutMe] = useState("");
+  const [aboutMe, setAboutMe] = useState<AboutMe | undefined>(undefined);
   const [skills, setSkills] = useState<Skill[]>([]);
   const [isAddSKillOpen, setAddSkillIsOpen] = useState(Boolean);
   const [isEditAboutMeOpen, setEditAboutMeOpen] = useState(Boolean);
-
   const [showX, setShowX] = useState(Boolean);
 
   useEffect(() => {
@@ -45,7 +44,7 @@ function AboutMe() {
       const aboutMeData = await get(
         `http://localhost:3001/api/aboutMe/${username || "user1"}`
       );
-      setAboutMe(aboutMeData.description);
+      setAboutMe(aboutMeData);
     } catch (err) {
       console.log("err", err);
     }
@@ -96,7 +95,7 @@ function AboutMe() {
               </Button>
             </SignedIn>
           </div>
-          <div className="font-light text-gray-700">{aboutMe}</div>
+          <div className="font-light text-gray-700">{aboutMe?.description}</div>
         </div>
         <div className="flex-1  text-lg text-blue-900">
           <div className="flex justify-between">
@@ -155,7 +154,15 @@ function AboutMe() {
             }}
           >
             <AboutMeForm
-              onAction={() => {
+              aboutMe={aboutMe}
+              onAction={async (updatedDescription, aboutMeId) => {
+                console.log("updatedDescription", updatedDescription);
+                if (aboutMeId) {
+                  await put(`http://localhost:3001/api/aboutMe/${aboutMeId}`, {
+                    description: updatedDescription,
+                  });
+                }
+                setEditAboutMeOpen(false);
                 fetchAboutMe();
               }}
             />
