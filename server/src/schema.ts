@@ -89,6 +89,8 @@ export const aboutMe = pgTable("aboutMe", {
   description: varchar("description", { length: 5000 }).notNull(),
   name: varchar("name", { length: 500 }).notNull(),
   title: varchar("title", { length: 500 }).notNull(),
+  gitHubURL: varchar("gitHubURL", { length: 500 }),
+  linkedInURL: varchar("linkedInURL", { length: 500 }),
   userId: integer("user_id")
     .references(() => user.id, { onDelete: "cascade" })
     .notNull(),

@@ -32,6 +32,8 @@ aboutMeRoutes.post("/aboutMe", async (req: Request, res: Response) => {
       title: req.body.title,
       name: req.body.name,
       description: req.body.description,
+      linkedInURL: req.body.linkedInURL,
+      gitHubURL: req.body.gitHubURL,
       userId: authorizedId,
     });
     res.status(201).json({ message: "AboutMe Added" });
@@ -53,6 +55,8 @@ aboutMeRoutes.put("/aboutMe/:id", async (req: Request, res: Response) => {
         description: req.body.description,
         name: req.body.name,
         title: req.body.title,
+        linkedInURL: req.body.linkedInURL,
+        gitHubURL: req.body.gitHubURL,
       })
       .where(
         and(
