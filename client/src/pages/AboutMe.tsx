@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { get, deleteItem, put } from "../lib/http";
+import { get, deleteItem, put, post } from "../lib/http";
 import {
   faGithub,
   faLinkedin,
@@ -10,11 +10,12 @@ import Button from "../component/ui/Button";
 // import { faJs } from "@fortawesome/free-brands-svg-icons/faJs";
 // import { faNodeJs } from "@fortawesome/free-brands-svg-icons/faNodeJs";
 import { useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Dialog } from "../component/ui/Dialog";
 import SkillForm from "../component/SkillForm";
 import SignedIn from "../component/SignedIn";
 import AboutMeForm from "../component/AboutMeForm";
+import { UserContext } from "../context/UserContext";
 
 export type Skill = {
   id?: number;
@@ -32,6 +33,7 @@ function AboutMe() {
   const [isAddSKillOpen, setAddSkillIsOpen] = useState(Boolean);
   const [isEditAboutMeOpen, setEditAboutMeOpen] = useState(Boolean);
   const [showX, setShowX] = useState(Boolean);
+  const { UserContextId } = useContext(UserContext);
 
   useEffect(() => {
     fetchAboutMe();
@@ -160,6 +162,11 @@ function AboutMe() {
                 if (aboutMeId) {
                   await put(`http://localhost:3001/api/aboutMe/${aboutMeId}`, {
                     description: updatedDescription,
+                  });
+                } else {
+                  await post(`http://localhost:3001/api/aboutMe`, {
+                    description: updatedDescription,
+                    userID: UserContextId,
                   });
                 }
                 setEditAboutMeOpen(false);
