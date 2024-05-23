@@ -10,12 +10,11 @@ import Button from "../component/ui/Button";
 // import { faJs } from "@fortawesome/free-brands-svg-icons/faJs";
 // import { faNodeJs } from "@fortawesome/free-brands-svg-icons/faNodeJs";
 import { useParams } from "react-router-dom";
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Dialog } from "../component/ui/Dialog";
 import SkillForm from "../component/SkillForm";
 import SignedIn from "../component/SignedIn";
 import AboutMeForm from "../component/AboutMeForm";
-import { UserContext } from "../context/UserContext";
 
 export type Skill = {
   id?: number;
@@ -27,6 +26,8 @@ export type AboutMe = {
   name: string | undefined;
   title: string | undefined;
   description: string | undefined;
+  gitHubURL: string | undefined;
+  linkedInURL: string | undefined;
 };
 
 function AboutMe() {
@@ -35,7 +36,6 @@ function AboutMe() {
   const [isAddSKillOpen, setAddSkillIsOpen] = useState(Boolean);
   const [isEditAboutMeOpen, setEditAboutMeOpen] = useState(Boolean);
   const [showX, setShowX] = useState(Boolean);
-  const { userId } = useContext(UserContext);
   useEffect(() => {
     fetchAboutMe();
     fetchSkill();
@@ -156,18 +156,29 @@ function AboutMe() {
           >
             <AboutMeForm
               aboutMe={aboutMe}
-              onAction={async (updatedDescription, aboutMeId, title, name) => {
+              onAction={async (
+                updatedDescription,
+                aboutMeId,
+                title,
+                name,
+                gitHubURL,
+                linkedInURL
+              ) => {
                 // console.log("updatedDescription", updatedDescription);
                 if (aboutMeId) {
                   await put(`http://localhost:3001/api/aboutMe/${aboutMeId}`, {
                     description: updatedDescription,
                     title,
                     name,
+                    gitHubURL,
+                    linkedInURL,
                   });
                 } else {
                   await post(`http://localhost:3001/api/aboutMe`, {
                     title,
                     name,
+                    gitHubURL,
+                    linkedInURL,
                     description: updatedDescription,
                   });
                 }
@@ -194,14 +205,14 @@ function AboutMe() {
           <div className="flex gap-2 justify-center">
             <a
               className="text-blue-900"
-              href="https://github.com/salidamaharjan"
+              href={aboutMe?.gitHubURL}
               target="_blank"
             >
               <FontAwesomeIcon icon={faGithub} />{" "}
             </a>
             <a
               className="text-blue-500"
-              href="https://www.linkedin.com/in/salida-maharjan-6381b9173/"
+              href={aboutMe?.linkedInURL}
               target="_blank"
             >
               <FontAwesomeIcon icon={faLinkedin} />

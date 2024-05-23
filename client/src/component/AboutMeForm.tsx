@@ -9,7 +9,9 @@ type AboutMeFormProps = {
     updatedDescription: string,
     aboutMeId: number | undefined,
     title: string,
-    name: string
+    name: string,
+    gitHubURL: string,
+    linkInURL: string
   ) => void;
   aboutMe?: AboutMe;
 };
@@ -18,6 +20,8 @@ function AboutMeForm({ onAction, aboutMe }: AboutMeFormProps) {
   const [description, setDescription] = useState(aboutMe?.description);
   const [name, setName] = useState(aboutMe?.name || "");
   const [title, setTitle] = useState(aboutMe?.title || "");
+  const [gitHubURL, setGitHubURL] = useState(aboutMe?.gitHubURL || "");
+  const [linkedInURL, setLinkedInURL] = useState(aboutMe?.linkedInURL || "");
   return (
     <div className="flex flex-col gap-4 ">
       <Label className="text-black">
@@ -50,11 +54,39 @@ function AboutMeForm({ onAction, aboutMe }: AboutMeFormProps) {
           onChange={(e) => setTitle(e.target.value)}
         />
       </Label>
+      <Label className="text-black">
+        GitHubURL{" "}
+        <Input
+          className="font-normal text-sm"
+          placeholder="GitHubURL"
+          type="text"
+          value={gitHubURL}
+          onChange={(e) => setGitHubURL(e.target.value)}
+        />
+      </Label>
+      <Label className="text-black">
+        LinkedIn URL{" "}
+        <Input
+          className="font-normal text-sm"
+          placeholder="LinkedIn URL"
+          type="text"
+          value={linkedInURL}
+          onChange={(e) => setLinkedInURL(e.target.value)}
+        />
+      </Label>
+
       <div className="text-center">
         <Button
           className="bg-green-600 text-white"
           onClick={() => {
-            onAction(description || "", aboutMe?.id, title || "", name || "");
+            onAction(
+              description || "",
+              aboutMe?.id,
+              title || "",
+              name || "",
+              gitHubURL || "",
+              linkedInURL || ""
+            );
           }}
         >
           Save
