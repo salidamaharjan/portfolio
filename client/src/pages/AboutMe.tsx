@@ -24,6 +24,8 @@ export type Skill = {
 };
 export type AboutMe = {
   id?: number;
+  name: string;
+  title: string;
   description: string | undefined;
 };
 
@@ -33,7 +35,6 @@ function AboutMe() {
   const [isAddSKillOpen, setAddSkillIsOpen] = useState(Boolean);
   const [isEditAboutMeOpen, setEditAboutMeOpen] = useState(Boolean);
   const [showX, setShowX] = useState(Boolean);
-  const { UserContextId } = useContext(UserContext);
 
   useEffect(() => {
     fetchAboutMe();
@@ -76,11 +77,9 @@ function AboutMe() {
           />
           <div className="flex flex-col gap-2">
             <h1 className="text-xl text-center font-bold text-blue-900">
-              Salida Maharjan
+              {aboutMe?.name}
             </h1>
-            <h2 className="text-md text-black text-center">
-              Full Stack Developer
-            </h2>
+            <h2 className="text-md text-black text-center">{aboutMe?.title}</h2>
           </div>
         </div>
       </div>
