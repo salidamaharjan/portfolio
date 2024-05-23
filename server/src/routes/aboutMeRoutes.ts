@@ -39,7 +39,7 @@ aboutMeRoutes.put("/aboutMe/:id", async (req: Request, res: Response) => {
           eq(aboutMe.userId, authorizedId)
         )
       );
-    res.status(201).json({ message: "Education Updated" });
+    res.status(201).json({ message: "AboutMe Updated" });
   } catch (err) {
     console.log(err);
     res.status(500).send(err);

@@ -1,9 +1,10 @@
 import Button from "./ui/Button";
 import Input from "./ui/Input";
 import Label from "./ui/Label";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { put } from "../lib/http";
 import { AboutMe } from "../pages/AboutMe";
+import { UserContext } from "../context/UserContext";
 
 type AboutMeFormProps = {
   onAction: () => void;
@@ -11,10 +12,11 @@ type AboutMeFormProps = {
 };
 
 function AboutMeForm({ onAction, aboutMe }: AboutMeFormProps) {
+  const { userId } = useContext(UserContext);
   const [description, setDescription] = useState(aboutMe?.description ?? "");
 
   async function handleEditClick() {
-    await put(`http://localhost:3001/api/aboutMe/${aboutMe?.id}`, {
+    await put(`http://localhost:3001/api/aboutMe/${userId}`, {
       description,
     });
     setDescription("");
