@@ -5,14 +5,19 @@ import { useState } from "react";
 import { AboutMe } from "../pages/AboutMe";
 
 type AboutMeFormProps = {
-  onAction: (updatedDescription: string, aboutMeId: number | undefined) => void;
+  onAction: (
+    updatedDescription: string,
+    aboutMeId: number | undefined,
+    title: string,
+    name: string
+  ) => void;
   aboutMe?: AboutMe;
 };
 
 function AboutMeForm({ onAction, aboutMe }: AboutMeFormProps) {
   const [description, setDescription] = useState(aboutMe?.description);
-  const [name, setName] = useState(aboutMe?.name);
-  const [title, setTitle] = useState(aboutMe?.title);
+  const [name, setName] = useState(aboutMe?.name || "");
+  const [title, setTitle] = useState(aboutMe?.title || "");
   return (
     <div className="flex flex-col gap-4 ">
       <Label className="text-black">
@@ -49,7 +54,7 @@ function AboutMeForm({ onAction, aboutMe }: AboutMeFormProps) {
         <Button
           className="bg-green-600 text-white"
           onClick={() => {
-            onAction(description || "", aboutMe?.id);
+            onAction(description || "", aboutMe?.id, title || "", name || "");
           }}
         >
           Save

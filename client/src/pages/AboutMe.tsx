@@ -24,8 +24,8 @@ export type Skill = {
 };
 export type AboutMe = {
   id?: number;
-  name: string;
-  title: string;
+  name: string | undefined;
+  title: string | undefined;
   description: string | undefined;
 };
 
@@ -156,16 +156,19 @@ function AboutMe() {
           >
             <AboutMeForm
               aboutMe={aboutMe}
-              onAction={async (updatedDescription, aboutMeId) => {
-                console.log("updatedDescription", updatedDescription);
+              onAction={async (updatedDescription, aboutMeId, title, name) => {
+                // console.log("updatedDescription", updatedDescription);
                 if (aboutMeId) {
                   await put(`http://localhost:3001/api/aboutMe/${aboutMeId}`, {
                     description: updatedDescription,
+                    title,
+                    name,
                   });
                 } else {
                   await post(`http://localhost:3001/api/aboutMe`, {
+                    title,
+                    name,
                     description: updatedDescription,
-                    userID: userId,
                   });
                 }
                 setEditAboutMeOpen(false);

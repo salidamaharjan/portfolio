@@ -46,11 +46,13 @@ aboutMeRoutes.put("/aboutMe/:id", async (req: Request, res: Response) => {
   try {
     const loggedInUser = (req as any).user;
     const authorizedId = loggedInUser.id;
-    console.log("aboutMe.userId", aboutMe.userId);
+    // console.log("aboutMe.userId", aboutMe.userId);
     await db
       .update(aboutMe)
       .set({
         description: req.body.description,
+        name: req.body.name,
+        title: req.body.title,
       })
       .where(
         and(
