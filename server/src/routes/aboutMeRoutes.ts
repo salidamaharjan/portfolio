@@ -23,6 +23,22 @@ aboutMeGetRoutes.get(
     }
   }
 );
+aboutMeRoutes.post("/aboutMe", async (req: Request, res: Response) => {
+  try {
+    const loggedInUser = (req as any).user;
+    console.log(loggedInUser.id);
+    const authorizedId = loggedInUser.id;
+    await db.insert(aboutMe).values({
+      description: req.body.description,
+      userId: authorizedId,
+    });
+    res.status(201).json({ message: "AboutMe Added" });
+  } catch (err) {
+    console.log(err);
+
+    res.status(500).send(err);
+  }
+});
 
 aboutMeRoutes.put("/aboutMe/:id", async (req: Request, res: Response) => {
   try {
