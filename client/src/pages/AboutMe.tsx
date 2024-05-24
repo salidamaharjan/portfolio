@@ -9,7 +9,7 @@ import Button from "../component/ui/Button";
 // import { faVuejs } from "@fortawesome/free-brands-svg-icons/faVuejs";
 // import { faJs } from "@fortawesome/free-brands-svg-icons/faJs";
 // import { faNodeJs } from "@fortawesome/free-brands-svg-icons/faNodeJs";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { Dialog } from "../component/ui/Dialog";
 import SkillForm from "../component/SkillForm";
@@ -41,12 +41,10 @@ function AboutMe() {
     fetchSkill();
   }, []);
   const { username } = useParams();
-
+  const navigate = useNavigate();
   async function fetchAboutMe() {
     try {
-      const aboutMeData = await get(
-        `/api/aboutMe/${username || "user1"}`
-      );
+      const aboutMeData = await get(`/api/aboutMe/${username || "user1"}`);
       setAboutMe(aboutMeData);
     } catch (err) {
       console.log("err", err);
@@ -55,9 +53,7 @@ function AboutMe() {
 
   async function fetchSkill() {
     try {
-      const skillsData = await get(
-        `/api/skills/${username || "user1"}`
-      );
+      const skillsData = await get(`/api/skills/${username || "user1"}`);
       // console.log("skillsData", skillsData);
       setSkills(skillsData);
       setShowX(false);
@@ -134,9 +130,7 @@ function AboutMe() {
                     <Button
                       className="py-0 px-1 text-red-500"
                       onClick={async () => {
-                        await deleteItem(
-                          `/api/skills/${skill.id}`
-                        );
+                        await deleteItem(`/api/skills/${skill.id}`);
                         await fetchSkill();
                       }}
                     >
@@ -225,10 +219,13 @@ function AboutMe() {
             </a> */}
           </div>
           <div className="text-center ">
-            <Button className="border-l-0 text-lg hover:text-sky-400 text-gray-700 rounded-none border-b-0 border-r-0">
+            {/* <Button className="border-l-0 text-lg hover:text-sky-400 text-gray-700 rounded-none border-b-0 border-r-0">
               Download Resume
-            </Button>
-            <Button className="border-b-0 text-lg hover:text-sky-400 text-gray-700 rounded-none border-r-0">
+            </Button> */}
+            <Button
+              className="border-b-0 text-lg hover:text-sky-400 text-gray-700 rounded-none border-r-0"
+              onClick={() => navigate("contact")}
+            >
               Contact Me
             </Button>
           </div>
