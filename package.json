@@ -4,8 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "install": "concurrently \"cd server && pnpm install\" \"cd client && pnpm install\"",
-    "start": "cd client && pnpm build && cd ../server && pnpm build && pnpm start",
+    "start": "cd server && pnpm start",
+    "build": "concurrently \"cd server && pnpm build\" \"cd client && pnpm build\"",
+    "install": "concurrently \"cd client && pnpm install\" \"cd server && pnpm install\" ",
     "dev": "pnpm kill && concurrently \"cd server && pnpm dev\" \"cd client && pnpm dev\"",
     "kill": "concurrently \"kill-port 3001\" \"kill-port 5174\"",
     "db:update": "cd server && pnpm db:update"

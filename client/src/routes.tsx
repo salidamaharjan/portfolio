@@ -1,13 +1,13 @@
 import { createBrowserRouter } from "react-router-dom";
-import App from "./App.tsx";
-import Login from "./pages/Login.tsx";
-import Portfolio from "./pages/Portfolio.tsx";
-import Signup from "./pages/Signup.tsx";
-import Resume from "./pages/Resume.tsx";
-import AboutMe from "./pages/AboutMe.tsx";
-import Works from "./pages/Works.tsx";
-import Contact from "./pages/Contact.tsx";
-import { UserProvider } from "./context/UserContext.tsx";
+import App from "./App";
+import { UserProvider } from "./context/UserContext";
+import Login from "./pages/Login";
+import Signup from "./pages/Signup";
+import Portfolio from "./pages/Portfolio";
+import Resume from "./pages/Resume";
+import AboutMe from "./pages/AboutMe";
+import Works from "./pages/Works";
+import Contact from "./pages/Contact";
 
 const router = createBrowserRouter([
   {
