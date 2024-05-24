@@ -4,6 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "build": "tsc",
+    "start": "node dist/src/server.js",
     "dev": "nodemon src/server.ts",
     "db:update": "drizzle-kit push:pg"
   },
