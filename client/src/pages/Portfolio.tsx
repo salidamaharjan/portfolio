@@ -21,7 +21,7 @@ function Portfolio() {
   }, [username, navigate]);
 
   return (
-    <div className="md:flex flex md:flex-row flex-col-reverse p-4 gap-6">
+    <div className="md:flex flex md:flex-row flex-col-reverse p-4">
       <aside className="flex flex-row justify-evenly border-t md:border-t-0 w-[100dvw] md:w-auto bg-white pb-2 md:pb-0 md:flex-col fixed bottom-0 md:sticky md:top-[60px] self-start left-0 pt-1 gap-5">
         <AsideLinks
           path={`username || ""`}

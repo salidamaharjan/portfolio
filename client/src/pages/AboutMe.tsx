@@ -63,11 +63,14 @@ function AboutMe() {
   }
 
   return (
-    <div className="grid md:grid-cols-2 h-[630px] gap-6">
-      <div className="flex flex-col gap-4">
-        <div className="flex items-center flex-col gap-8">
+    <div className="grid grid-cols-1 md:grid-cols-7 h-[630px] gap-2">
+      <div
+        className="col-span-3 flex flex-col gap-
+      "
+      >
+        <div className="flex items-center flex-col gap-5">
           <img
-            className="md:w-[70dvw] md:h-[70dvh] h-[30dvh] w-[50dvw] border-1 rounded-md"
+            className="md:w-[500px] md:h-[450px] h-[30dvh] w-[50dvw] border-1 rounded-md"
             src="/images/user.jpg"
             alt="User's Image"
           />
@@ -77,9 +80,38 @@ function AboutMe() {
             </h1>
             <h2 className="text-md text-black text-center">{aboutMe?.title}</h2>
           </div>
+          <div className="flex flex-col text-2xl gap-2 mb-8 md:mb-0">
+            <div className="flex gap-2 justify-center">
+              <a
+                className="text-blue-900"
+                href={aboutMe?.gitHubURL}
+                target="_blank"
+              >
+                <FontAwesomeIcon icon={faGithub} />{" "}
+              </a>
+              <a
+                className="text-blue-500"
+                href={aboutMe?.linkedInURL}
+                target="_blank"
+              >
+                <FontAwesomeIcon icon={faLinkedin} />
+              </a>
+            </div>
+            <div className="text-center ">
+              {/* <Button className="border-l-0 text-lg hover:text-sky-400 text-gray-700 rounded-none border-b-0 border-r-0">
+              Download Resume
+            </Button> */}
+              <Button
+                className="border-b-0 text-sm hover:text-sky-400 text-gray-700 rounded-none border-r-0"
+                onClick={() => navigate("contact")}
+              >
+                Contact Me
+              </Button>
+            </div>
+          </div>
         </div>
       </div>
-      <div className="flex flex-col text-lg gap-6 text-blue-900 font-bold">
+      <div className="md:col-span-4 flex flex-col text-lg gap-6 text-blue-900 font-bold">
         <div className="flex flex-col text-lg text-blue-900">
           <div className="flex justify-between">
             <div>About Me</div>
@@ -94,7 +126,7 @@ function AboutMe() {
           </div>
           <div className="font-light text-gray-700">{aboutMe?.description}</div>
         </div>
-        <div className="flex-1  text-lg text-blue-900">
+        <div className="text-lg text-blue-900">
           <div className="flex justify-between">
             <div>Skills</div>
             <SignedIn>
@@ -194,41 +226,6 @@ function AboutMe() {
               }}
             />
           </Dialog>
-        </div>
-        <div className="flex flex-col text-2xl gap-2 mb-16 md:mb-0">
-          <div className="flex gap-2 justify-center">
-            <a
-              className="text-blue-900"
-              href={aboutMe?.gitHubURL}
-              target="_blank"
-            >
-              <FontAwesomeIcon icon={faGithub} />{" "}
-            </a>
-            <a
-              className="text-blue-500"
-              href={aboutMe?.linkedInURL}
-              target="_blank"
-            >
-              <FontAwesomeIcon icon={faLinkedin} />
-            </a>
-            {/* <a
-              className="text-blue-400"
-              href="https://twitter.com/tweeter?lang=en" target="_blank"
-            >
-              <FontAwesomeIcon icon={faTwitter} />
-            </a> */}
-          </div>
-          <div className="text-center ">
-            {/* <Button className="border-l-0 text-lg hover:text-sky-400 text-gray-700 rounded-none border-b-0 border-r-0">
-              Download Resume
-            </Button> */}
-            <Button
-              className="border-b-0 text-lg hover:text-sky-400 text-gray-700 rounded-none border-r-0"
-              onClick={() => navigate("contact")}
-            >
-              Contact Me
-            </Button>
-          </div>
         </div>
       </div>
     </div>
