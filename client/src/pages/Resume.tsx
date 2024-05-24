@@ -62,7 +62,7 @@ function Resume() {
   async function fetchEducation() {
     try {
       const educationData = await get(
-        `http://localhost:3001/api/educations/${username || "user1"}`
+        `/api/educations/${username || "user1"}`
       );
       setEducations(educationData);
       // console.log("educationData", educationData);
@@ -73,7 +73,7 @@ function Resume() {
   async function fetchProject() {
     try {
       const projectData = await get(
-        `http://localhost:3001/api/projects/${username || "user1"}`
+        `/api/projects/${username || "user1"}`
       );
       setProjects(projectData);
       // console.log("projectData", projectData);
@@ -84,7 +84,7 @@ function Resume() {
   async function fetchExperience() {
     try {
       const experienceData = await get(
-        `http://localhost:3001/api/experiences/${username || "user1"}`
+        `/api/experiences/${username || "user1"}`
       );
       setExperiences(experienceData);
       // console.log("experienceData", experienceData);
@@ -94,7 +94,7 @@ function Resume() {
   }
   async function handleDeleteEducation(id: number) {
     try {
-      await deleteItem(`http://localhost:3001/api/educations/${id}`);
+      await deleteItem(`/api/educations/${id}`);
       fetchEducation();
     } catch (err) {
       console.log("err", err);
@@ -102,7 +102,7 @@ function Resume() {
   }
   async function handleDeleteExperience(id: number) {
     try {
-      await deleteItem(`http://localhost:3001/api/experiences/${id}`);
+      await deleteItem(`/api/experiences/${id}`);
       fetchExperience();
     } catch (err) {
       console.log("err", err);
@@ -110,7 +110,7 @@ function Resume() {
   }
   async function handleDeleteProject(id: number) {
     try {
-      await deleteItem(`http://localhost:3001/api/projects/${id}`);
+      await deleteItem(`/api/projects/${id}`);
       fetchProject();
     } catch (err) {
       console.log("err", err);

@@ -1,5 +1,5 @@
-import Input from "../component/ui/Input";
-import Label from "../component/ui/Label";
+// import Input from "../component/ui/Input";
+// import Label from "../component/ui/Label";
 
 function Contact() {
   return (
@@ -19,7 +19,8 @@ function Contact() {
             Connect with Me
           </a>
         </div>
-        <div className="flex flex-col border shadow-sm p-4 border-gray-400 w-[350px] md:w-[500px] text-center rounded-md">
+        {/* work in progress */}
+        {/* <div className="flex flex-col border shadow-sm p-4 border-gray-400 w-[350px] md:w-[500px] text-center rounded-md">
           Email Me
           <div className="flex flex-col mt-2 gap-4 ">
             <div className="flex flex-col justify-evenly gap-4 md:flex-row">
@@ -46,7 +47,7 @@ function Contact() {
               />
             </Label>
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   );

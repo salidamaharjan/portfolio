@@ -6,7 +6,7 @@ function Signup() {
   const navigate = useNavigate();
 
   async function handleSignupClick(username: string, password: string) {
-    const data = await post("http://localhost:3001/api/signup", {
+    const data = await post("/api/signup", {
       username,
       password,
     });

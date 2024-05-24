@@ -10,7 +10,7 @@ function Login() {
 
   async function handleLoginClick(username: string, password: string) {
     try {
-      const data = await post("http://localhost:3001/api/login", {
+      const data = await post("/api/login", {
         username,
         password,
       });

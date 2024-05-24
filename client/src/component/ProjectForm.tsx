@@ -17,7 +17,7 @@ function ProjectForm({ onAction, project, formFor }: ProjectFormProps) {
   const [technologiesUsed, setTechnologiesUsed] = useState(project?.technologiesUsed ?? "");
 
   async function handleAddClick() {
-    const newProject = await post("http://localhost:3001/api/projects", {
+    const newProject = await post("/api/projects", {
       projectName,
       description,
       technologiesUsed,
@@ -30,7 +30,7 @@ function ProjectForm({ onAction, project, formFor }: ProjectFormProps) {
   }
   async function handleEditClick() {
     const newProject = await put(
-      `http://localhost:3001/api/projects/${project?.id}`,
+      `/api/projects/${project?.id}`,
       {
         projectName,
         description,

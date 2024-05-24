@@ -16,7 +16,7 @@ function SkillForm({ skill, onAction }: SkillFormProps) {
   const [showAdd, setShowAdded] = useState("");
 
   async function handleSaveClick() {
-    await post("http://localhost:3001/api/skills", {
+    await post("/api/skills", {
       skillName,
       iconURL,
     });

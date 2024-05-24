@@ -21,7 +21,7 @@ function EducationForm({ onAction, formFor, education }: EducationFormProps) {
   const [description, setDescription] = useState(education?.description ?? "");
 
   async function handleAddClick() {
-    await post("http://localhost:3001/api/educations", {
+    await post("/api/educations", {
       degree,
       schoolName,
       startDate,
@@ -38,7 +38,7 @@ function EducationForm({ onAction, formFor, education }: EducationFormProps) {
   }
   async function handleEditClick() {
     // console.log(education?.id);
-    await put(`http://localhost:3001/api/educations/${education?.id}`, {
+    await put(`/api/educations/${education?.id}`, {
       degree,
       schoolName,
       startDate,

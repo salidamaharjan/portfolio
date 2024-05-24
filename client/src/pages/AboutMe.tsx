@@ -45,7 +45,7 @@ function AboutMe() {
   async function fetchAboutMe() {
     try {
       const aboutMeData = await get(
-        `http://localhost:3001/api/aboutMe/${username || "user1"}`
+        `/api/aboutMe/${username || "user1"}`
       );
       setAboutMe(aboutMeData);
     } catch (err) {
@@ -56,7 +56,7 @@ function AboutMe() {
   async function fetchSkill() {
     try {
       const skillsData = await get(
-        `http://localhost:3001/api/skills/${username || "user1"}`
+        `/api/skills/${username || "user1"}`
       );
       // console.log("skillsData", skillsData);
       setSkills(skillsData);
@@ -135,7 +135,7 @@ function AboutMe() {
                       className="py-0 px-1 text-red-500"
                       onClick={async () => {
                         await deleteItem(
-                          `http://localhost:3001/api/skills/${skill.id}`
+                          `/api/skills/${skill.id}`
                         );
                         await fetchSkill();
                       }}
@@ -166,7 +166,7 @@ function AboutMe() {
               ) => {
                 // console.log("updatedDescription", updatedDescription);
                 if (aboutMeId) {
-                  await put(`http://localhost:3001/api/aboutMe/${aboutMeId}`, {
+                  await put(`/api/aboutMe/${aboutMeId}`, {
                     description: updatedDescription,
                     title,
                     name,
@@ -174,7 +174,7 @@ function AboutMe() {
                     linkedInURL,
                   });
                 } else {
-                  await post(`http://localhost:3001/api/aboutMe`, {
+                  await post(`/api/aboutMe`, {
                     title,
                     name,
                     gitHubURL,

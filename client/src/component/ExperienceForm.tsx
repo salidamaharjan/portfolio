@@ -23,7 +23,7 @@ function ExperienceForm({
   const [endDate, setEndDate] = useState(experience?.endDate ?? "");
 
   async function handleAddClick() {
-    const newExperience = await post("http://localhost:3001/api/experiences", {
+    const newExperience = await post("/api/experiences", {
       title,
       company,
       jobDescription,
@@ -41,7 +41,7 @@ function ExperienceForm({
 
   async function handleEditClick() {
     const newExperience = await put(
-      `http://localhost:3001/api/experiences/${experience?.id}`,
+      `/api/experiences/${experience?.id}`,
       {
         title,
         company,
