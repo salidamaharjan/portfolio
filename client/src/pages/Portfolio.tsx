@@ -16,7 +16,7 @@ function Portfolio() {
   useEffect(() => {
     // For now default profile is set to my user
     if (!username) {
-      navigate("/u/user1");
+      navigate("/u/salidamaharjan");
     }
   }, [username, navigate]);
 

@@ -44,7 +44,9 @@ function AboutMe() {
   const navigate = useNavigate();
   async function fetchAboutMe() {
     try {
-      const aboutMeData = await get(`/api/aboutMe/${username || "user1"}`);
+      const aboutMeData = await get(
+        `/api/aboutMe/${username || "salidamaharjan"}`
+      );
       setAboutMe(aboutMeData);
     } catch (err) {
       console.log("err", err);
@@ -53,7 +55,9 @@ function AboutMe() {
 
   async function fetchSkill() {
     try {
-      const skillsData = await get(`/api/skills/${username || "user1"}`);
+      const skillsData = await get(
+        `/api/skills/${username || "salidamaharjan"}`
+      );
       // console.log("skillsData", skillsData);
       setSkills(skillsData);
       setShowX(false);
