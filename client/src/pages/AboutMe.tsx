@@ -80,7 +80,7 @@ function AboutMe() {
             </h1>
             <h2 className="text-md text-black text-center">{aboutMe?.title}</h2>
           </div>
-          <div className="flex flex-col text-2xl gap-2 mb-8 md:mb-0">
+          <div className="flex flex-col text-2xl gap-2">
             <div className="flex gap-2 justify-center">
               <a
                 className="text-blue-900"
@@ -126,7 +126,7 @@ function AboutMe() {
           </div>
           <div className="font-light text-gray-700">{aboutMe?.description}</div>
         </div>
-        <div className="text-lg text-blue-900">
+        <div className="mb-14 md:mb-0 text-lg text-blue-900">
           <div className="flex justify-between">
             <div>Skills</div>
             <SignedIn>
