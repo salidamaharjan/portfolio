@@ -14,9 +14,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "concurrently": "^8.2.2"
-  },
-  "dependencies": {
+    "concurrently": "^8.2.2",
     "kill-port": "^2.0.1"
   }
 }
